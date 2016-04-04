@@ -5,5 +5,8 @@ package ru.java2.finManager;
  */
 public class User {
 
+    private String login;
+    private String password;
+
 
 }
