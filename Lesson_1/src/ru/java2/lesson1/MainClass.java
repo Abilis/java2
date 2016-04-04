@@ -67,6 +67,7 @@ public class MainClass {
         System.out.println();
         System.out.println("Теперь стек должен быть пуст: " + genericStack.isEmpty());
 
+        System.out.println("Здесь находится то, что перегнали в лист из стека");
         System.out.println(list.toString());
         System.out.println();
 
@@ -74,6 +75,7 @@ public class MainClass {
         genericStack.pushAll(list);
         System.out.println("Теперь стек должен быть полон: " + genericStack.isFull());
 
+        System.out.println("Здесь находится то, что перегнали в стек из листа");
         while (!genericStack.isEmpty()) {
             System.out.print(genericStack.pop() + " ");
         }
