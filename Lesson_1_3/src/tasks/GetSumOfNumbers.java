@@ -1,3 +1,4 @@
+package tasks;
 
 /**
  * Created by Сергей on 27.03.2016.
