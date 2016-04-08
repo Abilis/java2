@@ -11,6 +11,18 @@ public class CountWord {
           The words in the parameter String can be separated from each other by any nubmer
           of whitespace symbols (Character.isWhitespace()).
          */
-        return 0;
+        if (s == null) {
+            return 0;
+        }
+
+        //do split into array by reget "\s+"
+
+        String[] strAsArr = s.split("\\s+");
+
+
+        //return lenght this array
+
+
+        return strAsArr.length;
     }
 }

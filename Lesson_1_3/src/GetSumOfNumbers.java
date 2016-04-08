@@ -37,7 +37,6 @@ public class GetSumOfNumbers {
                 }
 
                 sum += currentNumber;
-
             }
 
             return sum;
