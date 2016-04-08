@@ -21,6 +21,7 @@ public class CountPowerfullNumbers {
           return the count of powerful numbers in the range [from..to] inclusively.
          */
 
+
         //будет цикл от from до to включая границы
 
         //для каждого числа находим все его делители, которые являются простыми числами
@@ -42,7 +43,7 @@ public class CountPowerfullNumbers {
 
             //бежим по списку квадратов. Если i делится нацело на все из них, то мы нашли полнократное число
 
-            boolean isPowerful = true; //флаг полнократного числа. Стен false при провале любой проверки
+            boolean isPowerful = true; //флаг полнократного числа. Станет false при провале любой проверки
 
             for (Integer sp : squarePrimes) {
                 if (i % sp != 0) {
