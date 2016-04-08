@@ -16,14 +16,15 @@ public class GetSumOfNumbers {
                 return -1;
             }
 
-            //сплитим строку в массив по пробелам
+            //do split a string into a array by spaces
             String[] strAsArr = s.split(" ");
             int sum = 0;
             int currentNumber;
 
-            //делаем трим каждого элемента массива
+            //do trim for each elements
 
-            //пробуем парсить элемент в интеджер. Если не получилось - элемент не число. Если получилось - добавляем к сумме
+            //try do parsing each element in integer. If it's impossible - element isn't a integer
+            //if parsing is succesful - add this integer to a sum
 
             for (int i = 0; i < strAsArr.length; i++) {
 
@@ -31,7 +32,7 @@ public class GetSumOfNumbers {
 
                 try {
                     currentNumber = Integer.parseInt(elem);
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     continue;
                 }
 
