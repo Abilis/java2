@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-5.1.38-bin">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin/javadoc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin/demo/programs" />
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin/demo/programs/scores/java/client" />
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin/demo/programs/scores/java/common" />
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin/demo/programs/scores/java/server" />
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin/demo/programs/simple" />
+      <root url="file://$PROJECT_DIR$/../../db-derby-10.12.1.1-bin/demo/programs/vtis/java" />
+    </SOURCES>
+  </library>
+</component>
