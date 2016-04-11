@@ -1,11 +1,9 @@
 package ru.java2.lesson2_3;
 
+
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by Abilis on 11.04.2016.
@@ -18,28 +16,35 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Connection connection;
-
         try {
             Driver driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);
 
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-            if (!connection.isClosed()) {
-                System.out.println("Соединение с БД установлено");
-            }
-
-            connection.close();
-
-            if (connection.isClosed()) {
-                System.out.println("Соединение с БД закрыто");
-            }
 
         } catch (SQLException e) {
-            System.err.println("Не удалось загрузить класс драйвера!");
+            System.out.println("Не удалось загрузить класс драйвера");
         }
 
+
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             Statement statement = connection.createStatement();
+            )
+
+            {
+
+
+                String query1 = "INSERT INTO users (name, age, mail) VALUES ('John', 38, 'john@mail.ru');";
+                String query2 = "DELETE FROM users WHERE id=3";
+                String query3 = "UPDATE users set age=39, mail='john22@gmail.ru' WHERE id=4;";
+
+                int n = statement.executeUpdate(query3);
+                System.out.println(n + " строк изменено");
+
+
+
+        } catch (SQLException e) {
+
+        }
 
 
     }
