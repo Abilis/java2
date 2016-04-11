@@ -1,6 +1,8 @@
 package ru.java2.lesson2_4;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 /**
@@ -8,9 +10,31 @@ import java.sql.Connection;
  */
 public class Main {
 
-    private Connection connection;
+    private static Connection connection;
 
-    DbHelper dbHelper = DbHelper.getDbHelper();
+    public static void main(String[] args) {
+
+        DbHelper dbHelper = DbHelper.getDbHelper();
+
+        try {
+            connection = dbHelper.getConnection();
+        } catch (SQLException e) {
+            System.out.println("Не получилось подключиться к БД");
+        }
+
+        try {
+
+            Statement statement = connection.createStatement();
+
+            String query1 = "";
+            statement.execute(query1);
+        } catch (SQLException e) {
+            System.out.println("Не получилось выполнить запрос");
+        }
+        
+
+
+    }
 
 
 
