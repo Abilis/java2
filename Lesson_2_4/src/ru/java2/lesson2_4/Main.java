@@ -1,9 +1,11 @@
 package ru.java2.lesson2_4;
 
-
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
-
 import java.sql.*;
+import java.sql.Date;
+import java.util.*;
+
+import static javafx.scene.input.KeyCode.K;
+import static javafx.scene.input.KeyCode.V;
 
 
 /**
@@ -100,11 +102,35 @@ public class Main {
                     System.out.println(message + " " + date);
                 }
 
+                System.out.println();
 
                 //4 запрос
                 //Запрос выводит количество подписчиков для каждого пользователя, отсортировано по убыванию.
                 //На выходе логин пользователя - количество подписчиков
-                String query4 = "";
+
+                String query4 = "SELECT `username`, `followers` FROM `messages`;";
+                //эта штука вытаскивает всех пользователей со всеми его подписчиками
+
+
+
+                //выполняем запрос и обрабатываем
+                resultSet = statement.executeQuery(query4);
+
+                while (resultSet.next()) {
+
+                    String username = resultSet.getString("username");
+                    String followers = resultSet.getString("followers");
+
+                    
+
+                    System.out.println();
+                }
+
+
+
+
+
+
 
 
 
