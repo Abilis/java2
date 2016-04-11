@@ -4,9 +4,6 @@ import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 
-import static javafx.scene.input.KeyCode.K;
-import static javafx.scene.input.KeyCode.V;
-
 
 /**
  * Created by Abilis on 11.04.2016.
@@ -19,12 +16,6 @@ public class Main {
 
     private static Statement statement = null;
     private static ResultSet resultSet = null;
-
-    private static int id;
-    private static String username;
-    private static String message;
-    private static Date dt;
-    private static String followers;
 
     public static void main(String[] args) {
 
@@ -47,7 +38,7 @@ public class Main {
                 resultSet = statement.executeQuery(query1);
 
                 while (resultSet.next()) {
-                    followers = resultSet.getString("followers");
+                    String followers = resultSet.getString("followers");
                     System.out.println("Подписчики Майка: " + followers);
                 }
 
@@ -111,6 +102,8 @@ public class Main {
                 String query4 = "SELECT `username`, `followers` FROM `messages`;";
                 //эта штука вытаскивает всех пользователей со всеми его подписчиками
 
+                ArrayList<String> listOfUsers = new ArrayList<String>();
+                ArrayList<Integer> listOfAmountFollowers = new ArrayList<Integer>();
 
 
                 //выполняем запрос и обрабатываем
@@ -121,32 +114,40 @@ public class Main {
                     String username = resultSet.getString("username");
                     String followers = resultSet.getString("followers");
 
-                    
+                    listOfUsers.add(username);
+                    String[] followersAsArr = followers.split(", ");
+                    int amountOfFollowers = followersAsArr.length;
 
-                    System.out.println();
+                    listOfAmountFollowers.add(amountOfFollowers);
+                }
+
+                //теперь будем сортировать оба списка по числу подписчиков по убыванию числа подписчиков
+
+                for (int i = 0; i < listOfAmountFollowers.size(); i++) {
+
+                    for (int j = 0; j < listOfAmountFollowers.size() - i - 1; j++) {
+                        if (listOfAmountFollowers.get(j + 1) > listOfAmountFollowers.get(j)) {
+                            int tmp = listOfAmountFollowers.get(j);
+                            listOfAmountFollowers.set(j, listOfAmountFollowers.get(j + 1));
+                            listOfAmountFollowers.set(j + 1, tmp);
+
+                            String usernameTmp = listOfUsers.get(j);
+                            listOfUsers.set(j, listOfUsers.get(j + 1));
+                            listOfUsers.set(j + 1, usernameTmp);
+                        }
+                    }
                 }
 
 
-
-
-
-
-
-
-
-
-
-
+                for (int i = 0; i < listOfUsers.size(); i++) {
+                    System.out.println(listOfUsers.get(i) + " " + listOfAmountFollowers.get(i));
+                }
 
 
         } catch (SQLException e) {
             System.out.println("Что-то не получилось");
             e.printStackTrace();
         }
-
-
-
-        
 
 
     }
