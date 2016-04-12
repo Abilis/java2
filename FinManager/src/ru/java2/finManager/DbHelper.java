@@ -69,6 +69,9 @@ public class DbHelper {
     //метод добавляет в таблицу users пользователя с именем login и паролем password
     public void createUser(String login, String password) throws SQLException {
 
+        //преобразуем пароль в строку хэш md5
+        password = Utils.getMd5(password);
+
         //запрос добавляет в таблицу users нового пользователя с логином login и паролем password
         String query = "INSERT INTO `users` (login, password) VALUES (\"" + login + "\", \"" + password + "\");";
 

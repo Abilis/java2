@@ -29,13 +29,10 @@ public class User {
     //метод пытается авторизовать пользователя
     public boolean autorization() {
 
-        if (this.login.equals(TRUE_LOGIN) && this.password.equals(TRUE_PASSWORD)) {
-            ConsoleHelper.writeMessage("Авторизация прошла успешно");
-            return true;
-        } else {
-            ConsoleHelper.writeMessage("Неверный логин или пароль");
-            return false;
-        }
+
+
+
+        return false;
     }
 
     //метод регистрирует нового пользователя
