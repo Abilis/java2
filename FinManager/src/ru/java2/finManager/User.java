@@ -57,7 +57,8 @@ public class User {
                 return true;
             }
         } catch (SQLException e) {
-            ConsoleHelper.writeMessage("Не получилось получить данные из базы. Попробуйте позднее еще раз");
+            ConsoleHelper.writeMessage("Не получилось получить данные из базы либо записать в нее. Попробуйте позднее еще раз");
+            e.printStackTrace();
             return false;
         }
 

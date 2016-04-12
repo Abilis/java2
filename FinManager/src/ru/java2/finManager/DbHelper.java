@@ -67,8 +67,17 @@ public class DbHelper {
     }
 
     //метод добавляет в таблицу users пользователя с именем login и паролем password
-    public void createUser(String login, String password) {
+    public void createUser(String login, String password) throws SQLException {
 
+        //запрос добавляет в таблицу users нового пользователя с логином login и паролем password
+        String query = "INSERT INTO `users` (login, password) VALUES (\"" + login + "\", \"" + password + "\");";
 
+        connection = getConnection();
+        Statement statement = connection.createStatement();
+        int result = statement.executeUpdate(query);
+
+        if (result == 0) {
+            throw new SQLException("Не удалось создать пользователя с логином " + login + ".");
+        }
     }
 }
