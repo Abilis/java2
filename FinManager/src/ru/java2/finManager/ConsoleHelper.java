@@ -1,6 +1,7 @@
 package ru.java2.finManager;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -12,6 +13,7 @@ public class ConsoleHelper {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 
+
     public static void writeMessage(String message) {
         System.out.println(message);
     }
@@ -20,6 +22,13 @@ public class ConsoleHelper {
         String str = reader.readLine();
         return str;
     }
+
+    //заготовка под метод для чтения пароля с консоли
+    public static String readPassword() {
+
+        return null;
+    }
+
 
     public static int getNumber(int min, int max, String message) {
 

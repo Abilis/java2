@@ -1,6 +1,7 @@
 package ru.java2.finManager;
 
 
+
 /**
  * Created by Abilis on 12.04.2016.
  */
