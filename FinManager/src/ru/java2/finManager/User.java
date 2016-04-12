@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class User {
 
-    private final String TRUE_LOGIN = "testlogin";
-    private final String TRUE_PASSWORD = "testpassword";
+    private static final String TRUE_LOGIN = "login";
+    private static final String TRUE_PASSWORD = "pass";
 
 
     private String login;
@@ -23,15 +23,27 @@ public class User {
     }
 
 
+
+    //метод пытается авторизовать пользователя
     public boolean autorization() {
 
-        if (login.equals(TRUE_LOGIN) && password.equals(TRUE_PASSWORD)) {
+        if (this.login.equals(TRUE_LOGIN) && this.password.equals(TRUE_PASSWORD)) {
+            ConsoleHelper.writeMessage("Авторизация прошла успешно");
             return true;
-        }
-        else {
+        } else {
+            ConsoleHelper.writeMessage("Неверный логин или пароль");
             return false;
         }
+    }
 
+    //метод регистрирует нового пользователя
+    public boolean registrationNewUser() {
+
+        //здесь идет проверка, есть ли в БД пользователь с таким логином. Если нет - создается запись и return true
+        //Если есть - выводится сообщение об уже имеющемся пользователе с таким логином и return false
+
+        ConsoleHelper.writeMessage("Не удалось зарегистрировать нового пользователя");
+        return false;
     }
 
 }

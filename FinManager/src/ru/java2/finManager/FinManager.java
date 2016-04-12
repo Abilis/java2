@@ -5,27 +5,35 @@ package ru.java2.finManager;
  */
 public class FinManager {
 
+    private static User currentUser;
 
     public static void main(String[] args) {
 
         while (true) {
 
-            ConsoleHelper.writeMessage("Введите логин и пароль:");
-            String[] loginAndPassword = ConsoleHelper.getValidateLoginAndPassword();
+            int number = ConsoleHelper.getNumber(1, 2, "1 - авторизация, 2 - регистрация нового пользователя");
 
-            User user = new User(loginAndPassword[0], loginAndPassword[1]);
-
-            if (user.autorization()) {
-                ConsoleHelper.writeMessage("Авторизация прошла успешно!");
-                break;
+            if (number == 1) {
+                String[] loginAndPass = ConsoleHelper.getValidateLoginAndPassword();
+                currentUser = new User(loginAndPass[0], loginAndPass[1]);
+                if (currentUser.autorization()) {
+                    break;
+                }
             }
-            else {
-                ConsoleHelper.writeMessage("Неверный логин или пароль!");
-            }
-        }
+            else if (number == 2) {
 
-        //Теперь пользователь залогинен
-        ConsoleHelper.writeMessage("Теперь пользователь залогинен");
+                String[] loginAndPass = ConsoleHelper.getValidateLoginAndPassword();
+                currentUser = new User(loginAndPass[0], loginAndPass[1]);
+
+                if (currentUser.registrationNewUser()) {
+                    break;
+                }
+            }
+        } // конец цикла
+
+        //если пользователь дошел сюда, значит он есть в системе
+
+
 
 
     }

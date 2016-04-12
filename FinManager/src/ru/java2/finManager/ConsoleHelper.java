@@ -21,6 +21,30 @@ public class ConsoleHelper {
         return str;
     }
 
+    public static int getNumber(int min, int max, String message) {
+
+        int number;
+
+        while (true) {
+            try {
+                writeMessage(message);
+                number = Integer.parseInt(readString());
+
+                if (number < min || number > max) {
+                    throw new IOException();
+                }
+                else {
+                    break;
+                }
+            } catch (IOException | NumberFormatException e) {
+                writeMessage("Некорректные данные");
+            }
+        }
+
+        return number;
+    }
+
+
     //метод возвращает массив строк из двух элементов. Первый элемент - логин, второй - пароль
     public static String[] getValidateLoginAndPassword() {
 
@@ -28,6 +52,9 @@ public class ConsoleHelper {
 
         while (true) {
             try {
+
+                writeMessage("Введите логин и пароль:");
+
                 String login = readString();
                 String password = readString();
 
