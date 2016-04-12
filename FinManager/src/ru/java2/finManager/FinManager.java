@@ -14,7 +14,7 @@ public class FinManager {
 
     public static void main(String[] args) {
 
-  /*      while (true) {
+        while (true) {
 
             int number = ConsoleHelper.getNumber(1, 2, "1 - авторизация, 2 - регистрация нового пользователя");
 
@@ -34,7 +34,7 @@ public class FinManager {
                     break;
                 }
             }
-        } // конец цикла*/
+        } // конец цикла
 
         //если пользователь дошел сюда, значит он есть в системе
 

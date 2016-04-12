@@ -1,5 +1,7 @@
 package ru.java2.finManager;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -42,15 +44,23 @@ public class User {
         //здесь идет проверка, есть ли в БД пользователь с таким логином. Если нет - создается запись и return true
         //Если есть - выводится сообщение об уже имеющемся пользователе с таким логином и return false
 
-        if (!this.login.equals(TRUE_LOGIN)) {
+        DbHelper dbHelper = DbHelper.getDbHelper();
 
-            //запись в БД
-            ConsoleHelper.writeMessage("Пользователь с именем " + this.login + " успешно зарегистрирован!");
-            return true;
+        try {
+
+            if (dbHelper.isUser(this.login)) {
+                ConsoleHelper.writeMessage("Пользователь с именем " + this.login + " уже существует!");
+                return false;
+            } else {
+                dbHelper.createUser(this.login, this.password);
+                ConsoleHelper.writeMessage("Пользователь с именем " + this.login + " успешно зарегистрирован!");
+                return true;
+            }
+        } catch (SQLException e) {
+            ConsoleHelper.writeMessage("Не получилось получить данные из базы. Попробуйте позднее еще раз");
+            return false;
         }
 
-        ConsoleHelper.writeMessage("Пользоветаль с именем " + this.login + " уже существует!");
-        return false;
     }
 
 }

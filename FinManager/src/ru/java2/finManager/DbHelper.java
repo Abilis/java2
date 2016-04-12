@@ -1,8 +1,6 @@
 package ru.java2.finManager;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by Abilis on 12.04.2016.
@@ -43,4 +41,34 @@ public class DbHelper {
         return connection;
     }
 
+    //метод проверяет, есть ли в БД в таблице users пользователь с именем login
+    public boolean isUser(String login) throws SQLException {
+
+        //Запрос возвращает количество пользователей с логином login
+        String query = "SELECT COUNT(*) FROM `users` WHERE login=\"" + login + "\";";
+
+        connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet result = statement.executeQuery(query);
+
+        int count = 0;
+
+        while (result.next()) {
+            count = result.getInt("COUNT(*)");
+        }
+
+        if (count != 0) {
+            connection.close();
+            return true;
+        }
+
+        connection.close();
+        return false;
+    }
+
+    //метод добавляет в таблицу users пользователя с именем login и паролем password
+    public void createUser(String login, String password) {
+
+
+    }
 }
