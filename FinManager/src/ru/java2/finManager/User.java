@@ -42,7 +42,14 @@ public class User {
         //здесь идет проверка, есть ли в БД пользователь с таким логином. Если нет - создается запись и return true
         //Если есть - выводится сообщение об уже имеющемся пользователе с таким логином и return false
 
-        ConsoleHelper.writeMessage("Не удалось зарегистрировать нового пользователя");
+        if (!this.login.equals(TRUE_LOGIN)) {
+
+            //запись в БД
+            ConsoleHelper.writeMessage("Пользователь с именем " + this.login + " успешно зарегистрирован!");
+            return true;
+        }
+
+        ConsoleHelper.writeMessage("Пользоветаль с именем " + this.login + " уже существует!");
         return false;
     }
 
