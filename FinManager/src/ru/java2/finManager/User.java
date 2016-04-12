@@ -8,10 +8,6 @@ import java.util.ArrayList;
  */
 public class User {
 
-    private static final String TRUE_LOGIN = "login";
-    private static final String TRUE_PASSWORD = "pass";
-
-
     private String login;
     private String password;
 

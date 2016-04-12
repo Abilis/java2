@@ -13,4 +13,11 @@ public class Record {
     private String description;
     private Category category;
 
+    public Record(boolean label, Date dateOfTransaction, int sum, String description, Category category) {
+        this.label = label;
+        this.dateOfTransaction = dateOfTransaction;
+        this.sum = sum;
+        this.description = description;
+        this.category = category;
+    }
 }
