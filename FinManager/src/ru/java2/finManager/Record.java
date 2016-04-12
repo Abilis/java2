@@ -11,5 +11,6 @@ public class Record {
     private Date dateOfTransaction;
     private int sum;
     private String description;
+    private Category category;
 
 }
