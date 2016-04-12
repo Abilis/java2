@@ -36,9 +36,6 @@ public class Utils {
         }
 
 
-
-
-
         return md5Hex;
     }
 

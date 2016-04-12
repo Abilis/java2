@@ -79,8 +79,43 @@ public class DbHelper {
         Statement statement = connection.createStatement();
         int result = statement.executeUpdate(query);
 
+        connection.close();
+
         if (result == 0) {
             throw new SQLException("Не удалось создать пользователя с логином " + login + ".");
         }
     }
+
+    //метод определяет, есть ли в таблице users пользователь с логином login и паролем password
+    public boolean checkUser(String login, String password) throws SQLException {
+
+        //Преобразуем пароль в строку хэш-md5
+        password = Utils.getMd5(password);
+
+        //Запрос вытаскивает из таблицы users пользователя с переданными логином и паролем
+        String query = "SELECT COUNT(*) FROM `users` WHERE `login`=\"" + login + "\" AND `password`=\"" + password + "\";";
+
+        connection = getConnection();
+        Statement statement = connection.createStatement();
+
+        ResultSet result = statement.executeQuery(query);
+
+        int amountRows = 0;
+
+        while (result.next()) {
+            amountRows = result.getInt("COUNT(*)");
+        }
+
+        connection.close();
+
+        if (amountRows == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+
+
 }

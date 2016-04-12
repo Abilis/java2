@@ -1,6 +1,5 @@
 package ru.java2.finManager;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -29,11 +28,28 @@ public class User {
     //метод пытается авторизовать пользователя
     public boolean autorization() {
 
+        DbHelper dbHelper = DbHelper.getDbHelper();
+
+        try {
+            boolean isAutorizationSuccess = dbHelper.checkUser(this.login, this.password);
+
+            if (isAutorizationSuccess) {
+                ConsoleHelper.writeMessage("Авторизация прошла успешно!");
+                return true;
+            }
+            else {
+                ConsoleHelper.writeMessage("Неверный логин или пароль");
+                return false;
+            }
 
 
+        } catch (SQLException e) {
+            ConsoleHelper.writeMessage("Не получилось выполнить запрос в БД. Попробуйте позднее");
+            return false;
+        }
 
-        return false;
     }
+
 
     //метод регистрирует нового пользователя
     public boolean registrationNewUser() {
