@@ -61,6 +61,13 @@ public class FinManager {
             ConsoleHelper.writeMessage("Ваши аккаунты, " + currentUser.getLogin() + ":");
             ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
 
+            if (accountsOfCurrentUser.size() == 0) {
+                ConsoleHelper.writeMessage("Вам необходимо создать хотя бы 1 аккаунт");
+                DbHelper dbHelper = DbHelper.getDbHelper();
+                dbHelper.createNewAccount(currentUser);
+                continue;
+            }
+
             try {
                 accNum = ConsoleHelper.getNumber(1, accountsOfCurrentUser.size(),
                         "Выберите аккаунт (1 - " + accountsOfCurrentUser.size() + "). Exit - выход:");

@@ -1,5 +1,6 @@
 package ru.java2.finManager;
 
+import java.io.IOException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -271,5 +272,47 @@ public class DbHelper {
             ConsoleHelper.writeMessage("Не удалось изменить сумму на счете. Сделайте это вручную позже");
         }
 
+    }
+
+    //метод создает новый аккаунт для текущего пользователя
+    public void createNewAccount(User currentUser) {
+
+        int idUser = currentUser.getIdUser();
+
+        while (true) {
+
+            try (Connection connection = getConnection())
+                {
+                ConsoleHelper.writeMessage("Введите описание аккаунта");
+                String description = ConsoleHelper.readString();
+
+                if (description.length() == 0) {
+                    throw new IOException();
+                }
+
+                ConsoleHelper.writeMessage("Введите начальное количество денег на аккаунте:");
+                String sOstatok = ConsoleHelper.readString();
+
+                int ostatok = Integer.parseInt(sOstatok);
+
+                //Формируем запрос
+                String query = "INSERT INTO `accounts` (`description`, `ostatok`, `id_user`) VALUES (\"" +
+                        description + "\", " + ostatok + ", " + idUser + ");";
+
+                //выполняем запрос
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+
+                return;
+
+
+
+            } catch (IOException | NumberFormatException e) {
+                ConsoleHelper.writeMessage("Некорректные данные. Попробуйте снова");
+            } catch (SQLException e) {
+                ConsoleHelper.writeMessage("Ошибка при работе с БД");
+                return;
+            }
+        }
     }
 }

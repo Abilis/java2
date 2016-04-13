@@ -17,6 +17,10 @@ public class User {
     private String password;
     private int idUser;
 
+    public int getIdUser() {
+        return idUser;
+    }
+
     private ArrayList<Account> accounts;
 
 
@@ -91,7 +95,7 @@ public class User {
                 this.idUser = dbHelper.getIdUser(this.login);
             }
 
-            if (this.accounts == null) {
+            if (this.accounts == null || this.accounts.isEmpty()) {
                 //вытаскиваем из БД все аккаунты пользователя по его id
                 this.accounts = dbHelper.getAccounts(this.idUser);
             }
