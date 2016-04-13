@@ -41,14 +41,17 @@ public class FinManager {
         //вытаскиваем из БД аккаунты текущего пользователя и просим выбрать конкретный
         accountsOfCurrentUser = currentUser.getAccounts();
 
+
         ConsoleHelper.writeMessage("Ваши аккаунты, " + currentUser.getLogin() + ":");
         ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
+        int inputNum = ConsoleHelper.getNumber(1, accountsOfCurrentUser.size(), "Выберите аккаунт (1 - " + accountsOfCurrentUser.size() + "):");
 
 
         //для выбранного аккаунта вытаскиваем все его записи и помещаем в поле listOfRecords типа Record
-        accountsOfCurrentUser.get(0).getListOfRecords();
 
-        ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
+        ConsoleHelper.writeMessage(accountsOfCurrentUser.get(inputNum - 1).toString());
+
+        ConsoleHelper.writeMessage(accountsOfCurrentUser.get(inputNum - 1).getListOfRecords().toString());
 
 
     }

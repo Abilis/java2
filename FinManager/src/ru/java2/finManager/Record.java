@@ -23,12 +23,19 @@ public class Record {
 
     @Override
     public String toString() {
-        return "Record{" +
-                "label=" + label +
-                ", dateOfTransaction=" + dateOfTransaction +
-                ", sum=" + sum +
-                ", description='" + description + '\'' +
-                ", category=" + category +
-                '}';
+        return  dateOfTransaction + ": " + getFormatLabel(label) + ", сумма = " + sum + ", описание = " + description +
+                ", категория = " + category + "\n";
+    }
+
+    private String getFormatLabel(int label) {
+        String formatlabel = "Неизвестная операция";
+        if (label == 0) {
+            formatlabel = "Снятие";
+        }
+        else if (label == 1) {
+            formatlabel = "Пополнение";
+        }
+
+        return formatlabel;
     }
 }

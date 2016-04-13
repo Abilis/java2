@@ -15,6 +15,8 @@ public class Account {
     private int ostatok;
     private ArrayList<Record> listOfRecords;
 
+    private int numOfAccount;
+
     //если поле listOfRecords не инициализировано, то вытаскиваются данные из БД
     public ArrayList<Record> getListOfRecords() {
         if (listOfRecords == null) {
@@ -30,22 +32,17 @@ public class Account {
 
     private int idUser;
 
-    public Account(int idAccount, String description, int ostatok, int idUser) {
+    public Account(int idAccount, String description, int ostatok, int idUser, int numOfAccount) {
         this.idAccount = idAccount;
         this.description = description;
         this.ostatok = ostatok;
         this.idUser = idUser;
+        this.numOfAccount = numOfAccount;
     }
 
 
     @Override
     public String toString() {
-        return "Account{" +
-                "idAccount=" + idAccount +
-                ", description='" + description + '\'' +
-                ", ostatok=" + ostatok +
-                ", listOfRecords=" + listOfRecords +
-                ", idUser=" + idUser +
-                '}';
+        return numOfAccount + ": " + description + ", " + "остаток = " + ostatok;
     }
 }

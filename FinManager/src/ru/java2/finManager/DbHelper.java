@@ -153,13 +153,15 @@ public class DbHelper {
 
         ResultSet resultSet = statement.executeQuery(query);
 
+        int numOfAccount = 0;
+
         while (resultSet.next()) {
             int idAcc = resultSet.getInt("id_acc");
             String accDescription = resultSet.getString("description");
             int ostatok = resultSet.getInt("ostatok");
 
             //создаем по вытащенным данным новый аккаунт
-            Account account = new Account(idAcc, accDescription, ostatok, idUser);
+            Account account = new Account(idAcc, accDescription, ostatok, idUser, ++numOfAccount);
 
             //добавляем его в список
             accountsUsers.add(account);
@@ -182,7 +184,7 @@ public class DbHelper {
 
         //разбираем полученные данные и добавляем в список записей
         while (resultSet.next()) {
-            int label = resultSet.getInt("id_rec");
+            int label = resultSet.getInt("label");
             Date dt = resultSet.getDate("dt");
             int sum = resultSet.getInt("sum");
             String description = resultSet.getString("description");
