@@ -86,7 +86,6 @@ public class User {
 
         //Определяем id текущего пользователя
 
-
         try {
             if (this.idUser == 0) {
                 this.idUser = dbHelper.getIdUser(this.login);
@@ -99,7 +98,7 @@ public class User {
 
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ConsoleHelper.writeMessage("Не удалось получить данные аккаунтов из БД");
         }
 
         return this.accounts;

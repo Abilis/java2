@@ -168,5 +168,36 @@ public class DbHelper {
         return accountsUsers;
     }
 
+    //метод вытаскивает список records для аккаунта с id idAcc
+    public ArrayList<Record> getRecords(int idAcc) throws SQLException {
+        ArrayList<Record> listOfRecords = new ArrayList<Record>();
+
+        //запрос
+        String query = "SELECT * FROM `records` WHERE `id_acc`=\"" + idAcc + "\" ORDER BY `dt` DESC;";
+
+        //выполняем запрос
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+
+        //разбираем полученные данные и добавляем в список записей
+        while (resultSet.next()) {
+            int label = resultSet.getInt("id_rec");
+            Date dt = resultSet.getDate("dt");
+            int sum = resultSet.getInt("sum");
+            String description = resultSet.getString("description");
+            String category = resultSet.getString("category");
+
+            //Создаем запись на основе полученных данных
+            Record record = new Record(label, dt, sum, description, category);
+
+            //добавляем ее в список записей
+            listOfRecords.add(record);
+        }
+
+
+        return listOfRecords;
+    }
+
 
 }

@@ -7,17 +7,28 @@ import java.util.Date;
  */
 public class Record {
 
-    private boolean label; //true - пополнение, false - снятие
+    private int label; //1 - пополнение, 0 - снятие
     private Date dateOfTransaction;
     private int sum;
     private String description;
-    private Category category;
+    private String category;
 
-    public Record(boolean label, Date dateOfTransaction, int sum, String description, Category category) {
+    public Record(int label, Date dateOfTransaction, int sum, String description, String category) {
         this.label = label;
         this.dateOfTransaction = dateOfTransaction;
         this.sum = sum;
         this.description = description;
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "label=" + label +
+                ", dateOfTransaction=" + dateOfTransaction +
+                ", sum=" + sum +
+                ", description='" + description + '\'' +
+                ", category=" + category +
+                '}';
     }
 }

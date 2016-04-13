@@ -44,7 +44,11 @@ public class FinManager {
         ConsoleHelper.writeMessage("Ваши аккаунты, " + currentUser.getLogin() + ":");
         ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
 
+
         //для выбранного аккаунта вытаскиваем все его записи и помещаем в поле listOfRecords типа Record
+        accountsOfCurrentUser.get(0).getListOfRecords();
+
+        ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
 
 
     }
