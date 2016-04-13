@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 13 2016 г., 15:54
+-- Время создания: Апр 13 2016 г., 23:57
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `finmanager`
 --
+CREATE DATABASE IF NOT EXISTS `finmanager` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `finmanager`;
 
 -- --------------------------------------------------------
 
@@ -38,10 +40,14 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id_acc`, `description`, `ostatok`, `id_user`) VALUES
-(1, 'first acc for test', 1000, 9),
+(1, 'first acc for test', 211, 9),
 (2, 'second account for test', 5000, 9),
 (3, 'third account for user test', 499, 8),
-(4, 'fourth account', 2999, 9);
+(4, 'fourth account', 2999, 9),
+(13, 'Первый аккаунт', 10000, 10),
+(14, 'Второй аккаунт', 400, 10),
+(15, 'Третий аккаунт', 45454, 10),
+(16, 'Четвертый аккаун', 4544, 10);
 
 -- --------------------------------------------------------
 
@@ -65,11 +71,12 @@ CREATE TABLE `records` (
 
 INSERT INTO `records` (`id_rec`, `label`, `dt`, `sum`, `description`, `category`, `id_acc`) VALUES
 (1, 1, '2016-04-05 00:00:00', 400, 'тестовое описание', 'тестовая категория', 1),
-(2, 1, '2016-01-15 00:00:00', 455, 'Второе тестовое описание', 'Вторая тестовая категория', 1),
-(3, 0, '2016-04-22 00:00:00', 777, 'Третье тестовое описание', 'Третья тестовая категория', 2),
-(4, 0, '2016-01-12 05:26:27', 255, 'четвертое тестовое описание', 'четвертая тестовая категория', 1),
-(11, 1, '2016-04-13 01:23:54', 999, 'Вставленное описание', 'Вставленная категория', 1),
-(12, 1, '2016-04-13 01:24:01', 999, 'Вставленное описание', 'Вставленная категория', 1);
+(17, 0, '2016-04-14 12:00:47', 333, 'Куплена мороженка', 'Развлечения', 1),
+(18, 0, '2016-04-14 12:28:50', 100, 'something', 'category', 1),
+(19, 0, '2016-04-14 12:30:21', 1100, 'Велонасос', 'Развлечения', 1),
+(20, 0, '2016-04-14 12:43:42', 900, 'Футбольный мят', 'Спорт', 1),
+(21, 0, '2016-04-14 01:47:40', 200, 'кутеж', 'здоровье', 13),
+(22, 1, '2016-04-14 01:49:46', 10000, 'Приход', 'Развлечения', 13);
 
 -- --------------------------------------------------------
 
@@ -89,7 +96,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `login`, `password`) VALUES
 (8, 'test', '098f6bcd4621d373cade4e832627b4f6'),
-(9, 'user', '1a1dc91c907325c69271ddf0c944bc72');
+(9, 'user', '1a1dc91c907325c69271ddf0c944bc72'),
+(10, 'test2', 'c1572d05424d0ecb2a65ec6a82aeacbf');
 
 --
 -- Индексы сохранённых таблиц
@@ -121,17 +129,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id_acc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_acc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT для таблицы `records`
 --
 ALTER TABLE `records`
-  MODIFY `id_rec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_rec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
