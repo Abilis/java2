@@ -11,6 +11,6 @@ public class Account {
 
     private String description;
     private int ostatok;
-    private ArrayList<Record> setOfRecords;
+    private ArrayList<Record> listOfRecords;
 
 }

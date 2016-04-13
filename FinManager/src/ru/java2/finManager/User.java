@@ -10,6 +10,7 @@ public class User {
 
     private String login;
     private String password;
+    private int idUser;
 
     private ArrayList<Account> accounts;
 
@@ -70,6 +71,25 @@ public class User {
             e.printStackTrace();
             return false;
         }
+
+    }
+
+    //метод инициализирует поле accounts для текущего пользователя
+    public void getAccounts() {
+
+        DbHelper dbHelper = DbHelper.getDbHelper();
+
+        //Определяем id текущего пользователя
+
+        try {
+            this.idUser = dbHelper.getIdUser(this.login);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        
+
 
     }
 

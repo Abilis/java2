@@ -117,5 +117,26 @@ public class DbHelper {
 
     }
 
+    //метод дает id_user по логину
+    public int getIdUser(String login) throws SQLException {
+
+        //Запрос
+        String query = "SELECT `id_user` FROM `users` WHERE `login`=\"" + login + "\";";
+
+        //выполняем запрос
+        connection = getConnection();
+        Statement statement = connection.createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        int idUser = 0;
+
+        while (resultSet.next()) {
+            idUser = resultSet.getInt("id_user");
+        }
+
+        return idUser;
+    }
+
 
 }
