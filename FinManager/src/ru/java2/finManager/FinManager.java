@@ -53,6 +53,10 @@ public class FinManager {
 
         ConsoleHelper.writeMessage(accountsOfCurrentUser.get(inputNum - 1).getListOfRecords().toString());
 
+        DbHelper dbHelper = DbHelper.getDbHelper();
+        boolean result = dbHelper.addRecord(1, 999, "Вставленное описание", "Вставленная категория", 1);
+
+        System.out.println(result);
 
     }
 

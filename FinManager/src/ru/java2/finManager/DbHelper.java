@@ -1,7 +1,11 @@
 package ru.java2.finManager;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 /**
  * Created by Abilis on 12.04.2016.
@@ -200,6 +204,40 @@ public class DbHelper {
 
         return listOfRecords;
     }
+
+    //метод добавляет запись в таблице records
+    public boolean addRecord(int idAcc, int sum, String description, String category, int label) {
+
+        //устанавливаем текущую дату
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String sDate = simpleDateFormat.format(new Date());
+        String currentDate = sDate.toString();
+
+        //формируем запрос
+        String query = "INSERT INTO `records` (label, dt, sum, description, category, id_acc) VALUES (\"" +
+                label + "\", \"" + currentDate + "\", \"" + sum + "\", \"" + description + "\", \"" +
+                category + "\", \"" + idAcc + "\");";
+
+
+        //Выполняем запрос
+
+        try {
+
+            Connection connection = getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+
+
+
+        return true;
+    }
+
 
 
 }
