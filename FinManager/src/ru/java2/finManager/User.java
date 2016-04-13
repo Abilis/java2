@@ -95,10 +95,8 @@ public class User {
                 this.idUser = dbHelper.getIdUser(this.login);
             }
 
-            if (this.accounts == null || this.accounts.isEmpty()) {
-                //вытаскиваем из БД все аккаунты пользователя по его id
-                this.accounts = dbHelper.getAccounts(this.idUser);
-            }
+            this.accounts = dbHelper.getAccounts(this.idUser);
+
 
 
         } catch (SQLException e) {

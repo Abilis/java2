@@ -283,15 +283,22 @@ public class DbHelper {
 
             try (Connection connection = getConnection())
                 {
-                ConsoleHelper.writeMessage("Введите описание аккаунта");
+                ConsoleHelper.writeMessage("Введите описание аккаунта. Exit - выход");
                 String description = ConsoleHelper.readString();
+
+                if (description.equalsIgnoreCase("exit")) {
+                    return;
+                }
 
                 if (description.length() == 0) {
                     throw new IOException();
                 }
 
-                ConsoleHelper.writeMessage("Введите начальное количество денег на аккаунте:");
+                ConsoleHelper.writeMessage("Введите начальное количество денег на аккаунте. Exit - выход");
                 String sOstatok = ConsoleHelper.readString();
+                if (sOstatok.equalsIgnoreCase("exit")) {
+                    return;
+                }
 
                 int ostatok = Integer.parseInt(sOstatok);
 
@@ -302,7 +309,6 @@ public class DbHelper {
                 //выполняем запрос
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
-
                 return;
 
 

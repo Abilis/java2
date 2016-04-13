@@ -79,6 +79,7 @@ public class FinManager {
             //1 - просмотр всех записей
             //2 - добавить новую запись
             //3 - выход из аккаунта. При этом пользователь вовращается в меню выбора аккаунта
+            //4 - создание нового аккаунта
 
             //для выбранного аккаунта вытаскиваем все его записи и помещаем в поле listOfRecords типа Record
 
@@ -92,7 +93,8 @@ public class FinManager {
 
 
                 try {
-                    recNum = ConsoleHelper.getNumber(1, 2, "1 - добавить новую запись, exit - выход из аккаунта");
+                    recNum = ConsoleHelper.getNumber(1, 2, "1 - добавить новую запись, " +
+                            "2 - создать новый аккаунт, exit - выход из аккаунта");
 
                     if (recNum == 1) {
                         //добавляем запись в БД
@@ -100,17 +102,19 @@ public class FinManager {
 
                         DbHelper dbHelper = DbHelper.getDbHelper();
 
+                        int label = ConsoleHelper.getLabelForNewRecord();
+
                         int sum = ConsoleHelper.getSumForNewRecord();
 
                         //если введенная сумма больше остатка на аккаунте - говорим об этом
-                        if (sum > accountsOfCurrentUser.get(accNum - 1).getOstatok()) {
+                        if (sum > accountsOfCurrentUser.get(accNum - 1).getOstatok() && label == 0) {
                             ConsoleHelper.writeMessage("Введенная сумма меньше остатка на счете. Пополните счет или выберите меньшую сумму");
                             continue;
                         }
 
                         String description = ConsoleHelper.getDescriptionForNewRecord();
                         String category = ConsoleHelper.getCategoryForNewRecord();
-                        int label = ConsoleHelper.getLabelForNewRecord();
+
 
 
                         if (!dbHelper.addRecord(idAcc, sum, description, category, label)) {
@@ -126,6 +130,12 @@ public class FinManager {
 
                         //и изменяем сумму остатка в поле аккаунта
                         accountsOfCurrentUser.get(accNum - 1).setOstatok(accountsOfCurrentUser.get(accNum - 1).getOstatok() - sum);
+                    }
+                    else if (recNum == 2) {
+                        //создаем новый аккаунт для текущего пользователя
+                        DbHelper dbHelper = DbHelper.getDbHelper();
+                        dbHelper.createNewAccount(currentUser);
+                        break;
                     }
 
 
