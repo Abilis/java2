@@ -9,6 +9,11 @@ import java.util.ArrayList;
 public class User {
 
     private String login;
+
+    public String getLogin() {
+        return login;
+    }
+
     private String password;
     private int idUser;
 
@@ -75,22 +80,29 @@ public class User {
     }
 
     //метод инициализирует поле accounts для текущего пользователя
-    public void getAccounts() {
+    public ArrayList<Account> getAccounts() {
 
         DbHelper dbHelper = DbHelper.getDbHelper();
 
         //Определяем id текущего пользователя
 
+
         try {
-            this.idUser = dbHelper.getIdUser(this.login);
+            if (this.idUser == 0) {
+                this.idUser = dbHelper.getIdUser(this.login);
+            }
+
+            if (this.accounts == null) {
+                //вытаскиваем из БД все аккаунты пользователя по его id
+                this.accounts = dbHelper.getAccounts(this.idUser);
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        
-
-
+        return this.accounts;
     }
 
 }

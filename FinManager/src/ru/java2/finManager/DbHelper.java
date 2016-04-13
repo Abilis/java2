@@ -1,6 +1,7 @@
 package ru.java2.finManager;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by Abilis on 12.04.2016.
@@ -136,6 +137,35 @@ public class DbHelper {
         }
 
         return idUser;
+    }
+
+    //метод возвращает список аккаунтов для пользователя с id idUser
+    public ArrayList<Account> getAccounts(int idUser) throws SQLException {
+
+        ArrayList<Account> accountsUsers = new ArrayList<Account>();
+
+        //запрос
+        String query = "SELECT * FROM `accounts` WHERE `id_user`=\"" + idUser + "\";";
+
+        //выполняем запрос
+        connection = getConnection();
+        Statement statement = connection.createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            int idAcc = resultSet.getInt("id_acc");
+            String accDescription = resultSet.getString("description");
+            int ostatok = resultSet.getInt("ostatok");
+
+            //создаем по вытащенным данным новый аккаунт
+            Account account = new Account(idAcc, accDescription, ostatok, idUser);
+
+            //добавляем его в список
+            accountsUsers.add(account);
+        }
+
+        return accountsUsers;
     }
 
 

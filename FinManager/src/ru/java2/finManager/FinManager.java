@@ -1,6 +1,7 @@
 package ru.java2.finManager;
 
 
+import java.util.ArrayList;
 
 /**
  * Created by Abilis on 12.04.2016.
@@ -8,6 +9,7 @@ package ru.java2.finManager;
 public class FinManager {
 
     private static User currentUser;
+    private static ArrayList<Account> accountsOfCurrentUser;
 
     public static void main(String[] args) {
 
@@ -37,7 +39,10 @@ public class FinManager {
 
 
         //вытаскиваем из БД аккаунты текущего пользователя и просим выбрать конкретный
-        currentUser.getAccounts();
+        accountsOfCurrentUser = currentUser.getAccounts();
+
+        ConsoleHelper.writeMessage("Ваши аккаунты, " + currentUser.getLogin() + ":");
+        ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
 
         //для выбранного аккаунта вытаскиваем все его записи и помещаем в поле listOfRecords типа Record
 
