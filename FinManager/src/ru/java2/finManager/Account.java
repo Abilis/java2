@@ -18,7 +18,20 @@ public class Account {
 
     private String description;
     private int ostatok;
+
+    public int getOstatok() {
+        return ostatok;
+    }
+
+    public void setOstatok(int ostatok) {
+        this.ostatok = ostatok;
+    }
+
     private ArrayList<Record> listOfRecords;
+
+    public void setListOfRecords(ArrayList<Record> listOfRecords) {
+        this.listOfRecords = listOfRecords;
+    }
 
     private int numOfAccount;
 

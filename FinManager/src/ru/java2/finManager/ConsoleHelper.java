@@ -93,26 +93,93 @@ public class ConsoleHelper {
     }
 
     //в этом методе пользователь вводит новую сумму для новой записи
-    public static int getSumForNewRecord() {
+    public static int getSumForNewRecord() throws ExitException {
 
-        return 0;
+        while (true) {
+            writeMessage("Введите сумму:");
+            try {
+                String sSum = readString();
+
+                if (sSum.equalsIgnoreCase("exit")) {
+                    throw new ExitException();
+                }
+
+                int sum = Integer.parseInt(sSum);
+
+                if (sum <= 0) {
+                    throw new IOException();
+                }
+
+                return sum;
+
+            } catch (IOException e) {
+                writeMessage("Некорректные данные. Попробуйте еще раз");
+            }
+        }
     }
 
     //в этом методе пользователь вводит описание для новой записи
-    public static String getDescriptionForNewRecord() {
+    public static String getDescriptionForNewRecord() throws ExitException {
 
-        return null;
+        while (true) {
+
+            writeMessage("Введите описание записи:");
+
+            try {
+                String description = readString();
+
+                if (description.equalsIgnoreCase("exit")) {
+                    throw new ExitException();
+                }
+
+                if (description.length() == 0) {
+                    throw new IOException();
+                }
+                return description;
+
+            } catch (IOException e) {
+                writeMessage("Некорректные данные. Попробуйте еще раз");
+            }
+
+        }
     }
 
     //в этом методе пользователь вводит категорию для новой записи
-    public static String getCategoryForNewRecord() {
+    public static String getCategoryForNewRecord() throws ExitException {
 
-        return null;
+        while (true) {
+
+            writeMessage("Введите категорию записи:");
+
+            try {
+                String category = readString();
+
+                if (category.equalsIgnoreCase("exit")) {
+                    throw new ExitException();
+                }
+
+                if (category.length() == 0) {
+                    throw new IOException();
+                }
+                return category;
+
+            } catch (IOException e) {
+                writeMessage("Некорректные данные. Попробуйте еще раз");
+            }
+
+        }
     }
 
     //в этом методе пользователь ставит метку для новой записи (0 - снятие, 1 - пополнение)
-    public static int getLabelForNewRecord() {
+    public static int getLabelForNewRecord() throws ExitException {
 
-        return 1;
+        while (true) {
+
+
+            int label = getNumber(0, 1, "Введите метку: 0 - снятие, 1 - пополнение");
+
+            return label;
+        }
+
     }
 }

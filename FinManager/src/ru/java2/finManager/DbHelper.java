@@ -41,13 +41,14 @@ public class DbHelper {
             properties.setProperty("useUnicode", "true");
             properties.setProperty("characterEncoding", "utf8");
 
-            connection = DriverManager.getConnection(URL, properties);
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(URL, properties);
+            }
             return connection;
         } catch (SQLException e) {
             ConsoleHelper.writeMessage("Не удалось подключиться к БД или какая-то еще ошибка с БД");
          //   e.printStackTrace();
         }
-
 
         return connection;
     }
@@ -146,6 +147,7 @@ public class DbHelper {
             idUser = resultSet.getInt("id_user");
         }
 
+        connection.close();
         return idUser;
     }
 
@@ -177,6 +179,8 @@ public class DbHelper {
             accountsUsers.add(account);
         }
 
+        connection.close();
+
         return accountsUsers;
     }
 
@@ -188,7 +192,7 @@ public class DbHelper {
         String query = "SELECT * FROM `records` WHERE `id_acc`=\"" + idAcc + "\" ORDER BY `dt` DESC;";
 
         //выполняем запрос
-        Connection connection = getConnection();
+        connection = getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
@@ -207,7 +211,7 @@ public class DbHelper {
             listOfRecords.add(record);
         }
 
-
+        connection.close();
         return listOfRecords;
     }
 
@@ -228,13 +232,13 @@ public class DbHelper {
 
         //Выполняем запрос
 
-        try {
+        try (Connection connection = getConnection())
+            {
 
-            Connection connection = getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+
             return false;
         }
 
@@ -245,5 +249,27 @@ public class DbHelper {
     }
 
 
+    //метод изменяет сумму остатка на аккаунте
+    public void changeOstatokOnAcc(int idAcc, int ostatok, int sum, int label) {
 
+        //приводим sum к минусу, если метка как снятие
+        if (label == 0) {
+            sum = -sum;
+        }
+
+        int newOstatok = ostatok + sum;
+
+        //формируем запрос
+        String query = "UPDATE `accounts` SET `ostatok`=" + newOstatok + " WHERE `id_acc`=" + idAcc + ";";
+
+        //выполняем запрос
+        try (Connection connection = getConnection())
+          {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            ConsoleHelper.writeMessage("Не удалось изменить сумму на счете. Сделайте это вручную позже");
+        }
+
+    }
 }

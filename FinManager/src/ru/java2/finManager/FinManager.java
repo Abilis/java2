@@ -6,6 +6,7 @@ import ru.java2.finManager.exceptions.ExitException;
 
 import java.util.ArrayList;
 
+
 /**
  * Created by Abilis on 12.04.2016.
  */
@@ -61,7 +62,8 @@ public class FinManager {
             ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
 
             try {
-                accNum = ConsoleHelper.getNumber(1, accountsOfCurrentUser.size(), "Выберите аккаунт (1 - " + accountsOfCurrentUser.size() + "). Exit - выход:");
+                accNum = ConsoleHelper.getNumber(1, accountsOfCurrentUser.size(),
+                        "Выберите аккаунт (1 - " + accountsOfCurrentUser.size() + "). Exit - выход:");
             } catch (ExitException e) {
                 System.exit(112);
             }
@@ -83,7 +85,7 @@ public class FinManager {
 
 
                 try {
-                    recNum = ConsoleHelper.getNumber(1, 1, "1 - добавить новую запись, exit - выход из аккаунта");
+                    recNum = ConsoleHelper.getNumber(1, 2, "1 - добавить новую запись, exit - выход из аккаунта");
 
                     if (recNum == 1) {
                         //добавляем запись в БД
@@ -92,6 +94,13 @@ public class FinManager {
                         DbHelper dbHelper = DbHelper.getDbHelper();
 
                         int sum = ConsoleHelper.getSumForNewRecord();
+
+                        //если введенная сумма больше остатка на аккаунте - говорим об этом
+                        if (sum > accountsOfCurrentUser.get(accNum - 1).getOstatok()) {
+                            ConsoleHelper.writeMessage("Введенная сумма меньше остатка на счете. Пополните счет или выберите меньшую сумму");
+                            continue;
+                        }
+
                         String description = ConsoleHelper.getDescriptionForNewRecord();
                         String category = ConsoleHelper.getCategoryForNewRecord();
                         int label = ConsoleHelper.getLabelForNewRecord();
@@ -100,7 +109,19 @@ public class FinManager {
                         if (!dbHelper.addRecord(idAcc, sum, description, category, label)) {
                             throw new ErrorWriteInDBExceprion();
                         }
+
+                        //если удалось сделать инсерт в БД - обнуляем текущий список запишей для активного аккаунта
+                        //чтобы он был запрошен из БД заново
+                        accountsOfCurrentUser.get(accNum - 1).setListOfRecords(null);
+
+                        //еще нам нужно изменить сумму остатка на счету
+                        dbHelper.changeOstatokOnAcc(idAcc, accountsOfCurrentUser.get(accNum - 1).getOstatok(), sum, label);
+
+                        //и изменяем сумму остатка в поле аккаунта
+                        accountsOfCurrentUser.get(accNum - 1).setOstatok(accountsOfCurrentUser.get(accNum - 1).getOstatok() - sum);
                     }
+
+
 
 
                 } catch (ExitException e) {
