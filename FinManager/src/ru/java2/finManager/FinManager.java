@@ -1,6 +1,9 @@
 package ru.java2.finManager;
 
 
+import ru.java2.finManager.exceptions.ErrorWriteInDBExceprion;
+import ru.java2.finManager.exceptions.ExitException;
+
 import java.util.ArrayList;
 
 /**
@@ -11,12 +14,20 @@ public class FinManager {
     private static User currentUser;
     private static ArrayList<Account> accountsOfCurrentUser;
 
+    private static int accNum;
+    private static int recNum;
+
     public static void main(String[] args) {
 
         //авторизация пользователя (либо создание нового аккаунта
         while (true) {
 
-            int number = ConsoleHelper.getNumber(1, 2, "1 - авторизация, 2 - регистрация нового пользователя");
+            int number = 0;
+            try {
+                number = ConsoleHelper.getNumber(1, 2, "1 - авторизация, 2 - регистрация нового пользователя. Exit - выход");
+            } catch (ExitException e) {
+                System.exit(112);
+            }
 
             if (number == 1) {
                 String[] loginAndPass = ConsoleHelper.getValidateLoginAndPassword();
@@ -42,34 +53,71 @@ public class FinManager {
         //Возможные варианты действий:
         //1 - выбор аккаунта из списка
         //2 выход из программы
+        while (true) {
+            //вытаскиваем все аккаунты пользователя
+            accountsOfCurrentUser = currentUser.getAccounts();
+
+            ConsoleHelper.writeMessage("Ваши аккаунты, " + currentUser.getLogin() + ":");
+            ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
+
+            try {
+                accNum = ConsoleHelper.getNumber(1, accountsOfCurrentUser.size(), "Выберите аккаунт (1 - " + accountsOfCurrentUser.size() + "). Exit - выход:");
+            } catch (ExitException e) {
+                System.exit(112);
+            }
+
+            //внутри аккаунта будет еще цикл. Возможные варианты действий:
+            //1 - просмотр всех записей
+            //2 - добавить новую запись
+            //3 - выход из аккаунта. При этом пользователь вовращается в меню выбора аккаунта
+
+            //для выбранного аккаунта вытаскиваем все его записи и помещаем в поле listOfRecords типа Record
+
+            while (true) {
+
+                //печатаем данные об аккаунте
+                ConsoleHelper.writeMessage(accountsOfCurrentUser.get(accNum - 1).toString());
+
+                //печатаем записи, хранящиеся в аккаунте
+                ConsoleHelper.writeMessage(accountsOfCurrentUser.get(accNum - 1).getListOfRecords().toString());
 
 
-        //внутри аккаунта будет еще цикл. Возможные варианты действий:
-        //1 - просмотр всех записей
-        //2 - добавить новую запись
-        //3 - выход из аккаунта. При этом пользователь вовращается в меню выбора аккаунта
+                try {
+                    recNum = ConsoleHelper.getNumber(1, 1, "1 - добавить новую запись, exit - выход из аккаунта");
+
+                    if (recNum == 1) {
+                        //добавляем запись в БД
+                        int idAcc = accountsOfCurrentUser.get(accNum - 1).getIdAccount();
+
+                        DbHelper dbHelper = DbHelper.getDbHelper();
+
+                        int sum = ConsoleHelper.getSumForNewRecord();
+                        String description = ConsoleHelper.getDescriptionForNewRecord();
+                        String category = ConsoleHelper.getCategoryForNewRecord();
+                        int label = ConsoleHelper.getLabelForNewRecord();
 
 
-
-  /*      //вытаскиваем из БД аккаунты текущего пользователя и просим выбрать конкретный
-        accountsOfCurrentUser = currentUser.getAccounts();
-
-
-        ConsoleHelper.writeMessage("Ваши аккаунты, " + currentUser.getLogin() + ":");
-        ConsoleHelper.writeMessage(accountsOfCurrentUser.toString());
-        int inputNum = ConsoleHelper.getNumber(1, accountsOfCurrentUser.size(), "Выберите аккаунт (1 - " + accountsOfCurrentUser.size() + "):");
+                        if (!dbHelper.addRecord(idAcc, sum, description, category, label)) {
+                            throw new ErrorWriteInDBExceprion();
+                        }
+                    }
 
 
-        //для выбранного аккаунта вытаскиваем все его записи и помещаем в поле listOfRecords типа Record
+                } catch (ExitException e) {
+                    break;
+                } catch (ErrorWriteInDBExceprion e) {
+                    ConsoleHelper.writeMessage("Не удалось записать данные в БД. Попробуйте еще раз");
+                    continue;
 
-        ConsoleHelper.writeMessage(accountsOfCurrentUser.get(inputNum - 1).toString());
 
-        ConsoleHelper.writeMessage(accountsOfCurrentUser.get(inputNum - 1).getListOfRecords().toString());
+                }
 
-        DbHelper dbHelper = DbHelper.getDbHelper();
-        boolean result = dbHelper.addRecord(1, 999, "Вставленное описание", "Вставленная категория", 1);
 
-        System.out.println(result);*/
+            }
+
+
+        }
+
 
     }
 

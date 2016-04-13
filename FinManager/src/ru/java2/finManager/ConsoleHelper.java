@@ -1,5 +1,7 @@
 package ru.java2.finManager;
 
+import ru.java2.finManager.exceptions.ExitException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,14 +31,21 @@ public class ConsoleHelper {
     }
 
 
-    public static int getNumber(int min, int max, String message) {
+    public static int getNumber(int min, int max, String message) throws ExitException {
 
         int number;
 
         while (true) {
             try {
                 writeMessage(message);
-                number = Integer.parseInt(readString());
+
+                String sNumber = readString();
+
+                if (sNumber.equalsIgnoreCase("exit")) {
+                    throw new ExitException();
+                }
+
+                number = Integer.parseInt(sNumber);
 
                 if (number < min || number > max) {
                     throw new IOException();
@@ -83,4 +92,27 @@ public class ConsoleHelper {
         return validLoginAndPass;
     }
 
+    //в этом методе пользователь вводит новую сумму для новой записи
+    public static int getSumForNewRecord() {
+
+        return 0;
+    }
+
+    //в этом методе пользователь вводит описание для новой записи
+    public static String getDescriptionForNewRecord() {
+
+        return null;
+    }
+
+    //в этом методе пользователь вводит категорию для новой записи
+    public static String getCategoryForNewRecord() {
+
+        return null;
+    }
+
+    //в этом методе пользователь ставит метку для новой записи (0 - снятие, 1 - пополнение)
+    public static int getLabelForNewRecord() {
+
+        return 1;
+    }
 }

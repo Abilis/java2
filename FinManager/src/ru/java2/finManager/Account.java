@@ -11,6 +11,11 @@ import java.util.ArrayList;
 public class Account {
 
     private int idAccount;
+
+    public int getIdAccount() {
+        return idAccount;
+    }
+
     private String description;
     private int ostatok;
     private ArrayList<Record> listOfRecords;
