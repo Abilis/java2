@@ -1,10 +1,10 @@
 package ru.java2.finManager;
 
 import java.sql.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 
 
 /**
@@ -35,7 +35,13 @@ public class DbHelper {
     public Connection getConnection() {
 
         try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Properties properties = new Properties();
+            properties.setProperty("user", USERNAME);
+            properties.setProperty("password", PASSWORD);
+            properties.setProperty("useUnicode", "true");
+            properties.setProperty("characterEncoding", "utf8");
+
+            connection = DriverManager.getConnection(URL, properties);
             return connection;
         } catch (SQLException e) {
             ConsoleHelper.writeMessage("Не удалось подключиться к БД или какая-то еще ошибка с БД");
