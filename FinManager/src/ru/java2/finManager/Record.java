@@ -23,17 +23,17 @@ public class Record {
 
     @Override
     public String toString() {
-        return  dateOfTransaction + ": " + getFormatLabel(label) + ", сумма = " + sum + ", описание = " + description +
-                ", категория = " + category + "\n";
+        return  dateOfTransaction + ": " + getFormatLabel(label) + ", сумма: " + sum + ", описание: " + description +
+                ", категория: " + category + "\n";
     }
 
     private String getFormatLabel(int label) {
         String formatlabel = "Неизвестная операция";
         if (label == 0) {
-            formatlabel = "Снятие";
+            formatlabel = "снятие";
         }
         else if (label == 1) {
-            formatlabel = "Пополнение";
+            formatlabel = "пополнение";
         }
 
         return formatlabel;

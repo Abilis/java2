@@ -20,6 +20,10 @@ public class ConsoleHelper {
         System.out.println(message);
     }
 
+    public static void writeMessageWithoutLn(String message) {
+        System.out.print(message);
+    }
+
     public static String readString() throws IOException {
         String str = reader.readLine();
         return str;
@@ -187,7 +191,7 @@ public class ConsoleHelper {
     //Если есть предыдущие записи - предлагается напечатать их. Также предлагается выйти из метода
     public static void printTenRecords(List list) {
 
-        int lengthSelection = 3; //длина выборки. На период выборки пусть будет по 3 записи
+        int lengthSelection = 10; //длина выборки. На период выборки пусть будет по 3 записи
         String inputStr = "";
 
         int firstIndex = 0; //первый индекс в списке
@@ -202,7 +206,7 @@ public class ConsoleHelper {
 
             //распечатываем список по индексам
             for (int i = firstIndex; i <= lastIndex; i++) {
-                writeMessage((i + 1) + ": " + list.get(i).toString());
+                writeMessageWithoutLn((i + 1) + ": " + list.get(i).toString());
             }
 
 

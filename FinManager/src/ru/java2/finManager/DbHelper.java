@@ -48,7 +48,7 @@ public class DbHelper {
             return connection;
         } catch (SQLException e) {
             ConsoleHelper.writeMessage("Не удалось подключиться к БД или какая-то еще ошибка с БД");
-         //   e.printStackTrace();
+
         }
 
         return connection;
@@ -243,9 +243,6 @@ public class DbHelper {
             return false;
         }
 
-
-
-
         return true;
     }
 
@@ -305,7 +302,6 @@ public class DbHelper {
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
                 return;
-
 
 
             } catch (IOException | NumberFormatException e) {
