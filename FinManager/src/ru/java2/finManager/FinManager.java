@@ -95,12 +95,10 @@ public class FinManager {
                 //Вытаскиваем все записи из текущего аккаунта
                 recordsOfCurrentAccount = accountsOfCurrentUser.get(accNum - 1).getListOfRecords();
 
-                ConsoleHelper.printTenRecords(recordsOfCurrentAccount); //печатаем выборочные записи
-
 
                 try {
-                    recNum = ConsoleHelper.getNumber(1, 2, "1 - добавить новую запись, " +
-                            "2 - создать новый аккаунт, exit - выход из аккаунта");
+                    recNum = ConsoleHelper.getNumber(1, 3, "1 - добавить новую запись, " +
+                            "2 - создать новый аккаунт, 3 - показать записи, exit - выход из аккаунта");
 
                     if (recNum == 1) {
                         //добавляем запись в БД
@@ -111,6 +109,7 @@ public class FinManager {
                         int label = ConsoleHelper.getLabelForNewRecord();
 
                         int sum = ConsoleHelper.getSumForNewRecord();
+
 
                         //если введенная сумма больше остатка на аккаунте - говорим об этом
                         if (sum > accountsOfCurrentUser.get(accNum - 1).getOstatok() && label == 0) {
@@ -132,16 +131,26 @@ public class FinManager {
                         accountsOfCurrentUser.get(accNum - 1).setListOfRecords(null);
 
                         //еще нам нужно изменить сумму остатка на счету
+
+                        //приводим sum к минусу, если метка как снятие
+                        if (label == 0) {
+                            sum = -sum;
+                        }
+
                         dbHelper.changeOstatokOnAcc(idAcc, accountsOfCurrentUser.get(accNum - 1).getOstatok(), sum, label);
 
                         //и изменяем сумму остатка в поле аккаунта
-                        accountsOfCurrentUser.get(accNum - 1).setOstatok(accountsOfCurrentUser.get(accNum - 1).getOstatok() - sum);
+                        accountsOfCurrentUser.get(accNum - 1).setOstatok(accountsOfCurrentUser.get(accNum - 1).getOstatok() + sum);
                     }
                     else if (recNum == 2) {
                         //создаем новый аккаунт для текущего пользователя
                         DbHelper dbHelper = DbHelper.getDbHelper();
                         dbHelper.createNewAccount(currentUser);
                         break;
+                    }
+                    else if (recNum == 3) {
+                        //показываем все записи текущего аккаунта
+                        ConsoleHelper.printTenRecords(recordsOfCurrentAccount); //печатаем выборочные записи
                     }
 
 

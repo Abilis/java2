@@ -191,7 +191,7 @@ public class ConsoleHelper {
         String inputStr = "";
 
         int firstIndex = 0; //первый индекс в списке
-        int lastIndex = 2; //последний индекс записи в списке для текущей выдачи (на время сделаем 2, должно быть 9)
+        int lastIndex = firstIndex + lengthSelection - 1; //последний индекс записи в списке для текущей выдачи
 
         //проверка на случай, если длина списка окажется меньше последнего индекса
         if (lastIndex > list.size() - 1) {

@@ -253,11 +253,6 @@ public class DbHelper {
     //метод изменяет сумму остатка на аккаунте
     public void changeOstatokOnAcc(int idAcc, int ostatok, int sum, int label) {
 
-        //приводим sum к минусу, если метка как снятие
-        if (label == 0) {
-            sum = -sum;
-        }
-
         int newOstatok = ostatok + sum;
 
         //формируем запрос
