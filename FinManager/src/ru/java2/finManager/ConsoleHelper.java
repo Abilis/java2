@@ -5,6 +5,7 @@ import ru.java2.finManager.exceptions.ExitException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Created by Abilis on 12.04.2016.
@@ -180,6 +181,96 @@ public class ConsoleHelper {
 
             return label;
         }
-
     }
+
+    //метод печатает первые 10 записей в списке. Затем предлагает напечатать следующие 10 записей, если записи еще есть
+    //Если есть предыдущие записи - предлагается напечатать их. Также предлагается выйти из метода
+    public static void printTenRecords(List list) {
+
+        int lengthSelection = 3; //длина выборки. На период выборки пусть будет по 3 записи
+        String inputStr = "";
+
+        int firstIndex = 0; //первый индекс в списке
+        int lastIndex = 2; //последний индекс записи в списке для текущей выдачи (на время сделаем 2, должно быть 9)
+
+        //проверка на случай, если длина списка окажется меньше последнего индекса
+        if (lastIndex > list.size() - 1) {
+            lastIndex = list.size() - 1;
+        }
+
+        while (true) {
+
+            //распечатываем список по индексам
+            for (int i = firstIndex; i <= lastIndex; i++) {
+                writeMessage((i + 1) + ": " + list.get(i).toString());
+            }
+
+
+            writeMessage("1 - новее, 2 - старее, exit - закончить просмотр");
+
+            try {
+                inputStr = readString();
+            } catch (IOException e) {
+                writeMessage("Непонятная ошибка");
+            }
+
+
+            if (inputStr.equalsIgnoreCase("exit")) { //выходим из метода
+                break;
+            }
+
+            //показать более новые записи
+            if (inputStr.equals("1")) {
+
+                //смещаем индексы "влево"
+                firstIndex -= lengthSelection;
+                lastIndex -= lengthSelection;
+
+                //Если начальный индекс стал меньше 0, то присваиваем ему 0
+                if (firstIndex < 0) {
+                    firstIndex = 0;
+                    //при этом конечный индекс должен стать больше на lenghtSelection - 1 больше начального
+                    lastIndex = firstIndex + lengthSelection - 1;
+
+                    //но конечный индекс мог стать больше длины списка. В этом случае присваиваем ему длина_списка - 1
+                    if (lastIndex > list.size() - 1) {
+                        lastIndex = list.size() - 1;
+                    }
+                }
+
+                //если начальный индекс не меньше 0, то конечный индекс также заведомо не меньше 0
+
+            }
+
+            //показать более старые записи
+            else if (inputStr.equals("2")) {
+
+                //смещаем индексы "вправо"
+                firstIndex += lengthSelection;
+                lastIndex += lengthSelection;
+
+                //Если конечный индекс стал больше размера списка, то присваиваем ему длина_списка - 1
+                if (lastIndex > list.size() - 1) {
+                    lastIndex = list.size() - 1;
+                    //при этом начальный индекс должен стать на lenghtSeceltion + 1 меньше конечного списка
+                    firstIndex = lastIndex - lengthSelection + 1;
+
+                    //но начальный индекс мог стать меньше 0. В таком случае присваиваем ему 0
+                    if (firstIndex < 0) {
+                        firstIndex = 0;
+                    }
+                }
+
+                //если конечный индекс не больше размера списка, то начальный также заведом не больше размера списка
+
+            }
+
+
+
+
+
+
+        } //конец цикла
+    }
+
 }

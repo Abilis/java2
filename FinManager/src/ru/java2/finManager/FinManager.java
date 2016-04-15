@@ -14,6 +14,7 @@ public class FinManager {
 
     private static User currentUser;
     private static ArrayList<Account> accountsOfCurrentUser;
+    private static ArrayList<Record> recordsOfCurrentAccount;
 
     private static int accNum;
     private static int recNum;
@@ -88,8 +89,13 @@ public class FinManager {
                 //печатаем данные об аккаунте
                 ConsoleHelper.writeMessage(accountsOfCurrentUser.get(accNum - 1).toString());
 
-                //печатаем записи, хранящиеся в аккаунте
-                ConsoleHelper.writeMessage(accountsOfCurrentUser.get(accNum - 1).getListOfRecords().toString());
+
+                //Печатать будем по 10 записей. И еще нужна постраничная навигация
+
+                //Вытаскиваем все записи из текущего аккаунта
+                recordsOfCurrentAccount = accountsOfCurrentUser.get(accNum - 1).getListOfRecords();
+
+                ConsoleHelper.printTenRecords(recordsOfCurrentAccount); //печатаем выборочные записи
 
 
                 try {
