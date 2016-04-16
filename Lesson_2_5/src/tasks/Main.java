@@ -86,8 +86,16 @@ public class Main {
             String strI = (String) reversedStrArr[i];
             System.out.print(strI + " ");
         }
+        System.out.println();
+        System.out.println();
 
 
+        //проверка методы isPalindrome
+        System.out.println(IsPalindrome.isPalindrome("abcba"));
+        System.out.println(IsPalindrome.isPalindrome("abcdddcba"));
+        System.out.println(IsPalindrome.isPalindrome("abab"));
+        System.out.println(IsPalindrome.isPalindrome("abba"));
+        System.out.println(IsPalindrome.isPalindrome("abcd"));
 
 
     }
