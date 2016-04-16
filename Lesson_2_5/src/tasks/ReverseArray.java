@@ -10,6 +10,23 @@ public class ReverseArray {
           return a new array where the order of elements has been reversed from the original
           array.
          */
-        return null;
+
+        if (a == null) {
+            return null;
+        }
+
+        //создаем новый массив, который является копией входного
+        Object[] newArr = new Object[a.length];
+        System.arraycopy(a, 0, newArr, 0, a.length);
+
+        //теперь переворачиваем новый массив и возвращаем его
+        for (int i = 0; i < newArr.length / 2; i++) {
+
+            Object tmp = newArr[i];
+            newArr[i] = newArr[newArr.length - 1 - i];
+            newArr[newArr.length - 1 - i] = tmp;
+        }
+
+        return newArr;
     }
 }
