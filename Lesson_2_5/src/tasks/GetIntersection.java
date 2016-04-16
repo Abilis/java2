@@ -15,6 +15,11 @@ public class GetIntersection {
           The method should not chage the content of the parameters.
          */
 
+        //проверка на null
+        if (a == null || b == null) {
+            return null;
+        }
+
         //создаем новое множество, которое и будем возвращать
         Set<Object> intersectionSet = new HashSet<Object>();
 

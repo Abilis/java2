@@ -135,6 +135,10 @@ public class Main {
             System.out.print(o + " ");
         }
 
+        Set<Object> nullSet = null;
+
+        intersectionIntegers = GetIntersection.getIntersection(nullSet, nullSet);
+
     }
 
 }
