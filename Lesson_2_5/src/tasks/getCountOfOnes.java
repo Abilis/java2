@@ -15,6 +15,22 @@ public class getCountOfOnes {
          representation is 2
 
         */
-        return 0;
+
+        //строковое представление двоичной записи целого числа n
+        String nAsBinaryString = Integer.toBinaryString(n);
+
+        //теперь считаем количество единиц
+        int countOfOnes = 0;
+
+        char[] binaryNAsCharArr = nAsBinaryString.toCharArray();
+
+        for (char sym : binaryNAsCharArr) {
+            if (sym == '1') {
+                countOfOnes++;
+            }
+        }
+
+
+        return countOfOnes;
     }
 }

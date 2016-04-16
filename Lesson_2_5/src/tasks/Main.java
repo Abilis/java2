@@ -97,6 +97,15 @@ public class Main {
         System.out.println(IsPalindrome.isPalindrome("abba"));
         System.out.println(IsPalindrome.isPalindrome("abcd"));
 
+        System.out.println();
+        System.out.println();
+
+        //проверка метода getCountOfOnes
+        System.out.println(getCountOfOnes.getCountOfOnes(2)); //10
+        System.out.println(getCountOfOnes.getCountOfOnes(6)); //110
+        System.out.println(getCountOfOnes.getCountOfOnes(10)); //1010
+        System.out.println(getCountOfOnes.getCountOfOnes(111)); //1101111
+
 
     }
 
