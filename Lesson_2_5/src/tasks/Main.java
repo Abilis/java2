@@ -1,5 +1,8 @@
 package tasks;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by Abilis on 16.04.2016.
  */
@@ -9,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         //Проверка метода reverseArray
+        System.out.println("Проверка метода reverseArray");
 
         //создаем тестовые массивы
         Integer[] arrNumbers1 = new Integer[10];
@@ -90,7 +94,8 @@ public class Main {
         System.out.println();
 
 
-        //проверка методы isPalindrome
+        //проверка метода isPalindrome
+        System.out.println("Проверка метода isPalindrome");
         System.out.println(IsPalindrome.isPalindrome("abcba"));
         System.out.println(IsPalindrome.isPalindrome("abcdddcba"));
         System.out.println(IsPalindrome.isPalindrome("abab"));
@@ -101,11 +106,34 @@ public class Main {
         System.out.println();
 
         //проверка метода getCountOfOnes
+        System.out.println("Проверка метода getCountOfOnes");
         System.out.println(getCountOfOnes.getCountOfOnes(2)); //10
         System.out.println(getCountOfOnes.getCountOfOnes(6)); //110
         System.out.println(getCountOfOnes.getCountOfOnes(10)); //1010
         System.out.println(getCountOfOnes.getCountOfOnes(111)); //1101111
 
+        System.out.println();
+        System.out.println();
+
+        //проверка метода getIntersection
+        System.out.println("Проверка метода getIntersection");
+        Set<Object> setIntegers1 = new HashSet<>();
+        setIntegers1.add(1);
+        setIntegers1.add(2);
+        setIntegers1.add(5);
+        setIntegers1.add(6);
+
+        Set<Object> setIntegers2 = new HashSet<>();
+        setIntegers2.add(2);
+        setIntegers2.add(3);
+        setIntegers2.add(5);
+        
+
+        Set<Object> intersectionIntegers = GetIntersection.getIntersection(setIntegers1, setIntegers2);
+
+        for (Object o : intersectionIntegers) {
+            System.out.print(o + " ");
+        }
 
     }
 
