@@ -1,5 +1,7 @@
 package tasks;
 
+import java.util.Arrays;
+
 /**
  * Created by Сергей on 16.04.2016.
  */
@@ -16,8 +18,7 @@ public class ReverseArray {
         }
 
         //создаем новый массив, который является копией входного
-        Object[] newArr = new Object[a.length];
-        System.arraycopy(a, 0, newArr, 0, a.length);
+        Object[] newArr = Arrays.copyOf(a, a.length);
 
         //теперь переворачиваем новый массив и возвращаем его
         for (int i = 0; i < newArr.length / 2; i++) {
