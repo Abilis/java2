@@ -19,31 +19,26 @@ public class Main {
         mainWindow.setLocationRelativeTo(null);
         mainWindow.setLayout(new BorderLayout());
 
-        JPanel panel1 = new JPanel();
-        JPanel panel2 = new JPanel();
-        JPanel panel3 = new JPanel();
-        JPanel panel4 = new JPanel();
-        JPanel panel5 = new JPanel();
 
-        panel1.setBackground(Color.BLUE);
-        panel2.setBackground(Color.YELLOW);
-        panel3.setBackground(Color.ORANGE);
-        panel4.setBackground(Color.GREEN);
-        panel5.setBackground(Color.RED);
+        JPanel panel = new JPanel();
+        mainWindow.add(panel, BorderLayout.SOUTH);
 
-        mainWindow.add(panel1, BorderLayout.PAGE_START);
-        mainWindow.add(panel2, BorderLayout.PAGE_END);
-        mainWindow.add(panel3, BorderLayout.CENTER);
-        mainWindow.add(panel4, BorderLayout.LINE_END);
-        mainWindow.add(panel5, BorderLayout.LINE_START);
 
-        panel3.setLayout(new BorderLayout());
+        panel.setLayout(new FlowLayout());
+        panel.setPreferredSize(new Dimension(600, 50));
+
+        JTextField textFieldLogin = new JTextField(10);
+        JPasswordField passwordFieldPass = new JPasswordField(10);
 
         JButton buttonLogin = new JButton("Залогиниться");
         JButton buttonRegistration = new JButton("Зарегистрироваться");
 
-        panel3.add(buttonLogin, BorderLayout.NORTH);
-        panel3.add(buttonRegistration, BorderLayout.SOUTH);
+        panel.add(textFieldLogin);
+        panel.add(passwordFieldPass);
+        panel.add(buttonLogin);
+        panel.add(buttonRegistration);
+
+
 
         mainWindow.setVisible(true);
 
