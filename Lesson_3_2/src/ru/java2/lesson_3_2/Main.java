@@ -19,39 +19,20 @@ public class Main {
         mainWindow.setLocationRelativeTo(null);
         mainWindow.setLayout(new GridBagLayout());
 
-        JLabel labelLoading = new JLabel("Идет загрузка...");
-        JProgressBar progressBar = new JProgressBar();
 
-        mainWindow.add(labelLoading);
-        mainWindow.add(progressBar);
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.ORANGE);
 
-        progressBar.setMaximum(0);
-        progressBar.setMaximum(100);
-        progressBar.setStringPainted(true);
-        progressBar.setValue(0);
+        JTextField textFieldLogin = new JTextField(10);
+        JButton buttonLogin = new JButton("Залогиниться");
+
+        panel.add(textFieldLogin);
+        panel.add(buttonLogin);
+        mainWindow.add(panel);
 
         mainWindow.setVisible(true);
 
-        while (progressBar.getValue() < progressBar.getMaximum()) {
 
-            int currentPercent = progressBar.getValue();
-
-            if (progressBar.getValue() < 50) {
-                currentPercent++;
-            }
-            else if (progressBar.getValue() < 85) {
-                currentPercent += 3;
-            }
-            else {
-                currentPercent++;
-                Thread.sleep(15);
-            }
-            progressBar.setValue(currentPercent);
-            Thread.sleep(10);
-        }
-
-
-        labelLoading.setText("Загружено!");
 
 
     }
