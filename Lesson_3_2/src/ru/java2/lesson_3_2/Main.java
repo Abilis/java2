@@ -17,26 +17,10 @@ public class Main {
         mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainWindow.setSize(600, 400);
         mainWindow.setLocationRelativeTo(null);
-        mainWindow.setLayout(new BorderLayout());
+        mainWindow.setLayout(new GridBagLayout());
 
 
-        JPanel panel = new JPanel();
-        mainWindow.add(panel, BorderLayout.SOUTH);
-
-
-        panel.setLayout(new FlowLayout());
-        panel.setPreferredSize(new Dimension(600, 50));
-
-        JTextField textFieldLogin = new JTextField(10);
-        JPasswordField passwordFieldPass = new JPasswordField(10);
-
-        JButton buttonLogin = new JButton("Залогиниться");
-        JButton buttonRegistration = new JButton("Зарегистрироваться");
-
-        panel.add(textFieldLogin);
-        panel.add(passwordFieldPass);
-        panel.add(buttonLogin);
-        panel.add(buttonRegistration);
+        
 
 
 
