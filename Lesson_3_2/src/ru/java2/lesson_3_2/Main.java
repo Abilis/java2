@@ -1,5 +1,6 @@
 package ru.java2.lesson_3_2;
 
+
 import javax.swing.*;
 
 /**
@@ -10,17 +11,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame();
-        frame.setSize(600, 400);
-        frame.setTitle("Тестовая форма");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+        JFrame frameExternal = new JFrame("Внешняя форма");
+
+        frameExternal.setSize(600, 400);
+        frameExternal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameExternal.setLocationRelativeTo(null);
 
 
-        frame.setVisible(true);
+        frameExternal.setVisible(true);
 
-        frame.setState(JFrame.ICONIFIED);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        JFrame frameInternal = new JFrame("Внутренняя форма");
+        frameInternal.setSize(300, 100);
+        frameInternal.setLocationRelativeTo(frameExternal);
+
+
+        frameInternal.setVisible(true);
+
+
+
+
     }
 
 
