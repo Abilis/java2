@@ -10,7 +10,7 @@ import java.awt.*;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         JFrame mainWindow = new JFrame("Финансовый менеджер");
 
@@ -19,33 +19,39 @@ public class Main {
         mainWindow.setLocationRelativeTo(null);
         mainWindow.setLayout(new GridBagLayout());
 
+        JLabel labelLoading = new JLabel("Идет загрузка...");
+        JProgressBar progressBar = new JProgressBar();
 
-        JButton buttonLogin = new JButton("Залогиниться");
-        JButton buttonRegistration = new JButton("Регистрация");
+        mainWindow.add(labelLoading);
+        mainWindow.add(progressBar);
 
-        JLabel labelLogin = new JLabel("Введите логин:");
-        JLabel labelPassword = new JLabel("Введите пароль:");
-        JLabel labelRegistration = new JLabel("Зарегистрировать нового пользователя:");
-
-
-        JTextField textFieldLogin = new JTextField(10);
-        JPasswordField passwordField = new JPasswordField(10);
-
-
-        mainWindow.add(labelLogin);
-        mainWindow.add(textFieldLogin);
-
-        mainWindow.add(labelPassword);
-        mainWindow.add(passwordField);
-
-        mainWindow.add(buttonLogin);
-
-        mainWindow.add(labelRegistration);
-        mainWindow.add(buttonRegistration);
-
-
+        progressBar.setMaximum(0);
+        progressBar.setMaximum(100);
+        progressBar.setStringPainted(true);
+        progressBar.setValue(0);
 
         mainWindow.setVisible(true);
+
+        while (progressBar.getValue() < progressBar.getMaximum()) {
+
+            int currentPercent = progressBar.getValue();
+
+            if (progressBar.getValue() < 50) {
+                currentPercent++;
+            }
+            else if (progressBar.getValue() < 85) {
+                currentPercent += 3;
+            }
+            else {
+                currentPercent++;
+                Thread.sleep(15);
+            }
+            progressBar.setValue(currentPercent);
+            Thread.sleep(10);
+        }
+
+
+        labelLoading.setText("Загружено!");
 
 
     }
