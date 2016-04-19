@@ -5,6 +5,9 @@ import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
 import java.util.Set;
 
 /**
@@ -12,8 +15,9 @@ import java.util.Set;
  */
 public class DbHelper implements DataStore {
 
+    private DbHelper dbHelper;
     private Connection connection;
-    private final String URL = "";
+    private final String URL = "jdbc:mysql://localhost:3306/finmanager?autoReconnect=true&userSSL=false";
     private final String USERNAME = "root";
     private final String PASSWORD = "";
 
@@ -21,10 +25,26 @@ public class DbHelper implements DataStore {
 
     }
 
-    private Connection getConnection() {
-        if (connection == null) {
-            connection = new 
+    private DbHelper getDbHerper() {
+        if (dbHelper == null) {
+            dbHelper = new DbHelper();
         }
+        return dbHelper;
+    }
+
+    private Connection getConnection() throws SQLException {
+
+        Properties properties = new Properties();
+        properties.setProperty("user", USERNAME);
+        properties.setProperty("password", PASSWORD);
+        properties.setProperty("useUnicode", "true");
+        properties.setProperty("characterEncoding", "utf8");
+
+        if (connection == null || connection.isClosed()) {
+            connection = DriverManager.getConnection(URL, properties);
+        }
+
+        return connection;
     }
 
 

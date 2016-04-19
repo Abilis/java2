@@ -1,7 +1,11 @@
 package ru.java2.finManager2.Gui;
 
+import ru.java2.finManager2.Utils.Md5;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Abilis on 19.04.2016.
@@ -72,10 +76,52 @@ public class LoginAndRegistration {
         //обработчики
 
         //обработка нажатия кнопки логина
-
+        loginButton.addActionListener(new LoginButtonActionListener());
 
         //обработка нажатия кнопки регистрация
-
+        registrationButton.addActionListener(new RegistrationButtonActionListener());
 
     }
+
+    class LoginButtonActionListener implements ActionListener {
+        //метод, обрабатывающий нажатие кнопки "войти"
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            //получаем данные из из полей ввода
+            String login = loginTextField.getText();
+            String password = passwordPasswordField.getText();
+
+            //обрезаем пробелы с обеих сторон
+            login = login.trim();
+            password = password.trim();
+
+            //если поля пустые = заканчиваем обработку
+            if (login.equals("") || password.equals("")) {
+                return;
+            }
+
+            //Преобразуем пароль в хэш-мд5
+            password = Md5.getMd5(password);
+
+            //вытаскиваем пользователя из БД по имени
+
+            //сравниваем хэши паролей
+
+            //если все нормально - создаем новую форму, а эту закрываем.
+
+            //иначе - сообщаем о неверном логине или пароле
+
+        }
+    }
+
+    class RegistrationButtonActionListener implements ActionListener {
+
+        //метод, обрабатывающий нажатие кнопки "Зарегистрироваться"
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
 }
