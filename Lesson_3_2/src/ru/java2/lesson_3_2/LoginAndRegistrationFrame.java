@@ -108,6 +108,16 @@ public class LoginAndRegistrationFrame {
             }
             else {
                 wrongLoginOrPasswordLabel.setVisible(false);
+
+                //логин и пароль совпадают
+                User currentUser = new User(login, password);
+
+                //Закрываем форму
+                loginForm.dispose();
+
+                //создаем новую форму и передаем туда управление
+                MainWindowFrame mainWindowFrame = new MainWindowFrame();
+                mainWindowFrame.initMainWindowFrame(currentUser);
             }
 
         }
@@ -121,7 +131,3 @@ public class LoginAndRegistrationFrame {
     }
 
 }
-
-
-
-
