@@ -42,9 +42,9 @@ public class LoginAndRegistration {
 
         //установка настроек формы
         loginAndRegistrationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        loginAndRegistrationFrame.setLocationRelativeTo(null);
         loginAndRegistrationFrame.setSize(dimension);
         loginAndRegistrationFrame.setResizable(false);
+        loginAndRegistrationFrame.setLocationRelativeTo(null);
 
         loginAndRegistrationFrame.setLayout(new GridBagLayout());
 
@@ -157,6 +157,9 @@ public class LoginAndRegistration {
 
             RegistrationNewUser registrationNewUser = new RegistrationNewUser();
             registrationNewUser.init();
+
+            //закрываем эту форму
+            loginAndRegistrationFrame.dispose();
 
         }
     }

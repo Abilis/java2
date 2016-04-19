@@ -2,6 +2,8 @@ package ru.java2.finManager2.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Abilis on 20.04.2016.
@@ -33,9 +35,9 @@ public class RegistrationNewUser {
 
         //установка настроек формы
         registrationNewUserFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        registrationNewUserFrame.setLocationRelativeTo(null);
         registrationNewUserFrame.setSize(dimension);
         registrationNewUserFrame.setResizable(false);
+        registrationNewUserFrame.setLocationRelativeTo(null);
 
         registrationNewUserFrame.setLayout(new GridBagLayout());
 
@@ -72,8 +74,33 @@ public class RegistrationNewUser {
 
         //делаем форму видимой
         registrationNewUserFrame.setVisible(true);
+
+
+        //Обработка нажатия кнопок
+        createNewUserButton.addActionListener(new CreateNewUserButtonActionListener());
+        cancelButton.addActionListener(new CancelButtonActionListener());
+
     }
 
 
-    
+    class CreateNewUserButtonActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+
+
+        }
+    }
+
+    class CancelButtonActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //просто закрываем форму
+            registrationNewUserFrame.dispose();
+
+            //и снова создаем форму логина и регистрации
+            LoginAndRegistration loginAndRegistration = new LoginAndRegistration();
+            loginAndRegistration.init();
+        }
+    }
 }
