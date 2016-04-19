@@ -4,12 +4,28 @@ import ru.java2.finManager2.Account;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 
+import java.sql.Connection;
 import java.util.Set;
 
 /**
  * Created by Abilis on 19.04.2016.
  */
 public class DbHelper implements DataStore {
+
+    private Connection connection;
+    private final String URL = "";
+    private final String USERNAME = "root";
+    private final String PASSWORD = "";
+
+    private DbHelper() {
+
+    }
+
+    private Connection getConnection() {
+        if (connection == null) {
+            connection = new 
+        }
+    }
 
 
     @Override

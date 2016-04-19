@@ -62,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginAndRegistration.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginAndRegistration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Gui/LoginAndRegistration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="943">
@@ -86,27 +86,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DbHelper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DbHelper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="408">
+              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#313#314#0" expanded="true" />
-                <element signature="e#340#341#0" expanded="true" />
-                <element signature="e#395#396#0" expanded="true" />
-                <element signature="e#422#423#0" expanded="true" />
-                <element signature="e#487#488#0" expanded="true" />
-                <element signature="e#514#515#0" expanded="true" />
-                <element signature="e#582#583#0" expanded="true" />
-                <element signature="e#609#610#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
-                <element signature="e#992#993#0" expanded="true" />
-                <element signature="e#1019#1020#0" expanded="true" />
-                <element signature="e#1096#1097#0" expanded="true" />
-                <element signature="e#1123#1124#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
+                <element signature="e#733#734#0" expanded="true" />
+                <element signature="e#760#761#0" expanded="true" />
+                <element signature="e#825#826#0" expanded="true" />
+                <element signature="e#852#853#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
+                <element signature="e#947#948#0" expanded="true" />
+                <element signature="e#1224#1225#0" expanded="true" />
+                <element signature="e#1251#1252#0" expanded="true" />
+                <element signature="e#1330#1331#0" expanded="true" />
+                <element signature="e#1357#1358#0" expanded="true" />
+                <element signature="e#1434#1435#0" expanded="true" />
+                <element signature="e#1461#1462#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,11 +143,11 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/User.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Account.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DataStore.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Category.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Record.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/FinManager.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Gui/LoginAndRegistration.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java" />
       </list>
     </option>
   </component>
@@ -613,40 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DataStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#313#314#0" expanded="true" />
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-            <element signature="e#992#993#0" expanded="true" />
-            <element signature="e#1019#1020#0" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1123#1124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Category.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -677,6 +643,40 @@
           <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DataStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1251#1252#0" expanded="true" />
+            <element signature="e#1330#1331#0" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#1434#1435#0" expanded="true" />
+            <element signature="e#1461#1462#0" expanded="true" />
           </folding>
         </state>
       </provider>
