@@ -4,7 +4,7 @@ import ru.java2.finManager2.User;
 import ru.java2.finManager2.exceptions.NoSuchUserException;
 import ru.java2.finManager2.utils.Md5;
 import ru.java2.finManager2.database.DbHelper;
-import sun.applet.Main;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -154,6 +154,9 @@ public class LoginAndRegistration {
         //метод, обрабатывающий нажатие кнопки "Зарегистрироваться"
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            RegistrationNewUser registrationNewUser = new RegistrationNewUser();
+            registrationNewUser.init();
 
         }
     }
