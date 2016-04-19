@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by Abilis on 19.04.2016.
@@ -18,7 +19,7 @@ public class LoginAndRegistration {
     //создаем метки, сообщающие о необходимости ввести логин, пароль, а также скрытую о невером логине и/или пароле
     private JLabel loginLabel = new JLabel("Логин:");
     private JLabel passwordLabel = new JLabel("Пароль:");
-    private JLabel wrongLoginOrPasswordLabel = new JLabel("Неверный логин или пароль!");
+    private JLabel wrongLoginOrPasswordLabel = new JLabel();
 
     //создаем поля ввода логина и пароля
     private JTextField loginTextField = new JTextField();
@@ -66,7 +67,6 @@ public class LoginAndRegistration {
         //настройка метки о неверном логине или пароле
         wrongLoginOrPasswordLabel.setForeground(Color.RED);
         wrongLoginOrPasswordLabel.setHorizontalAlignment(0);
-        wrongLoginOrPasswordLabel.setVisible(false);
 
 
         //делаем форму видимой
@@ -102,7 +102,11 @@ public class LoginAndRegistration {
             }
 
             //Преобразуем пароль в хэш-мд5
-            password = Md5.getMd5(password);
+            try {
+                password = Md5.getMd5(password);
+            } catch (NoSuchAlgorithmException e1) {
+                wrongLoginOrPasswordLabel.setText("Не получилось получить md5 пароля. Попробуйте еще раз");
+            }
 
             //вытаскиваем пользователя из БД по имени
 
@@ -111,7 +115,7 @@ public class LoginAndRegistration {
             //если все нормально - создаем новую форму, а эту закрываем.
 
             //иначе - сообщаем о неверном логине или пароле
-
+            wrongLoginOrPasswordLabel.setText("Неверный логин или пароль!");
         }
     }
 
