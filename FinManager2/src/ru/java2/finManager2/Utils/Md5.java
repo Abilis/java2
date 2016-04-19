@@ -1,4 +1,4 @@
-package ru.java2.finManager2.Utils;
+package ru.java2.finManager2.utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

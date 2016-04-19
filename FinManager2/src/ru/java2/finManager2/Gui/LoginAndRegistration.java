@@ -1,12 +1,16 @@
-package ru.java2.finManager2.Gui;
+package ru.java2.finManager2.gui;
 
-import ru.java2.finManager2.Utils.Md5;
+import ru.java2.finManager2.User;
+import ru.java2.finManager2.exceptions.NoSuchUserException;
+import ru.java2.finManager2.utils.Md5;
+import ru.java2.finManager2.database.DbHelper;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 /**
  * Created by Abilis on 19.04.2016.
@@ -108,14 +112,36 @@ public class LoginAndRegistration {
                 wrongLoginOrPasswordLabel.setText("Не получилось получить md5 пароля. Попробуйте еще раз");
             }
 
+            //создаем пользователя на основе введенных данных
+            User currentUser = new User(login, password);
+
             //вытаскиваем пользователя из БД по имени
+            DbHelper dbHelper = DbHelper.getDbHerper();
+            User userFromDb = null;
 
-            //сравниваем хэши паролей
+            try {
+                userFromDb = dbHelper.getUser(login);
+            } catch (SQLException e1) {
+                //не получилось приконнектиться к базе
+                wrongLoginOrPasswordLabel.setText("Не удалось получить данные из БД");
+            } catch (NoSuchUserException e1) {
+                //пользователь с таким логином не найден. Прекращаем обработку
+                wrongLoginOrPasswordLabel.setText(e1.getMessage());
+                return;
+            }
 
-            //если все нормально - создаем новую форму, а эту закрываем.
+            //сравниваем пользователей
+            if (currentUser.equals(userFromDb)) {
+                //если все нормально - создаем новую форму, а эту закрываем.
 
-            //иначе - сообщаем о неверном логине или пароле
-            wrongLoginOrPasswordLabel.setText("Неверный логин или пароль!");
+            }
+            else {
+                //иначе - сообщаем о неверном логине или пароле
+                wrongLoginOrPasswordLabel.setText("Неверный логин или пароль!");
+            }
+
+
+
         }
     }
 

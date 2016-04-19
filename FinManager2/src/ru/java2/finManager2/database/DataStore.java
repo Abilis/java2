@@ -3,7 +3,9 @@ package ru.java2.finManager2.database;
 import ru.java2.finManager2.Account;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
+import ru.java2.finManager2.exceptions.NoSuchUserException;
 
+import java.sql.SQLException;
 import java.util.Set;
 
 /**
@@ -12,8 +14,7 @@ import java.util.Set;
 public interface DataStore {
 
     // return null if no such user
-    User getUser(String name);
-
+    User getUser(String name) throws SQLException, NoSuchUserException;
 
     // If no users, return empty collection (not null)
     Set<String> getUserNames();

@@ -3,10 +3,9 @@ package ru.java2.finManager2.database;
 import ru.java2.finManager2.Account;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
+import ru.java2.finManager2.exceptions.NoSuchUserException;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 import java.util.Set;
 
@@ -15,8 +14,8 @@ import java.util.Set;
  */
 public class DbHelper implements DataStore {
 
-    private DbHelper dbHelper;
-    private Connection connection;
+    private static DbHelper dbHelper = null;
+    private Connection connection = null;
     private final String URL = "jdbc:mysql://localhost:3306/finmanager?autoReconnect=true&userSSL=false";
     private final String USERNAME = "root";
     private final String PASSWORD = "";
@@ -25,14 +24,14 @@ public class DbHelper implements DataStore {
 
     }
 
-    private DbHelper getDbHerper() {
+    public static DbHelper getDbHerper() {
         if (dbHelper == null) {
             dbHelper = new DbHelper();
         }
         return dbHelper;
     }
 
-    private Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
 
         Properties properties = new Properties();
         properties.setProperty("user", USERNAME);
@@ -47,10 +46,39 @@ public class DbHelper implements DataStore {
         return connection;
     }
 
-
+    // return null if no such user
     @Override
-    public User getUser(String name) {
-        return null;
+    public User getUser(String name) throws SQLException, NoSuchUserException {
+
+        try (Connection connection = getConnection())
+
+        {
+            //формируем запрос
+            String query = "SELECT * FROM `users` WHERE `login`=\"" + name + "\";";
+
+            Statement statement = connection.createStatement();
+
+            //выполняем запрос
+            ResultSet resultSet = statement.executeQuery(query);
+
+            String password = "empty";
+
+            while (resultSet.next()) {
+                password = resultSet.getString("password");
+            }
+
+            //если строка пароля оказалась равна "empty - значит, пользователя с таким логином в базе нет
+            if (password.equals("empty")) {
+                throw new NoSuchUserException("Пользователь с таким именем не существует!");
+            }
+
+            //создаем нового пользователя на основе вытащенного из БД
+            User user = new User(name, password);
+
+            return user;
+
+        }
+
     }
 
     @Override
