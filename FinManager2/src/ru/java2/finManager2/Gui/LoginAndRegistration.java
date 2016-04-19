@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
@@ -136,16 +138,13 @@ public class LoginAndRegistration {
                 //если все нормально - создаем новую форму, а эту закрываем.
                 loginAndRegistrationFrame.dispose();
 
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(currentUser);
                 mainWindow.init();
             }
             else {
                 //иначе - сообщаем о неверном логине или пароле
                 wrongLoginOrPasswordLabel.setText("Неверный логин или пароль!");
             }
-
-
-
         }
     }
 
@@ -163,5 +162,7 @@ public class LoginAndRegistration {
 
         }
     }
+
+
 
 }

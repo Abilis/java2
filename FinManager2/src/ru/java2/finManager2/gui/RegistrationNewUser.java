@@ -1,9 +1,17 @@
 package ru.java2.finManager2.gui;
 
+import ru.java2.finManager2.User;
+import ru.java2.finManager2.database.DbHelper;
+import ru.java2.finManager2.exceptions.DontCreateNewUserException;
+import ru.java2.finManager2.exceptions.ExistSuchUserException;
+import ru.java2.finManager2.utils.Md5;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 /**
  * Created by Abilis on 20.04.2016.
@@ -34,13 +42,16 @@ public class RegistrationNewUser {
     public void init() {
 
         //установка настроек формы
-        registrationNewUserFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        registrationNewUserFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         registrationNewUserFrame.setSize(dimension);
         registrationNewUserFrame.setResizable(false);
         registrationNewUserFrame.setLocationRelativeTo(null);
 
         registrationNewUserFrame.setLayout(new GridBagLayout());
 
+        //установка настроек метки для вывода об ошибках
+        messagesLabel.setForeground(Color.RED);
+        messagesLabel.setHorizontalAlignment(0);
 
         //Расставляем компоненты
 
@@ -63,7 +74,7 @@ public class RegistrationNewUser {
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //4 ряд будет меткой для сообщений об ошибках
-        registrationNewUserFrame.add(messagesLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        registrationNewUserFrame.add(messagesLabel, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //5 ряд - две кнопки
@@ -87,7 +98,56 @@ public class RegistrationNewUser {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+            //вытаскиваем строки из полей ввода и тримим их
+            String login = loginTextField.getText();
+            String password = passwordField.getText();
+            String confirmPassword = confirnPasswordField.getText();
 
+            login = login.trim();
+            password = password.trim();
+            confirmPassword = confirmPassword.trim();
+
+            if (login.equals("") || password.equals("") || confirmPassword.equals("")) {
+                return;
+            }
+
+            if (!password.equals(confirmPassword)) {
+                messagesLabel.setText("Пароли не совпадают");
+                return;
+            }
+
+            //если введены корректные данные, то получаем md5 пароля и создаем нового пользователя
+            try {
+                password = Md5.getMd5(password);
+            } catch (NoSuchAlgorithmException e1) {
+                messagesLabel.setText("Не получилось получить md5 пароля. Попробуйте еще раз");
+            }
+
+            User newUser = new User(login, password);
+
+            //и создаем этого пользователя в БД
+            DbHelper dbHelper = DbHelper.getDbHerper();
+            try {
+                dbHelper.addUser(newUser);
+            } catch (DontCreateNewUserException e1) {
+                //не удалось создать нового пользователя
+                messagesLabel.setText(e1.getMessage());
+                return;
+            } catch (SQLException e1) {
+                //что-то еще не так с БД
+                messagesLabel.setText("Что-то не так с БД");
+                return;
+            } catch (ExistSuchUserException e1) {
+                messagesLabel.setText(e1.getMessage());
+                return;
+            }
+
+            //если дошли сюда - новый пользователь успешно создался
+            //поэтому закрываем это окно и открываем основное окно приложения
+            registrationNewUserFrame.dispose();
+
+            MainWindow mainWindow = new MainWindow(newUser);
+            mainWindow.init();
 
         }
     }

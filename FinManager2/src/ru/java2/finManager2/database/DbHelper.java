@@ -3,6 +3,8 @@ package ru.java2.finManager2.database;
 import ru.java2.finManager2.Account;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
+import ru.java2.finManager2.exceptions.DontCreateNewUserException;
+import ru.java2.finManager2.exceptions.ExistSuchUserException;
 import ru.java2.finManager2.exceptions.NoSuchUserException;
 
 import java.sql.*;
@@ -97,7 +99,34 @@ public class DbHelper implements DataStore {
     }
 
     @Override
-    public void addUser(User user) {
+    public void addUser(User user) throws SQLException, ExistSuchUserException {
+
+        //проверяем, есть ли пользователь с таким логином в базе. Если да - кидаем эксепшн
+        try {
+            User userInDb = getUser(user.getLogin());
+            //раз дошли сюда - значит, пользователь с таким логином уже есть
+            throw new ExistSuchUserException("Пользователь с таким именем уже существует!");
+
+        } catch (NoSuchUserException Ignored) {
+        }
+
+        //если нет - создаем запись в БД
+
+        try (Connection connection = getConnection())
+        {
+            //формируем запрос
+            String query = "INSERT INTO `users` (`login`, `password`) VALUES (\"" + user.getLogin() + "\", \""
+                    + user.getPassword() + "\");";
+
+            Statement statement = connection.createStatement();
+
+            //Выполняем запрос
+            int n = statement.executeUpdate(query);
+
+            if (n == 0) {
+                throw new DontCreateNewUserException("Не удалось создать пользователя с логином " + user.getLogin());
+            }
+        }
 
     }
 

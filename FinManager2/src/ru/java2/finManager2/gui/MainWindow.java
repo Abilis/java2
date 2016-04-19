@@ -1,5 +1,7 @@
 package ru.java2.finManager2.gui;
 
+import ru.java2.finManager2.User;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,8 +10,15 @@ import java.awt.*;
  */
 public class MainWindow {
 
+    private User currentUser;
+
     private JFrame mainWindowFrame = new JFrame("Финансовый менеджер");
     private Dimension dimensionMainWindowFrame = new Dimension(800, 600);
+
+
+    public MainWindow(User currentUser) {
+        this.currentUser = currentUser;
+    }
 
     //инициализация формы
     public void init() {
