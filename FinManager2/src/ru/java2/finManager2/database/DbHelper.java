@@ -61,14 +61,14 @@ public class DbHelper implements DataStore {
             //выполняем запрос
             ResultSet resultSet = statement.executeQuery(query);
 
-            String password = "empty";
+            String password = null;
 
             while (resultSet.next()) {
                 password = resultSet.getString("password");
             }
 
-            //если строка пароля оказалась равна "empty - значит, пользователя с таким логином в базе нет
-            if (password.equals("empty")) {
+            //если строка пароля оказалась равна null - значит, пользователя с таким логином в базе нет
+            if (password == null) {
                 throw new NoSuchUserException("Пользователь с таким именем не существует!");
             }
 

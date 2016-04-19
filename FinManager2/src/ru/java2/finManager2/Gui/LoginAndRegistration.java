@@ -4,6 +4,7 @@ import ru.java2.finManager2.User;
 import ru.java2.finManager2.exceptions.NoSuchUserException;
 import ru.java2.finManager2.utils.Md5;
 import ru.java2.finManager2.database.DbHelper;
+import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -133,7 +134,10 @@ public class LoginAndRegistration {
             //сравниваем пользователей
             if (currentUser.equals(userFromDb)) {
                 //если все нормально - создаем новую форму, а эту закрываем.
+                loginAndRegistrationFrame.dispose();
 
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.init();
             }
             else {
                 //иначе - сообщаем о неверном логине или пароле
