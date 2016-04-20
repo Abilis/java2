@@ -22,6 +22,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="LoginAndRegistration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="604">
+              <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+                <element signature="class#RegistrationButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionEvent.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_73/src.zip!/java/awt/event/ActionEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2100">
+              <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DbHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -77,189 +101,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NonRegisteringDriver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/mysql-connector-java-5.1.38/src/com/mysql/jdbc/NonRegisteringDriver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4845">
-              <caret line="328" column="0" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#34048#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#2969#3025#0" expanded="false" />
-                <element signature="e#3117#3133#0" expanded="false" />
-                <element signature="e#3842#3843#0" expanded="false" />
-                <element signature="e#3894#3895#0" expanded="false" />
-                <element signature="e#4137#4138#0" expanded="false" />
-                <element signature="e#4189#4190#0" expanded="false" />
-                <element signature="e#6254#6255#0" expanded="false" />
-                <element signature="e#6317#6318#0" expanded="false" />
-                <element signature="e#6477#6478#0" expanded="false" />
-                <element signature="e#6540#6541#0" expanded="false" />
-                <element signature="e#13134#13142#0" expanded="false" />
-                <element signature="e#13955#13963#0" expanded="false" />
-                <element signature="e#15257#15265#0" expanded="false" />
-                <element signature="e#15320#15328#0" expanded="false" />
-                <element signature="e#17618#17619#0" expanded="false" />
-                <element signature="e#17679#17680#0" expanded="false" />
-                <element signature="e#17832#17833#0" expanded="false" />
-                <element signature="e#17880#17881#0" expanded="false" />
-                <element signature="e#18032#18033#0" expanded="false" />
-                <element signature="e#18080#18081#0" expanded="false" />
-                <element signature="e#21108#21109#0" expanded="false" />
-                <element signature="e#21180#21181#0" expanded="false" />
-                <element signature="e#21660#21661#0" expanded="false" />
-                <element signature="e#21688#21689#0" expanded="false" />
-                <element signature="e#30790#30791#0" expanded="false" />
-                <element signature="e#30875#30876#0" expanded="false" />
-                <element signature="e#31209#31210#0" expanded="false" />
-                <element signature="e#31255#31256#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/mysql-connector-java-5.1.38/src/com/mysql/jdbc/StringUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15674">
-              <caret line="964" column="0" selection-start-line="964" selection-start-column="0" selection-end-line="964" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#87237#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#4883#4900#0" expanded="false" />
-                <element signature="e#13564#13565#0" expanded="false" />
-                <element signature="e#13616#13617#0" expanded="false" />
-                <element signature="e#49635#49643#0" expanded="false" />
-                <element signature="e#50762#50770#0" expanded="false" />
-                <element signature="e#57044#57045#0" expanded="false" />
-                <element signature="e#57106#57107#0" expanded="false" />
-                <element signature="e#64139#64140#0" expanded="false" />
-                <element signature="e#64202#64203#0" expanded="false" />
-                <element signature="e#71474#71482#0" expanded="false" />
-                <element signature="e#85780#85781#0" expanded="false" />
-                <element signature="e#85834#85835#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/mysql-connector-java-5.1.38/src/com/mysql/jdbc/ConnectionImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58361">
-              <caret line="3549" column="0" selection-start-line="3549" selection-start-column="0" selection-end-line="3549" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#217513#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#3400#3401#0" expanded="false" />
-                <element signature="e#3432#3433#0" expanded="false" />
-                <element signature="e#3558#3559#0" expanded="false" />
-                <element signature="e#3599#3600#0" expanded="false" />
-                <element signature="e#4034#4035#0" expanded="false" />
-                <element signature="e#4115#4116#0" expanded="false" />
-                <element signature="e#4271#4272#0" expanded="false" />
-                <element signature="e#4317#4318#0" expanded="false" />
-                <element signature="e#4371#4372#0" expanded="false" />
-                <element signature="e#4409#4410#0" expanded="false" />
-                <element signature="e#4451#4452#0" expanded="false" />
-                <element signature="e#4528#4529#0" expanded="false" />
-                <element signature="e#7786#7787#0" expanded="false" />
-                <element signature="e#7830#7831#0" expanded="false" />
-                <element signature="e#9126#9153#0" expanded="false" />
-                <element signature="e#9355#9385#0" expanded="false" />
-                <element signature="e#9611#9641#0" expanded="false" />
-                <element signature="e#9857#9887#0" expanded="false" />
-                <element signature="e#16836#16852#0" expanded="false" />
-                <element signature="e#18102#18119#0" expanded="false" />
-                <element signature="e#29574#29598#0" expanded="false" />
-                <element signature="e#31598#31599#0" expanded="false" />
-                <element signature="e#31647#31648#0" expanded="false" />
-                <element signature="e#52436#52437#0" expanded="false" />
-                <element signature="e#52483#52484#0" expanded="false" />
-                <element signature="e#57600#57611#0" expanded="false" />
-                <element signature="e#99052#99053#0" expanded="false" />
-                <element signature="e#99093#99094#0" expanded="false" />
-                <element signature="e#112437#112438#0" expanded="false" />
-                <element signature="e#112485#112486#0" expanded="false" />
-                <element signature="e#112688#112689#0" expanded="false" />
-                <element signature="e#112728#112729#0" expanded="false" />
-                <element signature="e#117549#117550#0" expanded="false" />
-                <element signature="e#117592#117593#0" expanded="false" />
-                <element signature="e#117737#117738#0" expanded="false" />
-                <element signature="e#117778#117779#0" expanded="false" />
-                <element signature="e#118545#118546#0" expanded="false" />
-                <element signature="e#118599#118600#0" expanded="false" />
-                <element signature="e#118641#118642#0" expanded="false" />
-                <element signature="e#118695#118696#0" expanded="false" />
-                <element signature="e#118740#118741#0" expanded="false" />
-                <element signature="e#118797#118798#0" expanded="false" />
-                <element signature="e#118842#118843#0" expanded="false" />
-                <element signature="e#118886#118887#0" expanded="false" />
-                <element signature="e#119127#119128#0" expanded="false" />
-                <element signature="e#119176#119177#0" expanded="false" />
-                <element signature="e#122395#122396#0" expanded="false" />
-                <element signature="e#122428#122429#0" expanded="false" />
-                <element signature="e#122459#122460#0" expanded="false" />
-                <element signature="e#122491#122492#0" expanded="false" />
-                <element signature="e#122531#122532#0" expanded="false" />
-                <element signature="e#122570#122571#0" expanded="false" />
-                <element signature="e#123040#123041#0" expanded="false" />
-                <element signature="e#123099#123100#0" expanded="false" />
-                <element signature="e#123140#123141#0" expanded="false" />
-                <element signature="e#123173#123174#0" expanded="false" />
-                <element signature="e#123212#123213#0" expanded="false" />
-                <element signature="e#123258#123259#0" expanded="false" />
-                <element signature="e#137881#137882#0" expanded="false" />
-                <element signature="e#137922#137923#0" expanded="false" />
-                <element signature="e#138169#138170#0" expanded="false" />
-                <element signature="e#138209#138210#0" expanded="false" />
-                <element signature="e#138804#138805#0" expanded="false" />
-                <element signature="e#138850#138851#0" expanded="false" />
-                <element signature="e#138895#138896#0" expanded="false" />
-                <element signature="e#138934#138935#0" expanded="false" />
-                <element signature="e#141718#141719#0" expanded="false" />
-                <element signature="e#141762#141763#0" expanded="false" />
-                <element signature="e#143536#143537#0" expanded="false" />
-                <element signature="e#143577#143578#0" expanded="false" />
-                <element signature="e#152156#152157#0" expanded="false" />
-                <element signature="e#152206#152207#0" expanded="false" />
-                <element signature="e#152396#152397#0" expanded="false" />
-                <element signature="e#152443#152444#0" expanded="false" />
-                <element signature="e#154159#154160#0" expanded="false" />
-                <element signature="e#154205#154206#0" expanded="false" />
-                <element signature="e#195724#195725#0" expanded="false" />
-                <element signature="e#195764#195765#0" expanded="false" />
-                <element signature="e#196078#196079#0" expanded="false" />
-                <element signature="e#196117#196118#0" expanded="false" />
-                <element signature="e#204860#204861#0" expanded="false" />
-                <element signature="e#204906#204907#0" expanded="false" />
-                <element signature="e#204956#204957#0" expanded="false" />
-                <element signature="e#205004#205005#0" expanded="false" />
-                <element signature="e#205049#205050#0" expanded="false" />
-                <element signature="e#205098#205099#0" expanded="false" />
-                <element signature="e#208657#208658#0" expanded="false" />
-                <element signature="e#208701#208702#0" expanded="false" />
-                <element signature="e#209113#209114#0" expanded="false" />
-                <element signature="e#209160#209161#0" expanded="false" />
-                <element signature="e#211393#211394#0" expanded="false" />
-                <element signature="e#211445#211446#0" expanded="false" />
-                <element signature="e#211576#211577#0" expanded="false" />
-                <element signature="e#211624#211625#0" expanded="false" />
-                <element signature="e#211675#211676#0" expanded="false" />
-                <element signature="e#211726#211727#0" expanded="false" />
-                <element signature="e#215817#216061#0" expanded="false" />
-                <element signature="e#216060#216061#0" expanded="false" />
-                <element signature="e#216701#217075#0" expanded="false" />
-                <element signature="e#217074#217075#0" expanded="false" />
-                <element signature="e#217363#217364#0" expanded="false" />
-                <element signature="e#217400#217401#0" expanded="false" />
-                <element signature="e#217475#217476#0" expanded="false" />
-                <element signature="e#217509#217510#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Record.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Record.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -270,7 +111,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegistrationNewUser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="738">
+              <caret line="188" column="55" selection-start-line="188" selection-start-column="55" selection-end-line="188" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1054">
@@ -329,8 +182,6 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/FinManagerException.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchUserException.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/DontCreateNewUserException.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Gui/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Gui/RegistrationNewUser.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DataStore.java" />
@@ -341,6 +192,8 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Account.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/User.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java" />
       </list>
     </option>
   </component>
@@ -382,6 +235,42 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="FinManager2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinManager2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinManager2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -793,7 +682,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -807,7 +696,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1098,6 +987,8 @@
           <caret line="85" column="71" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+            <element signature="class#RegistrationButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1668,6 +1559,8 @@
           <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+            <element signature="class#RegistrationButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1750,25 +1643,6 @@
         <state relative-caret-position="102">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_73/src.zip!/java/awt/event/ActionEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#9562#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4685#4686#0" expanded="false" />
-            <element signature="e#4729#4730#0" expanded="false" />
-            <element signature="e#8372#8373#0" expanded="false" />
-            <element signature="e#8408#8409#0" expanded="false" />
-            <element signature="e#8709#8710#0" expanded="false" />
-            <element signature="e#8736#8737#0" expanded="false" />
-            <element signature="e#8917#8918#0" expanded="false" />
-            <element signature="e#8949#8950#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2211,30 +2085,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2031">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/utils/Md5.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="85" column="71" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2499,6 +2353,36 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#433#442#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_73/src.zip!/java/awt/event/ActionEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2100">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+            <element signature="class#RegistrationButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="188" column="55" selection-start-line="188" selection-start-column="55" selection-end-line="188" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
@@ -89,6 +91,9 @@ public class RegistrationNewUser {
 
         //Обработка нажатия кнопок
         createNewUserButton.addActionListener(new CreateNewUserButtonActionListener());
+
+        confirnPasswordField.addKeyListener(new CreateNewUserByPressEnterInConfirmPasswordFieald());
+
         cancelButton.addActionListener(new CancelButtonActionListener());
 
     }
@@ -161,6 +166,28 @@ public class RegistrationNewUser {
             //и снова создаем форму логина и регистрации
             LoginAndRegistration loginAndRegistration = new LoginAndRegistration();
             loginAndRegistration.init();
+        }
+    }
+
+    class CreateNewUserByPressEnterInConfirmPasswordFieald implements KeyListener {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CreateNewUserButtonActionListener().actionPerformed(ae);
+            }
         }
     }
 }

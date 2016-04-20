@@ -85,6 +85,9 @@ public class LoginAndRegistration {
         //обработка нажатия кнопки логина
         loginButton.addActionListener(new LoginButtonActionListener());
 
+        //обработка нажатия кнопки "Энтер" в поле ввода пароля
+        passwordPasswordField.addKeyListener(new LoginByPressEnterInPasswordField());
+
         //обработка нажатия кнопки регистрация
         registrationButton.addActionListener(new RegistrationButtonActionListener());
 
@@ -163,6 +166,26 @@ public class LoginAndRegistration {
         }
     }
 
+    class LoginByPressEnterInPasswordField implements KeyListener {
+        @Override
+        public void keyTyped(KeyEvent e) {
 
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new LoginButtonActionListener().actionPerformed(ae);
+            }
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+    }
 
 }
