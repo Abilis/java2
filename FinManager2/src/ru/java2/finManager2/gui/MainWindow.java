@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -40,7 +42,7 @@ public class MainWindow {
 
 
     //создаем кнопку "создать новый аккаунт"
-    private JButton addNewAccount = new JButton("Создать новый аккаунт");
+    private JButton addNewAccountButton = new JButton("Создать новый аккаунт");
 
     //создаем кнопку "добавить транзакцию"
     private JButton addRecordButton = new JButton("Добавить транзакцию");
@@ -125,7 +127,7 @@ public class MainWindow {
 
 
         //6 ряд. Кнопка "создать новый аккаунт"
-        mainWindowFrame.add(addNewAccount, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(addNewAccountButton, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //7 ряд. Кнопки "добавить транзакцию" и "закрыть"
@@ -147,7 +149,20 @@ public class MainWindow {
         closeAppButton.addActionListener(new CloseButtonActionListener());
 
         //обработка нажатия кнопки "создать новый аккаунт"
-        addNewAccount.addActionListener(new AddNewAccountActionListener());
+        addNewAccountButton.addActionListener(new AddNewAccountActionListener());
+
+        //обработка нажатия кнопки "Добавить транзакцию"
+        addRecordButton.addActionListener(new AddNewRecordButtonActionListener());
+
+        //обработка нажатия клавиши "Энтер" на кнопке "Создать новый аккаунт"
+        addNewAccountButton.addKeyListener(new AddNewAccountByPressEnterOnButonAddNewAccount());
+
+        //обработка нажатия клавиши "Энтер" на кнопке "Добавить транзакцию"
+        addRecordButton.addKeyListener(new AddNewRecordByPressEnterOnButtonAddNewRecord());
+
+        //обработка нажатия клавиши "Энтер" на кнопке "Закрыть
+        closeAppButton.addKeyListener(new CloseMainFrameByPressEnterOnButtonClose());
+
 
     }
 
@@ -167,6 +182,44 @@ public class MainWindow {
             mainWindowFrame.dispose();
             addNewAccount.init();
 
+        }
+    }
+
+    class CloseMainFrameByPressEnterOnButtonClose extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CloseButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class AddNewAccountByPressEnterOnButonAddNewAccount extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new AddNewAccountActionListener ().actionPerformed(ae);
+            }
+        }
+    }
+
+    class AddNewRecordButtonActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Создание новой транзакции");
+        }
+    }
+
+    class AddNewRecordByPressEnterOnButtonAddNewRecord extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new AddNewRecordButtonActionListener ().actionPerformed(ae);
+            }
         }
     }
 
