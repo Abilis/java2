@@ -1,7 +1,9 @@
 package ru.java2.finManager2;
 
-
 import ru.java2.finManager2.gui.LoginAndRegistration;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+
 
 
 /**
@@ -10,11 +12,13 @@ import ru.java2.finManager2.gui.LoginAndRegistration;
 public class FinManager {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException, SQLException {
 
         //инициализации формы логина и регистрации
         LoginAndRegistration loginAndRegistration = new LoginAndRegistration();
         loginAndRegistration.init();
+
+
 
 
 

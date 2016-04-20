@@ -37,9 +37,16 @@ public class MainWindow {
         DbHelper dbHelper = DbHelper.getDbHerper();
 
         try {
-            accounts = dbHelper.getAccounts(currentUser);
-            currentAccount = accounts.get(0); //установка аккаунта по умолчанию
-            ostatokLabel.setText(String.valueOf(currentAccount.getOstatok()));
+            accounts = dbHelper.getAccounts(currentUser); //инициализация аккаунтов текущего пользователя
+
+            currentUser.fillAccountsUser(accounts); //заполняем записями все аккаунты текущего пользователя
+
+            if (accounts.size() != 0) {
+                currentAccount = accounts.get(0); //установка аккаунта по умолчанию
+                ostatokLabel.setText(String.valueOf(currentAccount.getOstatok()));
+            }
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();

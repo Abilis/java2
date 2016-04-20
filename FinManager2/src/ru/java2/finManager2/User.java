@@ -1,5 +1,9 @@
 package ru.java2.finManager2;
 
+
+import ru.java2.finManager2.database.DbHelper;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -49,5 +53,13 @@ public class User {
                 "login='" + login + '\'' +
                 '}';
 
+    }
+
+
+    public void fillAccountsUser(ArrayList<Account> accounts) throws SQLException {
+
+        for (Account acc : accounts) {
+            acc.fillAccountRecords(); //вызываем в цикле метод, который заполняет записями аккаунт
+        }
     }
 }

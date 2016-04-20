@@ -23,4 +23,18 @@ public class Record {
         this.description = description;
         this.category = category;
     }
+
+
+    //тестовый туСтринг
+    @Override
+    public String toString() {
+        return "Record{" +
+                "idRecord=" + idRecord +
+                ", label=" + label +
+                ", dateOfRecord=" + dateOfRecord +
+                ", sum=" + sum +
+                ", description='" + description + '\'' +
+                ", category=" + category +
+                '}';
+    }
 }

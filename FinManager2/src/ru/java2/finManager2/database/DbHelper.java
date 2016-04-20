@@ -116,8 +116,13 @@ public class DbHelper implements DataStore {
                 String description = resultSet.getString("description");
                 int ostatok = resultSet.getInt("ostatok");
 
+                //
+
                 //создаем новый аккаунт по полученным данным и добавляем в список
-                result.add(new Account(idAcc, description, ostatok));
+                Account account = new Account(idAcc, description, ostatok);
+
+                //добавляем получившийся аккаунт в список
+                result.add(account);
             }
         }
 

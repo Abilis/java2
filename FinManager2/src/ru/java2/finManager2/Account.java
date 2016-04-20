@@ -18,7 +18,7 @@ public class Account {
 
     private String description;
     private int ostatok;
-    private ArrayList<Record> records = new ArrayList<Record>();;
+    private ArrayList<Record> records = new ArrayList<Record>();
 
     public String getDescription() {
         return description;
@@ -37,18 +37,24 @@ public class Account {
         this.idAcc = idAcc;
         this.description = description;
         this.ostatok = ostatok;
-      //  fillListOfRecords(this);
     }
 
-    //метод заполняет список записей для переданного аккаунта
-    private void fillListOfRecords(Account account) {
 
+    //метод заполняет аккаунт записями из БД
+    public void fillAccountRecords() throws SQLException {
         DbHelper dbHelper = DbHelper.getDbHerper();
-        try {
-            records = dbHelper.getRecords(account);
-        } catch (SQLException Ignored) {
 
-        }
+        records = dbHelper.getRecords(this);
+    }
 
+    //тестовый туСтринг
+    @Override
+    public String toString() {
+        return "Account{" +
+                "idAcc=" + idAcc +
+                ", description='" + description + '\'' +
+                ", ostatok=" + ostatok +
+                ", records=" + records +
+                '}';
     }
 }
