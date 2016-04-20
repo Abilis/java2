@@ -99,10 +99,6 @@ public class MainWindow {
         listOfAccounts = new JComboBox(currentUser.getArrOfAccounts());
 
 
-
-
-
-
         //расставляем компоненты
 
         //1 ряд, самый верх
@@ -211,7 +207,7 @@ public class MainWindow {
         public void actionPerformed(ActionEvent e) {
 
             mainWindowFrame.dispose();
-            CreateNewRecord createNewRecord = new CreateNewRecord(currentUser);
+            CreateNewRecord createNewRecord = new CreateNewRecord(currentUser, currentAccount);
             createNewRecord.init();
 
         }

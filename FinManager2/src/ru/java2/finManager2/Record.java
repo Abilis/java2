@@ -24,6 +24,14 @@ public class Record {
         this.category = category;
     }
 
+    public Record(boolean label, Date dateOfRecord, int sum, String description, Category category) {
+        this.label = label;
+        this.dateOfRecord = dateOfRecord;
+        this.sum = sum;
+        this.description = description;
+        this.category = category;
+    }
+
 
     //тестовый туСтринг
     @Override

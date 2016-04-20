@@ -5,10 +5,39 @@ package ru.java2.finManager2;
  */
 public enum Category {
 
-    HEALTH,
-    FOOD,
-    CLOTHES,
-    TRAVELLING,
-    OTHER
+    HEALTH {
+        @Override
+        public String toString() {
+            return "HEALTH";
+        }
+    },
+
+    FOOD {
+        @Override
+        public String toString() {
+            return "FOOD";
+        }
+    },
+
+    CLOTHES {
+        @Override
+        public String toString() {
+            return "FOOD";
+        }
+    },
+
+    TRAVELLING {
+        @Override
+        public String toString() {
+            return "FOOD";
+        }
+    },
+
+    OTHER {
+        @Override
+        public String toString() {
+            return "FOOD";
+        }
+    }
 
 }

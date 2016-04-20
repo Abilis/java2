@@ -1,6 +1,10 @@
 package ru.java2.finManager2.gui;
 
+import ru.java2.finManager2.Account;
+import ru.java2.finManager2.Category;
+import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
+import ru.java2.finManager2.database.DbHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 
 /**
  * Created by Abilis on 20.04.2016.
@@ -15,6 +20,7 @@ import java.awt.event.KeyEvent;
 public class CreateNewRecord {
 
     private User currentUser;
+    private Account currentAccount;
 
     //создаем форму
     private JFrame createNewRecordFrame = new JFrame("Финансовый менеджер");
@@ -40,6 +46,7 @@ public class CreateNewRecord {
     private JTextField descriptionTextField = new JTextField(10);
 
     //создаем выпадающий список категорий
+    private JComboBox categories = new JComboBox(Category.values());
 
     //создаем скрытую метку, куда будут выводить сообщения об ошибках
     private JLabel messagesLabel = new JLabel();
@@ -49,8 +56,9 @@ public class CreateNewRecord {
     private JButton cancelButton = new JButton("Отмена");
 
 
-    public CreateNewRecord(User currentUser) {
+    public CreateNewRecord(User currentUser, Account account) {
         this.currentUser = currentUser;
+        this.currentAccount = account;
     }
 
     public void init() {
@@ -62,6 +70,9 @@ public class CreateNewRecord {
         createNewRecordFrame.setLocationRelativeTo(null);
 
         createNewRecordFrame.setLayout(new GridBagLayout());
+
+        //установка выбранной радиокнопки по умолчанию
+        withdrawRadioButton.setSelected(true);
 
         //расстановка компонентов
 
@@ -86,7 +97,8 @@ public class CreateNewRecord {
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //5 ряд. Ставим выпадающий список доступных категорий
-
+        createNewRecordFrame.add(categories, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //6 ряд. Ставим скрытую метку для сообщений об ощибках
         createNewRecordFrame.add(messagesLabel, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
@@ -121,6 +133,55 @@ public class CreateNewRecord {
     class AddNewRecordButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            //разбираем то, что введено в форме
+
+            boolean label = false;
+            String sumStr = sumTextField.getText();
+            int sum = 0;
+            String description = descriptionTextField.getText();
+            Category category = (Category) categories.getSelectedItem();
+
+            //тримим сумму и описание
+            sumStr = sumStr.trim();
+            description = description.trim();
+
+            //проверка на валидность введенных данных
+            if (sumStr.isEmpty() || description.isEmpty()) {
+                messagesLabel.setText("Некорректные данные");
+                return;
+            }
+
+            //установка метки
+            if (addingRadioButton.isSelected()) {
+                label = true;
+            }
+            else {
+                label = false;
+            }
+
+            //парсим сумму в число. Допускаются только положительные числа
+            try {
+                sum = Integer.parseInt(sumStr);
+
+                if (sum <= 0) {
+                    throw new NumberFormatException();
+                }
+
+            } catch (NumberFormatException Ignored) {
+                messagesLabel.setText("Некорректные данные");
+                return;
+            }
+
+            //создаем новую запись
+            Record record = new Record(label, new Date(), sum, description, category);
+
+            //Передаем управление DbHelper
+            DbHelper dbHelper = DbHelper.getDbHerper();
+            dbHelper.addRecord(currentAccount, record);
+
+            //если не произошло ничего страшного - выодим сообщение об успешном добавлении транзакции
+            messagesLabel.setText("Запись успешно добавлена!");
 
         }
     }
