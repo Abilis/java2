@@ -5,6 +5,8 @@ import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
+import ru.java2.finManager2.exceptions.DontAddRecordException;
+import ru.java2.finManager2.exceptions.NoEnoughtMoneyException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -132,6 +135,13 @@ public class CreateNewRecord {
 
         //обработка нажатия клавиши "Энтер" на кнопке "отмена"
         cancelButton.addKeyListener(new CancelByPressEnterOnButtonCancel());
+
+        //обработка нажатия клавиши "Энтер" в поле ввода суммы
+        sumTextField.addKeyListener(new AddNewRecordByPressEnterInDescriptionTextField());
+
+        //обработка нажатия клавиши "Энтер" в поле ввода описания
+        descriptionTextField.addKeyListener(new AddNewRecordByPressEnterInDescriptionTextField());
+
     }
 
     class AddNewRecordButtonActionListener implements ActionListener {
@@ -182,11 +192,23 @@ public class CreateNewRecord {
 
             //Передаем управление DbHelper
             DbHelper dbHelper = DbHelper.getDbHerper();
-            dbHelper.addRecord(currentAccount, record);
 
-            //если не произошло ничего страшного - выводим сообщение об успешном добавлении транзакции
-            messagesLabel.setText("Запись успешно добавлена!");
+            try {
+                dbHelper.addRecord(currentAccount, record);
+                //если не произошло ничего страшного - закрываем эту форму и открываем главное окно приложения
 
+                createNewRecordFrame.dispose();
+
+                MainWindow mainWindow = new MainWindow(currentUser);
+                mainWindow.init();
+
+            } catch (SQLException e1) {
+                messagesLabel.setText("Ошибка при записи в БД. Попробуйте еще раз");
+                e1.printStackTrace();
+            } catch (DontAddRecordException | NoEnoughtMoneyException e1) {
+                messagesLabel.setText(e1.getMessage());
+
+            }
         }
     }
 
@@ -217,6 +239,26 @@ public class CreateNewRecord {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 ActionEvent ae = new ActionEvent(e, 0, "test");
                 new CancelButtonActionListener ().actionPerformed(ae);
+            }
+        }
+    }
+
+    class AddNewRecordByPressEnterInSumTextField extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new AddNewRecordButtonActionListener ().actionPerformed(ae);
+            }
+        }
+    }
+
+    class AddNewRecordByPressEnterInDescriptionTextField extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new AddNewRecordButtonActionListener ().actionPerformed(ae);
             }
         }
     }

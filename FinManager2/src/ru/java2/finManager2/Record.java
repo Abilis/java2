@@ -15,6 +15,30 @@ public class Record {
     private  String description;
     private Category category;
 
+    public int getIdRecord() {
+        return idRecord;
+    }
+
+    public boolean isLabel() {
+        return label;
+    }
+
+    public Date getDateOfRecord() {
+        return dateOfRecord;
+    }
+
+    public int getSum() {
+        return sum;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
     public Record(int idRecord, boolean label, Date dateOfRecord, int sum, String description, Category category) {
         this.idRecord = idRecord;
         this.label = label;

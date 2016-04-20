@@ -4,10 +4,8 @@ import ru.java2.finManager2.Account;
 import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
-import ru.java2.finManager2.exceptions.DontCreateNewUserException;
-import ru.java2.finManager2.exceptions.ExistSuchAccountException;
-import ru.java2.finManager2.exceptions.ExistSuchUserException;
-import ru.java2.finManager2.exceptions.NoSuchUserException;
+import ru.java2.finManager2.exceptions.*;
+import ru.java2.finManager2.utils.DateFormatForMySql;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -267,9 +265,62 @@ public class DbHelper implements DataStore {
     }
 
     @Override
-    public void addRecord(Account account, Record record) {
+    public void addRecord(Account account, Record record) throws SQLException, DontAddRecordException, NoEnoughtMoneyException {
 
-        
+        //если метка снятие - проверяем, достаточно ли на аккаунте остатка средств
+        if (!record.isLabel()) {
+            if (account.getOstatok() < record.getSum()) {
+                throw new NoEnoughtMoneyException("Недостаточно средст на аккаунте");
+            }
+        }
+
+        //ставим метку в 0 или 1
+        int label = 0;
+
+        if (record.isLabel()) {
+            label = 1;
+        }
+
+        //приводим дату в удобный для MySQL
+        String dateRecord = DateFormatForMySql.getDateFormatForMySql(record.getDateOfRecord());
+
+
+        try (Connection connection = getConnection()) {
+
+            //Формируем запрос
+            String query = "INSERT INTO `records`(`label`, `dt`, `sum`, `description`, `category`, `id_acc`) " +
+                    "VALUES (\"" + label + "\", \"" + dateRecord + "\", \"" +
+                    record.getSum() + "\", \"" + record.getDescription() + "\", \"" + record.getCategory().toString() +
+                    "\", \"" + account.getIdAcc() + "\");";
+
+            //Выполняем запрос
+            Statement statement = connection.createStatement();
+            int n = statement.executeUpdate(query);
+
+            if (n == 0) {
+                throw new DontAddRecordException("Неверный ответ БД");
+            }
+
+            int newSum;
+
+            //если метка пополнения - меняем знак суммы
+            if (record.isLabel()) {
+                newSum = -record.getSum();
+            }
+            else {
+                newSum = record.getSum();
+            }
+
+            //уменьшаем на аккаунте сумму остатка
+            newSum = account.getOstatok() - newSum;
+
+
+
+            String queryWithdraw = "UPDATE `accounts` SET `ostatok`=\"" + newSum + "\" WHERE id_acc=\""
+                    + account.getIdAcc() + "\";";
+
+            statement.executeUpdate(queryWithdraw);
+        }
 
     }
 

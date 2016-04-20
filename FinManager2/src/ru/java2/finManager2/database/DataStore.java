@@ -3,9 +3,7 @@ package ru.java2.finManager2.database;
 import ru.java2.finManager2.Account;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
-import ru.java2.finManager2.exceptions.ExistSuchAccountException;
-import ru.java2.finManager2.exceptions.ExistSuchUserException;
-import ru.java2.finManager2.exceptions.NoSuchUserException;
+import ru.java2.finManager2.exceptions.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,7 +31,7 @@ public interface DataStore {
 
     void addAccount(User user, Account account) throws ExistSuchAccountException, SQLException;
 
-    void addRecord(Account account, Record record);
+    void addRecord(Account account, Record record) throws SQLException, DontAddRecordException, NoEnoughtMoneyException;
 
     // return removed User or null if no such user
     User removeUser(String name);
