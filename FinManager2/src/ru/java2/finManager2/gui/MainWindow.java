@@ -209,7 +209,11 @@ public class MainWindow {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Создание новой транзакции");
+
+            mainWindowFrame.dispose();
+            CreateNewRecord createNewRecord = new CreateNewRecord(currentUser);
+            createNewRecord.init();
+
         }
     }
 
