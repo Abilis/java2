@@ -15,9 +15,13 @@ public class MainWindow {
     private JFrame mainWindowFrame = new JFrame("Финансовый менеджер");
     private Dimension dimensionMainWindowFrame = new Dimension(800, 600);
 
+    //создаем метку, где находится имя пользователя
+    private JLabel usernameLabel = new JLabel();
+
 
     public MainWindow(User currentUser) {
         this.currentUser = currentUser;
+        usernameLabel.setText(currentUser.getLogin());
     }
 
     //инициализация формы
@@ -31,6 +35,13 @@ public class MainWindow {
 
         mainWindowFrame.setLayout(new GridBagLayout());
 
+        //установка настроек метки
+
+
+
+        //расставляем компоненты
+        mainWindowFrame.add(usernameLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
 
         //делаем форму видимой
