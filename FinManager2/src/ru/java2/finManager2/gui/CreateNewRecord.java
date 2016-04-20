@@ -142,6 +142,9 @@ public class CreateNewRecord {
         //обработка нажатия клавиши "Энтер" в поле ввода описания
         descriptionTextField.addKeyListener(new AddNewRecordByPressEnterInDescriptionTextField());
 
+        
+
+
     }
 
     class AddNewRecordButtonActionListener implements ActionListener {
