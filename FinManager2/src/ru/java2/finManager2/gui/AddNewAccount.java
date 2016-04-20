@@ -1,6 +1,8 @@
 package ru.java2.finManager2.gui;
 
+import ru.java2.finManager2.Account;
 import ru.java2.finManager2.User;
+import ru.java2.finManager2.database.DbHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -130,14 +132,22 @@ public class AddNewAccount {
 
             //преобразуем остаток в целое число
 
+            int ostatok = 0;
             try {
-                int ostatok = Integer.parseInt(ostatokNewAccount);
+                ostatok = Integer.parseInt(ostatokNewAccount);
             } catch (NumberFormatException e2) {
                 messagesLabel.setText("Некорректные данные!");
                 return;
             }
 
+            //если проверки пройдены - создаем новый аккаунт для текущего пользователя и закрываем это окно
 
+            Account account = new Account(descriptionNewAccount, ostatok);
+
+            DbHelper dbHelper = DbHelper.getDbHerper();
+            dbHelper.addAccount(currentUser, account);
+
+            addNewAccountFrame.dispose();
         }
     }
 

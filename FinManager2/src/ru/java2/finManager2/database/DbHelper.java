@@ -216,6 +216,32 @@ public class DbHelper implements DataStore {
 
 
 
+        try (Connection connection = getConnection()) {
+
+            String idUser = "";
+
+            //Вытаскиваем id пользователя
+            String queryIdUser = "SELECT `id_user` FROM `users` WHERE `login`=\"" + user.getLogin() + "\";";
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(queryIdUser);
+
+            while (resultSet.next()) {
+                idUser = resultSet.getString("id_user");
+            }
+
+
+            //Формируем запрос на создание нового аккаунта
+            String queryNewAcc = "INSERT INTO `accounts` (`description`, `ostatok`, `id_user`) VALUES" +
+                    " (\"" + account.getDescription() + "\", \"" + account.getOstatok() + "\", \"" + idUser + "\");";
+
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 

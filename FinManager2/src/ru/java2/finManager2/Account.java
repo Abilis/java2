@@ -39,6 +39,11 @@ public class Account {
         this.ostatok = ostatok;
     }
 
+    public Account(String description, int ostatok) {
+        this.description = description;
+        this.ostatok = ostatok;
+    }
+
 
     //метод заполняет аккаунт записями из БД
     public void fillAccountRecords() throws SQLException {
