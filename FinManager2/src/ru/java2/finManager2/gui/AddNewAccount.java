@@ -124,6 +124,8 @@ public class AddNewAccount {
         @Override
         public void actionPerformed(ActionEvent e) {
             addNewAccountFrame.dispose();
+            MainWindow mainWindow = new MainWindow(currentUser);
+            mainWindow.init();
         }
     }
 
