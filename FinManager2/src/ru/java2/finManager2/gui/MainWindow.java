@@ -30,11 +30,20 @@ public class MainWindow {
     //создаем метку, где будут отображаться сообщения об ошибках
     private JLabel mesLabel = new JLabel();
 
-    //создаем список
+    //создаем метку, описывающую выпадающий список
+    private JLabel listOfAccountLabel = new JLabel("Текущий аккаунт:");
+
+    //создаем выпадающий список
     private JComboBox listOfAccounts;
 
-    //создаем прокрутку для списка
-    private JScrollPane scrollPaneForListOfAccounts;
+
+
+    //создаем кнопку "добавить транзакцию"
+    private JButton addRecordButton = new JButton("Добавить транзакцию");
+
+    //создаем кнопку "закрыть"
+    private JButton closeAppButton = new JButton("Закрыть");
+
 
 
     public MainWindow(User currentUser) {
@@ -51,7 +60,7 @@ public class MainWindow {
 
             if (accounts.size() != 0) {
                 currentAccount = accounts.get(0); //установка аккаунта по умолчанию
-                ostatokLabel.setText(String.valueOf(currentAccount.getOstatok()));
+                ostatokLabel.setText("Баланс: " + String.valueOf(currentAccount.getOstatok()));
             }
 
 
@@ -83,8 +92,7 @@ public class MainWindow {
         //инициализируем listOfAccounts массивом строк, описывающих аккаунт
         listOfAccounts = new JComboBox(currentUser.getArrOfAccounts());
 
-        //инициализируем прокрутку для списка
-        scrollPaneForListOfAccounts = new JScrollPane(listOfAccounts);
+
 
 
 
@@ -101,12 +109,23 @@ public class MainWindow {
         mainWindowFrame.add(mesLabel, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        //3 ряд. Выпадающий список аккаунтов
-        mainWindowFrame.add(scrollPaneForListOfAccounts, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //3 ряд. Метка, описывающая список аккаунтов
+        mainWindowFrame.add(listOfAccountLabel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        //4 ряд. Пролистываемый список записей
+        //4 ряд. Выпадающий список аккаунтов
+        mainWindowFrame.add(listOfAccounts, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
+        //5 ряд. Пролистываемый список записей
+
+
+
+        //6 ряд. Кнопки "добавить транзакцию" и "закрыть"
+        mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
         //делаем форму видимой
