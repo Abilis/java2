@@ -92,14 +92,34 @@ public class DbHelper implements DataStore {
     @Override
     public ArrayList<Account> getAccounts(User owner) {
 
+        ArrayList<Account> result = new ArrayList<>();
+
         //формируем запрос
         String query = "SELECT `id_acc`, `ostatok`, `description` FROM `accounts`, `users`" +
                 "WHERE `accounts`.`id_user`=`users`.`id_user` AND `users`.`login`=\"" + owner.getLogin() + "\";";
 
         //Выполняем запрос
-        
+        try (Connection connection = getConnection())
+        {
 
-        return null;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            //разбираем то, что вернула база и собираем список аккаунтов
+
+
+            while (resultSet.next()) {
+                String description = resultSet.getString("description");
+                int ostatok = Integer.parseInt(resultSet.getString("ostatok"));
+
+                //создаем новый аккаунт по полученным данным и добавляем в список
+                result.add(new Account(description, ostatok));
+            }
+
+        }
+
+
+        return result;
     }
 
     @Override

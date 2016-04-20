@@ -22,4 +22,10 @@ public class Account {
     public ArrayList<Record> getRecords() {
         return records;
     }
+
+    public Account(String description, int ostatok) {
+        this.description = description;
+        this.ostatok = ostatok;
+
+    }
 }
