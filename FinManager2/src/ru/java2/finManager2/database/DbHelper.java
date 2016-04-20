@@ -169,9 +169,7 @@ public class DbHelper implements DataStore {
 
             }
 
-
         }
-
 
         return result;
     }
