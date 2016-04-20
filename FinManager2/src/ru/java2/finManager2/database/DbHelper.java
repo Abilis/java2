@@ -1,6 +1,7 @@
 package ru.java2.finManager2.database;
 
 import ru.java2.finManager2.Account;
+import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.exceptions.DontCreateNewUserException;
@@ -11,6 +12,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Set;
+
+import static ru.java2.finManager2.Category.HEALTH;
 
 /**
  * Created by Abilis on 19.04.2016.
@@ -90,17 +93,17 @@ public class DbHelper implements DataStore {
     }
 
     @Override
-    public ArrayList<Account> getAccounts(User owner) {
+    public ArrayList<Account> getAccounts(User owner) throws SQLException {
 
         ArrayList<Account> result = new ArrayList<>();
-
-        //формируем запрос
-        String query = "SELECT `id_acc`, `ostatok`, `description` FROM `accounts`, `users`" +
-                "WHERE `accounts`.`id_user`=`users`.`id_user` AND `users`.`login`=\"" + owner.getLogin() + "\";";
 
         //Выполняем запрос
         try (Connection connection = getConnection())
         {
+
+            //формируем запрос
+            String query = "SELECT `id_acc`, `ostatok`, `description` FROM `accounts`, `users`" +
+                    "WHERE `accounts`.`id_user`=`users`.`id_user` AND `users`.`login`=\"" + owner.getLogin() + "\";";
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -109,22 +112,68 @@ public class DbHelper implements DataStore {
 
 
             while (resultSet.next()) {
+                int idAcc = resultSet.getInt("id_acc");
                 String description = resultSet.getString("description");
-                int ostatok = Integer.parseInt(resultSet.getString("ostatok"));
+                int ostatok = resultSet.getInt("ostatok");
 
                 //создаем новый аккаунт по полученным данным и добавляем в список
-                result.add(new Account(description, ostatok));
+                result.add(new Account(idAcc, description, ostatok));
             }
+        }
+
+        return result;
+    }
+
+
+    @Override
+    public ArrayList<Record> getRecords(Account account) throws SQLException {
+        ArrayList<Record> result = new ArrayList<Record>();
+
+
+
+        //выполняем запрос
+        try (Connection connection = getConnection())
+        {
+            //формируем запрос
+            String query = "SELECT * FROM `records` WHERE `id_acc`=\"" + account.getIdAcc() + "\" ORDER BY `dt` DESC;";
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                int idRecord = resultSet.getInt("id_rec");
+                boolean label = resultSet.getBoolean("label");
+                Date dt = resultSet.getDate("dt");
+                int sum = resultSet.getInt("sum");
+                String descriprion = resultSet.getString("description");
+
+                String categoryStr = resultSet.getString("category");
+                Category category = Category.OTHER;
+
+                if (categoryStr.equalsIgnoreCase("HEALTH")) {
+                    category = Category.HEALTH;
+                }
+                else if (categoryStr.equalsIgnoreCase("FOOD")) {
+                    category = Category.FOOD;
+                }
+                else if (categoryStr.equalsIgnoreCase("CLOTHES")) {
+                    category = Category.CLOTHES;
+                }
+                else if (categoryStr.equalsIgnoreCase("TRAVELLING")) {
+                    category = Category.TRAVELLING;
+                }
+
+
+                //создаем новую запись и добавлем в список
+                result.add(new Record(idRecord, label, dt, sum, descriprion, category));
+
+            }
+
 
         }
 
 
         return result;
-    }
-
-    @Override
-    public Set<Record> getRecords(Account account) {
-        return null;
     }
 
     @Override

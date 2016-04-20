@@ -7,6 +7,12 @@ import java.util.ArrayList;
  */
 public class Account {
 
+    private int idAcc;
+
+    public int getIdAcc() {
+        return idAcc;
+    }
+
     private String description;
     private int ostatok;
     private ArrayList<Record> records;
@@ -23,7 +29,8 @@ public class Account {
         return records;
     }
 
-    public Account(String description, int ostatok) {
+    public Account(int idAcc, String description, int ostatok) {
+        this.idAcc = idAcc;
         this.description = description;
         this.ostatok = ostatok;
 

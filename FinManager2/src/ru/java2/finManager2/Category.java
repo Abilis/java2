@@ -8,6 +8,7 @@ public enum Category {
     HEALTH,
     FOOD,
     CLOTHES,
-    TRAVELLING
+    TRAVELLING,
+    OTHER
 
 }

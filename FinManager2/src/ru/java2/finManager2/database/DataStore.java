@@ -22,11 +22,11 @@ public interface DataStore {
     Set<String> getUserNames();
 
     // If no accounts, return empty collection (not null)
-    ArrayList<Account> getAccounts(User owner);
+    ArrayList<Account> getAccounts(User owner) throws SQLException;
 
 
     // If no records, return empty collection (not null)
-    Set<Record> getRecords(Account account);
+    ArrayList<Record> getRecords(Account account) throws SQLException;
 
     void addUser(User user) throws SQLException, ExistSuchUserException;
 
