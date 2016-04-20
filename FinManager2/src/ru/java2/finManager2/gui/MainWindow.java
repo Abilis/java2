@@ -164,6 +164,7 @@ public class MainWindow {
 
             //нужно создать новое модальное окно, где пользователь может ввести/выбрать данные нового аккаунта
             AddNewAccount addNewAccount = new AddNewAccount(currentUser);
+            mainWindowFrame.dispose();
             addNewAccount.init();
 
         }

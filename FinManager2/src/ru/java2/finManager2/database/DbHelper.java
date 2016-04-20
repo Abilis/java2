@@ -5,6 +5,7 @@ import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.exceptions.DontCreateNewUserException;
+import ru.java2.finManager2.exceptions.ExistSuchAccountException;
 import ru.java2.finManager2.exceptions.ExistSuchUserException;
 import ru.java2.finManager2.exceptions.NoSuchUserException;
 
@@ -212,7 +213,7 @@ public class DbHelper implements DataStore {
     }
 
     @Override
-    public void addAccount(User user, Account account) {
+    public void addAccount(User user, Account account) throws ExistSuchAccountException, SQLException {
 
 
 
@@ -230,15 +231,35 @@ public class DbHelper implements DataStore {
                 idUser = resultSet.getString("id_user");
             }
 
+            //проверяем, есть ли такой аккаунт в БД
+
+            int count = 0;
+
+            String queryGetAccountByName = "SELECT COUNT(*) FROM `accounts` WHERE `description`=\"" + account.getDescription() + "\";";
+            resultSet = statement.executeQuery(queryGetAccountByName);
+
+
+            while (resultSet.next()) {
+                count = resultSet.getInt("COUNT(*)");
+            }
+
+            //если возвращено какое-то число, то это означает, что аккаунт с таким названием уже есть
+            if (count != 0) {
+                throw new ExistSuchAccountException("Аккаунт с таким описанием уже существует");
+            }
+
 
             //Формируем запрос на создание нового аккаунта
             String queryNewAcc = "INSERT INTO `accounts` (`description`, `ostatok`, `id_user`) VALUES" +
                     " (\"" + account.getDescription() + "\", \"" + account.getOstatok() + "\", \"" + idUser + "\");";
 
-            
+            //выполняем запрос
+            int res = statement.executeUpdate(queryNewAcc);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            if (res != 1) {
+                throw new SQLException("Неверный ответ от БД");
+            }
+
         }
 
 

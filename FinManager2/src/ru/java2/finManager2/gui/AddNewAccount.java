@@ -3,11 +3,13 @@ package ru.java2.finManager2.gui;
 import ru.java2.finManager2.Account;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
+import ru.java2.finManager2.exceptions.ExistSuchAccountException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 /**
  * Created by Abilis on 20.04.2016.
@@ -17,7 +19,7 @@ public class AddNewAccount {
     private User currentUser;
 
     //создаем диалоговое окно
-    private JDialog addNewAccountFrame = new JDialog();
+    private JFrame addNewAccountFrame = new JFrame();
     private Dimension dimensionAddNewAccountFrame = new Dimension(330, 200);
 
     //создаем метку-описание того, что здесь происходит
@@ -49,6 +51,7 @@ public class AddNewAccount {
         addNewAccountFrame.setSize(dimensionAddNewAccountFrame);
         addNewAccountFrame.setResizable(false);
         addNewAccountFrame.setLocationRelativeTo(null);
+        addNewAccountFrame.setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
 
         addNewAccountFrame.setLayout(new GridBagLayout());
 
@@ -145,9 +148,24 @@ public class AddNewAccount {
             Account account = new Account(descriptionNewAccount, ostatok);
 
             DbHelper dbHelper = DbHelper.getDbHerper();
-            dbHelper.addAccount(currentUser, account);
+            try {
+                dbHelper.addAccount(currentUser, account);
 
-            addNewAccountFrame.dispose();
+                //если дошли сюда - значит, новый аккаунт успешно создался. Необходимо закрыть эту форму
+                addNewAccountFrame.dispose();
+
+                //и заново нарисовать главное окно приложения
+                MainWindow mainWindow = new MainWindow(currentUser);
+                mainWindow.init();
+
+            } catch (ExistSuchAccountException e1) {
+                //такой аккаунт уже существуют
+                messagesLabel.setText(e1.getMessage());
+
+            } catch (SQLException e1) {
+                //ошибка БД
+                messagesLabel.setText(e1.getMessage());
+            }
         }
     }
 
