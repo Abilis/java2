@@ -30,6 +30,12 @@ public class MainWindow {
     //создаем метку, где будут отображаться сообщения об ошибках
     private JLabel mesLabel = new JLabel();
 
+    //создаем список
+    private JComboBox listOfAccounts;
+
+    //создаем прокрутку для списка
+    private JScrollPane scrollPaneForListOfAccounts;
+
 
     public MainWindow(User currentUser) {
         this.currentUser = currentUser;
@@ -40,6 +46,8 @@ public class MainWindow {
             accounts = dbHelper.getAccounts(currentUser); //инициализация аккаунтов текущего пользователя
 
             currentUser.fillAccountsUser(accounts); //заполняем записями все аккаунты текущего пользователя
+
+            currentUser.setAccounts(accounts); //записываем в поле текущего пользователя полученный список аккаунтов
 
             if (accounts.size() != 0) {
                 currentAccount = accounts.get(0); //установка аккаунта по умолчанию
@@ -68,8 +76,16 @@ public class MainWindow {
         mainWindowFrame.setLayout(new GridBagLayout());
 
         //установка настроек метки с сообщениями об ошибках
-        mesLabel.setHorizontalAlignment(0);;
+        mesLabel.setHorizontalAlignment(0);
         mesLabel.setForeground(Color.RED);
+
+        //установка настроек выпадающего списка аккаунтов
+        //инициализируем listOfAccounts массивом строк, описывающих аккаунт
+        listOfAccounts = new JComboBox(currentUser.getArrOfAccounts());
+
+        //инициализируем прокрутку для списка
+        scrollPaneForListOfAccounts = new JScrollPane(listOfAccounts);
+
 
 
 
@@ -86,11 +102,12 @@ public class MainWindow {
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //3 ряд. Выпадающий список аккаунтов
-
+        mainWindowFrame.add(scrollPaneForListOfAccounts, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //4 ряд. Пролистываемый список записей
 
-        
+
 
         //делаем форму видимой
         mainWindowFrame.setVisible(true);

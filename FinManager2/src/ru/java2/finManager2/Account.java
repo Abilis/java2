@@ -47,14 +47,10 @@ public class Account {
         records = dbHelper.getRecords(this);
     }
 
-    //тестовый туСтринг
+
     @Override
     public String toString() {
-        return "Account{" +
-                "idAcc=" + idAcc +
-                ", description='" + description + '\'' +
-                ", ostatok=" + ostatok +
-                ", records=" + records +
-                '}';
+        return description + ", остаток на счете: " + ostatok;
     }
+
 }

@@ -1,8 +1,6 @@
 package ru.java2.finManager2;
 
 
-import ru.java2.finManager2.database.DbHelper;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,6 +12,10 @@ public class User {
     private String login;
     private String password;
     private ArrayList<Account> accounts;
+
+    public void setAccounts(ArrayList<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public String getPassword() {
         return password;
@@ -62,4 +64,17 @@ public class User {
             acc.fillAccountRecords(); //вызываем в цикле метод, который заполняет записями аккаунт
         }
     }
+
+    //метод преобразует список аккаунтов текущего пользователя в массив строк, описывающих аккаунт
+    public String[] getArrOfAccounts() {
+
+        String[] accountsForList = new String[this.accounts.size()];
+
+        for (int i = 0; i < accountsForList.length; i++) {
+            accountsForList[i] = this.accounts.get(i).toString();
+        }
+
+        return accountsForList;
+    }
+
 }
