@@ -146,7 +146,8 @@ public class MainWindow {
         //обработка нажатия кнопки "закрыть"
         closeAppButton.addActionListener(new CloseButtonActionListener());
 
-
+        //обработка нажатия кнопки "создать новый аккаунт"
+        addNewAccount.addActionListener(new AddNewAccountActionListener());
 
     }
 
@@ -154,6 +155,17 @@ public class MainWindow {
         @Override
         public void actionPerformed(ActionEvent e) {
             mainWindowFrame.dispose();
+        }
+    }
+
+    class AddNewAccountActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            //нужно создать новое модальное окно, где пользователь может ввести/выбрать данные нового аккаунта
+
+            //там должны быть две кнопки - "Создать" и "отмена"
+
         }
     }
 
