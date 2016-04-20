@@ -6,6 +6,8 @@ import ru.java2.finManager2.database.DbHelper;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -37,6 +39,8 @@ public class MainWindow {
     private JComboBox listOfAccounts;
 
 
+    //создаем кнопку "создать новый аккаунт"
+    private JButton addNewAccount = new JButton("Создать новый аккаунт");
 
     //создаем кнопку "добавить транзакцию"
     private JButton addRecordButton = new JButton("Добавить транзакцию");
@@ -120,11 +124,14 @@ public class MainWindow {
         //5 ряд. Пролистываемый список записей
 
 
-
-        //6 ряд. Кнопки "добавить транзакцию" и "закрыть"
-        mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //6 ряд. Кнопка "создать новый аккаунт"
+        mainWindowFrame.add(addNewAccount, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+
+        //7 ряд. Кнопки "добавить транзакцию" и "закрыть"
+        mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
@@ -134,6 +141,20 @@ public class MainWindow {
 
 
 
+        //обработчики событий
+
+        //обработка нажатия кнопки "закрыть"
+        closeAppButton.addActionListener(new CloseButtonActionListener());
+
+
 
     }
+
+    class CloseButtonActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mainWindowFrame.dispose();
+        }
+    }
+
 }
