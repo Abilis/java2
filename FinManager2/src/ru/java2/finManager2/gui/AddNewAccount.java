@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
 /**
@@ -98,12 +100,23 @@ public class AddNewAccount {
 
         //обработчики
 
-        //обработка нажатия на кнопку "отмена"
+        //обработка нажатия на кнопку "Закрыть"
         closeAddNewAccountFrameButton.addActionListener(new CloseNewAccountFrameActionListener());
 
-        //обработка нажатия на кнопку "создать новый аккаунт"
+        //обработка нажатия на кнопку "Создать новый аккаунт"
         addNewAccountButton.addActionListener(new AddNewAccountActionListener());
 
+        //обработка нажатия клавиши "Энтер" в поле ввода названия нового аккаунта
+        descriptionNewAccTextField.addKeyListener(new AddNewAccountByPressEnterInDescriptionNewAccountTextField());
+
+        //обработка нажатия клавиши "Энтер" в поле ввода начальной суммы на счету
+        ostatokNewAccTextField.addKeyListener(new AddNewAccountByPressEnterInOstatokNewAccountTextField());
+
+        //обработка нажатия клавиши "Энтер" на кнопке "Создать новый аккаунт"
+        addNewAccountButton.addKeyListener(new AddNewAccountByPressEnterOnCreateNewAccountButton());
+
+        //обработка нажатия клавиши "Энтер" на кнопке "Закрыть"
+        closeAddNewAccountFrameButton.addKeyListener(new CloseNewAccountFrameByPressEnterOnButtonCloseNewAccountFrame());
 
     }
 
@@ -165,6 +178,46 @@ public class AddNewAccount {
             } catch (SQLException e1) {
                 //ошибка БД
                 messagesLabel.setText(e1.getMessage());
+            }
+        }
+    }
+
+    class CloseNewAccountFrameByPressEnterOnButtonCloseNewAccountFrame extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CloseNewAccountFrameActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class AddNewAccountByPressEnterInDescriptionNewAccountTextField extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new AddNewAccountActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class AddNewAccountByPressEnterInOstatokNewAccountTextField extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new AddNewAccountActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class AddNewAccountByPressEnterOnCreateNewAccountButton extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new AddNewAccountActionListener().actionPerformed(ae);
             }
         }
     }

@@ -35,13 +35,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddNewAccount.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddNewAccount.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="91" column="78" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
+            <state relative-caret-position="247">
+              <caret line="115" column="98" selection-start-line="115" selection-start-column="98" selection-end-line="115" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5626#5627#0" expanded="true" />
+                <element signature="e#5678#5679#0" expanded="true" />
+                <element signature="class#AddNewAccountActionListener#0;class#AddNewAccount#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -81,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegistrationNewUser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegistrationNewUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="109" column="74" selection-start-line="109" selection-start-column="74" selection-end-line="109" selection-end-column="74" />
+            <state relative-caret-position="1165">
+              <caret line="228" column="12" selection-start-line="228" selection-start-column="12" selection-end-line="231" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#CreateNewUserButtonActionListener#0;class#RegistrationNewUser#0" expanded="false" />
@@ -119,7 +122,7 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
+            <state relative-caret-position="417">
               <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
               <folding>
                 <element signature="e#5730#5731#0" expanded="true" />
@@ -175,10 +178,10 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Account.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchAccountException.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java" />
       </list>
     </option>
   </component>
@@ -1352,23 +1355,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
-          <folding>
-            <element signature="e#5730#5731#0" expanded="true" />
-            <element signature="e#5779#5780#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="91" column="78" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
+        <state relative-caret-position="281">
+          <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1381,24 +1374,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
+        <state relative-caret-position="417">
+          <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+            <element signature="e#5730#5731#0" expanded="true" />
+            <element signature="e#5779#5780#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="109" column="74" selection-start-line="109" selection-start-column="74" selection-end-line="109" selection-end-column="74" />
+        <state relative-caret-position="1165">
+          <caret line="228" column="12" selection-start-line="228" selection-start-column="12" selection-end-line="231" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#CreateNewUserButtonActionListener#0;class#RegistrationNewUser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="115" column="98" selection-start-line="115" selection-start-column="98" selection-end-line="115" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5626#5627#0" expanded="true" />
+            <element signature="e#5678#5679#0" expanded="true" />
+            <element signature="class#AddNewAccountActionListener#0;class#AddNewAccount#0" expanded="false" />
           </folding>
         </state>
       </provider>
