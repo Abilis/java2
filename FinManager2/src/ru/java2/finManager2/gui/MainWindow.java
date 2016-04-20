@@ -85,6 +85,12 @@ public class MainWindow {
         mainWindowFrame.add(mesLabel, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
+        //3 ряд. Выпадающий список аккаунтов
+
+
+        //4 ряд. Пролистываемый список записей
+
+        
 
         //делаем форму видимой
         mainWindowFrame.setVisible(true);
