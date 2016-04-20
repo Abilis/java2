@@ -22,69 +22,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginAndRegistration.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoginAndRegistration.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+            <state relative-caret-position="281">
+              <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+                <element signature="class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/User.java">
+      <file leaf-file-name="AddNewAccount.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="91" column="78" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#310#311#0" expanded="true" />
-                <element signature="e#350#351#0" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#416#417#0" expanded="true" />
-                <element signature="e#448#449#0" expanded="true" />
-                <element signature="e#476#477#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2746#2747#0" expanded="true" />
-                <element signature="e#2773#2774#0" expanded="true" />
-                <element signature="e#4167#4175#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/mysql-connector-java-5.1.38/src/com/mysql/jdbc/ConnectionImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="1520" column="0" selection-start-line="1520" selection-start-column="0" selection-end-line="1520" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExistSuchAccountException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchAccountException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#209#210#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,14 +59,58 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ExistSuchUserException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchUserException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExistSuchAccountException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchAccountException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <element signature="e#209#210#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="RegistrationNewUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="188" column="55" selection-start-line="188" selection-start-column="55" selection-end-line="188" selection-end-column="55" />
+            <state relative-caret-position="190">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DontCreateNewUserException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/DontCreateNewUserException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+              <folding>
+                <element signature="e#263#264#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateNewRecord.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/CreateNewRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,11 +118,9 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="167" column="33" selection-start-line="167" selection-start-column="33" selection-end-line="167" selection-end-column="33" />
+            <state relative-caret-position="403">
+              <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#506#515#0" expanded="true" />
                 <element signature="e#5730#5731#0" expanded="true" />
                 <element signature="e#5779#5780#0" expanded="true" />
               </folding>
@@ -129,33 +128,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddNewAccount.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java">
+      <file leaf-file-name="NoSuchUserException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/NoSuchUserException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-892">
-              <caret line="91" column="78" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1565#1566#0" expanded="true" />
-                <element signature="e#1611#1612#0" expanded="true" />
-                <element signature="e#4803#4804#0" expanded="true" />
-                <element signature="e#4855#4856#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Account.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#397#405#0" expanded="true" />
-                <element signature="e#1178#1179#0" expanded="true" />
-                <element signature="e#1247#1248#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,23 +169,23 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Category.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/FinManager.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Record.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/User.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/CreateNewRecord.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Account.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchAccountException.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="width" value="1296" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -234,7 +212,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -365,8 +345,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -655,22 +633,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -707,7 +685,116 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58361">
           <caret line="3549" column="0" selection-start-line="3549" selection-start-column="0" selection-end-line="3549" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#217513#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3400#3401#0" expanded="false" />
+            <element signature="e#3432#3433#0" expanded="false" />
+            <element signature="e#3558#3559#0" expanded="false" />
+            <element signature="e#3599#3600#0" expanded="false" />
+            <element signature="e#4034#4035#0" expanded="false" />
+            <element signature="e#4115#4116#0" expanded="false" />
+            <element signature="e#4271#4272#0" expanded="false" />
+            <element signature="e#4317#4318#0" expanded="false" />
+            <element signature="e#4371#4372#0" expanded="false" />
+            <element signature="e#4409#4410#0" expanded="false" />
+            <element signature="e#4451#4452#0" expanded="false" />
+            <element signature="e#4528#4529#0" expanded="false" />
+            <element signature="e#7786#7787#0" expanded="false" />
+            <element signature="e#7830#7831#0" expanded="false" />
+            <element signature="e#9126#9153#0" expanded="false" />
+            <element signature="e#9355#9385#0" expanded="false" />
+            <element signature="e#9611#9641#0" expanded="false" />
+            <element signature="e#9857#9887#0" expanded="false" />
+            <element signature="e#16836#16852#0" expanded="false" />
+            <element signature="e#18102#18119#0" expanded="false" />
+            <element signature="e#29574#29598#0" expanded="false" />
+            <element signature="e#31598#31599#0" expanded="false" />
+            <element signature="e#31647#31648#0" expanded="false" />
+            <element signature="e#52436#52437#0" expanded="false" />
+            <element signature="e#52483#52484#0" expanded="false" />
+            <element signature="e#57600#57611#0" expanded="false" />
+            <element signature="e#99052#99053#0" expanded="false" />
+            <element signature="e#99093#99094#0" expanded="false" />
+            <element signature="e#112437#112438#0" expanded="false" />
+            <element signature="e#112485#112486#0" expanded="false" />
+            <element signature="e#112688#112689#0" expanded="false" />
+            <element signature="e#112728#112729#0" expanded="false" />
+            <element signature="e#117549#117550#0" expanded="false" />
+            <element signature="e#117592#117593#0" expanded="false" />
+            <element signature="e#117737#117738#0" expanded="false" />
+            <element signature="e#117778#117779#0" expanded="false" />
+            <element signature="e#118545#118546#0" expanded="false" />
+            <element signature="e#118599#118600#0" expanded="false" />
+            <element signature="e#118641#118642#0" expanded="false" />
+            <element signature="e#118695#118696#0" expanded="false" />
+            <element signature="e#118740#118741#0" expanded="false" />
+            <element signature="e#118797#118798#0" expanded="false" />
+            <element signature="e#118842#118843#0" expanded="false" />
+            <element signature="e#118886#118887#0" expanded="false" />
+            <element signature="e#119127#119128#0" expanded="false" />
+            <element signature="e#119176#119177#0" expanded="false" />
+            <element signature="e#122395#122396#0" expanded="false" />
+            <element signature="e#122428#122429#0" expanded="false" />
+            <element signature="e#122459#122460#0" expanded="false" />
+            <element signature="e#122491#122492#0" expanded="false" />
+            <element signature="e#122531#122532#0" expanded="false" />
+            <element signature="e#122570#122571#0" expanded="false" />
+            <element signature="e#123040#123041#0" expanded="false" />
+            <element signature="e#123099#123100#0" expanded="false" />
+            <element signature="e#123140#123141#0" expanded="false" />
+            <element signature="e#123173#123174#0" expanded="false" />
+            <element signature="e#123212#123213#0" expanded="false" />
+            <element signature="e#123258#123259#0" expanded="false" />
+            <element signature="e#137881#137882#0" expanded="false" />
+            <element signature="e#137922#137923#0" expanded="false" />
+            <element signature="e#137955#137956#0" expanded="false" />
+            <element signature="e#137991#137992#0" expanded="false" />
+            <element signature="e#138169#138170#0" expanded="false" />
+            <element signature="e#138209#138210#0" expanded="false" />
+            <element signature="e#138804#138805#0" expanded="false" />
+            <element signature="e#138850#138851#0" expanded="false" />
+            <element signature="e#138895#138896#0" expanded="false" />
+            <element signature="e#138934#138935#0" expanded="false" />
+            <element signature="e#141718#141719#0" expanded="false" />
+            <element signature="e#141762#141763#0" expanded="false" />
+            <element signature="e#143536#143537#0" expanded="false" />
+            <element signature="e#143577#143578#0" expanded="false" />
+            <element signature="e#152156#152157#0" expanded="false" />
+            <element signature="e#152206#152207#0" expanded="false" />
+            <element signature="e#152396#152397#0" expanded="false" />
+            <element signature="e#152443#152444#0" expanded="false" />
+            <element signature="e#154159#154160#0" expanded="false" />
+            <element signature="e#154205#154206#0" expanded="false" />
+            <element signature="e#195724#195725#0" expanded="false" />
+            <element signature="e#195764#195765#0" expanded="false" />
+            <element signature="e#196078#196079#0" expanded="false" />
+            <element signature="e#196117#196118#0" expanded="false" />
+            <element signature="e#204860#204861#0" expanded="false" />
+            <element signature="e#204906#204907#0" expanded="false" />
+            <element signature="e#204956#204957#0" expanded="false" />
+            <element signature="e#205004#205005#0" expanded="false" />
+            <element signature="e#205049#205050#0" expanded="false" />
+            <element signature="e#205098#205099#0" expanded="false" />
+            <element signature="e#208657#208658#0" expanded="false" />
+            <element signature="e#208701#208702#0" expanded="false" />
+            <element signature="e#209113#209114#0" expanded="false" />
+            <element signature="e#209160#209161#0" expanded="false" />
+            <element signature="e#211393#211394#0" expanded="false" />
+            <element signature="e#211445#211446#0" expanded="false" />
+            <element signature="e#211576#211577#0" expanded="false" />
+            <element signature="e#211624#211625#0" expanded="false" />
+            <element signature="e#211675#211676#0" expanded="false" />
+            <element signature="e#211726#211727#0" expanded="false" />
+            <element signature="e#215817#216061#0" expanded="false" />
+            <element signature="e#216060#216061#0" expanded="false" />
+            <element signature="e#216701#217075#0" expanded="false" />
+            <element signature="e#217074#217075#0" expanded="false" />
+            <element signature="e#217363#217364#0" expanded="false" />
+            <element signature="e#217400#217401#0" expanded="false" />
+            <element signature="e#217475#217476#0" expanded="false" />
+            <element signature="e#217509#217510#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -724,8 +811,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#506#515#0" expanded="true" />
             <element signature="e#5730#5731#0" expanded="true" />
             <element signature="e#5779#5780#0" expanded="true" />
           </folding>
@@ -743,12 +828,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#397#405#0" expanded="true" />
-            <element signature="e#1178#1179#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -758,7 +838,7 @@
           <caret line="85" column="71" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+            <element signature="class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -821,10 +901,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2746#2747#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
-            <element signature="e#4167#4175#0" expanded="true" />
+            <element signature="e#8756#8757#0" expanded="true" />
+            <element signature="e#8783#8784#0" expanded="true" />
+            <element signature="e#8862#8863#0" expanded="true" />
+            <element signature="e#8889#8890#0" expanded="true" />
+            <element signature="e#8966#8967#0" expanded="true" />
+            <element signature="e#8993#8994#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -865,8 +947,6 @@
         <state relative-caret-position="255">
           <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#506#515#0" expanded="true" />
             <element signature="e#5730#5731#0" expanded="true" />
             <element signature="e#5779#5780#0" expanded="true" />
           </folding>
@@ -887,15 +967,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#310#311#0" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -903,12 +975,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#397#405#0" expanded="true" />
-            <element signature="e#1178#1179#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -926,7 +993,7 @@
           <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
+            <element signature="class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -943,10 +1010,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2746#2747#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
-            <element signature="e#4167#4175#0" expanded="true" />
+            <element signature="e#8756#8757#0" expanded="true" />
+            <element signature="e#8783#8784#0" expanded="true" />
+            <element signature="e#8862#8863#0" expanded="true" />
+            <element signature="e#8889#8890#0" expanded="true" />
+            <element signature="e#8966#8967#0" expanded="true" />
+            <element signature="e#8993#8994#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -970,27 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="3241" column="16" selection-start-line="3241" selection-start-column="16" selection-end-line="3241" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/DontCreateNewUserException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchUserException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/NoSuchUserException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1056,13 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DataStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/FinManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1104,44 +1145,170 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
           <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/CreateNewRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#397#405#0" expanded="true" />
-            <element signature="e#1178#1179#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="493">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/mysql-connector-java-5.1.38/src/com/mysql/jdbc/ConnectionImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24446">
+          <caret line="1520" column="0" selection-start-line="1520" selection-start-column="0" selection-end-line="1520" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#310#311#0" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#0#217513#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3400#3401#0" expanded="false" />
+            <element signature="e#3432#3433#0" expanded="false" />
+            <element signature="e#3558#3559#0" expanded="false" />
+            <element signature="e#3599#3600#0" expanded="false" />
+            <element signature="e#4034#4035#0" expanded="false" />
+            <element signature="e#4115#4116#0" expanded="false" />
+            <element signature="e#4271#4272#0" expanded="false" />
+            <element signature="e#4317#4318#0" expanded="false" />
+            <element signature="e#4371#4372#0" expanded="false" />
+            <element signature="e#4409#4410#0" expanded="false" />
+            <element signature="e#4451#4452#0" expanded="false" />
+            <element signature="e#4528#4529#0" expanded="false" />
+            <element signature="e#7786#7787#0" expanded="false" />
+            <element signature="e#7830#7831#0" expanded="false" />
+            <element signature="e#9126#9153#0" expanded="false" />
+            <element signature="e#9355#9385#0" expanded="false" />
+            <element signature="e#9611#9641#0" expanded="false" />
+            <element signature="e#9857#9887#0" expanded="false" />
+            <element signature="e#16836#16852#0" expanded="false" />
+            <element signature="e#18102#18119#0" expanded="false" />
+            <element signature="e#29574#29598#0" expanded="false" />
+            <element signature="e#31598#31599#0" expanded="false" />
+            <element signature="e#31647#31648#0" expanded="false" />
+            <element signature="e#52436#52437#0" expanded="false" />
+            <element signature="e#52483#52484#0" expanded="false" />
+            <element signature="e#57600#57611#0" expanded="false" />
+            <element signature="e#99052#99053#0" expanded="false" />
+            <element signature="e#99093#99094#0" expanded="false" />
+            <element signature="e#112437#112438#0" expanded="false" />
+            <element signature="e#112485#112486#0" expanded="false" />
+            <element signature="e#112688#112689#0" expanded="false" />
+            <element signature="e#112728#112729#0" expanded="false" />
+            <element signature="e#117549#117550#0" expanded="false" />
+            <element signature="e#117592#117593#0" expanded="false" />
+            <element signature="e#117737#117738#0" expanded="false" />
+            <element signature="e#117778#117779#0" expanded="false" />
+            <element signature="e#118545#118546#0" expanded="false" />
+            <element signature="e#118599#118600#0" expanded="false" />
+            <element signature="e#118641#118642#0" expanded="false" />
+            <element signature="e#118695#118696#0" expanded="false" />
+            <element signature="e#118740#118741#0" expanded="false" />
+            <element signature="e#118797#118798#0" expanded="false" />
+            <element signature="e#118842#118843#0" expanded="false" />
+            <element signature="e#118886#118887#0" expanded="false" />
+            <element signature="e#119127#119128#0" expanded="false" />
+            <element signature="e#119176#119177#0" expanded="false" />
+            <element signature="e#122395#122396#0" expanded="false" />
+            <element signature="e#122428#122429#0" expanded="false" />
+            <element signature="e#122459#122460#0" expanded="false" />
+            <element signature="e#122491#122492#0" expanded="false" />
+            <element signature="e#122531#122532#0" expanded="false" />
+            <element signature="e#122570#122571#0" expanded="false" />
+            <element signature="e#123040#123041#0" expanded="false" />
+            <element signature="e#123099#123100#0" expanded="false" />
+            <element signature="e#123140#123141#0" expanded="false" />
+            <element signature="e#123173#123174#0" expanded="false" />
+            <element signature="e#123212#123213#0" expanded="false" />
+            <element signature="e#123258#123259#0" expanded="false" />
+            <element signature="e#137881#137882#0" expanded="false" />
+            <element signature="e#137922#137923#0" expanded="false" />
+            <element signature="e#137955#137956#0" expanded="false" />
+            <element signature="e#137991#137992#0" expanded="false" />
+            <element signature="e#138169#138170#0" expanded="false" />
+            <element signature="e#138209#138210#0" expanded="false" />
+            <element signature="e#138804#138805#0" expanded="false" />
+            <element signature="e#138850#138851#0" expanded="false" />
+            <element signature="e#138895#138896#0" expanded="false" />
+            <element signature="e#138934#138935#0" expanded="false" />
+            <element signature="e#141718#141719#0" expanded="false" />
+            <element signature="e#141762#141763#0" expanded="false" />
+            <element signature="e#143536#143537#0" expanded="false" />
+            <element signature="e#143577#143578#0" expanded="false" />
+            <element signature="e#152156#152157#0" expanded="false" />
+            <element signature="e#152206#152207#0" expanded="false" />
+            <element signature="e#152396#152397#0" expanded="false" />
+            <element signature="e#152443#152444#0" expanded="false" />
+            <element signature="e#154159#154160#0" expanded="false" />
+            <element signature="e#154205#154206#0" expanded="false" />
+            <element signature="e#195724#195725#0" expanded="false" />
+            <element signature="e#195764#195765#0" expanded="false" />
+            <element signature="e#196078#196079#0" expanded="false" />
+            <element signature="e#196117#196118#0" expanded="false" />
+            <element signature="e#204860#204861#0" expanded="false" />
+            <element signature="e#204906#204907#0" expanded="false" />
+            <element signature="e#204956#204957#0" expanded="false" />
+            <element signature="e#205004#205005#0" expanded="false" />
+            <element signature="e#205049#205050#0" expanded="false" />
+            <element signature="e#205098#205099#0" expanded="false" />
+            <element signature="e#208657#208658#0" expanded="false" />
+            <element signature="e#208701#208702#0" expanded="false" />
+            <element signature="e#209113#209114#0" expanded="false" />
+            <element signature="e#209160#209161#0" expanded="false" />
+            <element signature="e#211393#211394#0" expanded="false" />
+            <element signature="e#211445#211446#0" expanded="false" />
+            <element signature="e#211576#211577#0" expanded="false" />
+            <element signature="e#211624#211625#0" expanded="false" />
+            <element signature="e#211675#211676#0" expanded="false" />
+            <element signature="e#211726#211727#0" expanded="false" />
+            <element signature="e#215817#216061#0" expanded="false" />
+            <element signature="e#216060#216061#0" expanded="false" />
+            <element signature="e#216701#217075#0" expanded="false" />
+            <element signature="e#217074#217075#0" expanded="false" />
+            <element signature="e#217363#217364#0" expanded="false" />
+            <element signature="e#217400#217401#0" expanded="false" />
+            <element signature="e#217475#217476#0" expanded="false" />
+            <element signature="e#217509#217510#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DataStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3935">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="e#8756#8757#0" expanded="true" />
+            <element signature="e#8783#8784#0" expanded="true" />
+            <element signature="e#8862#8863#0" expanded="true" />
+            <element signature="e#8889#8890#0" expanded="true" />
+            <element signature="e#8966#8967#0" expanded="true" />
+            <element signature="e#8993#8994#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/NoSuchUserException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1155,6 +1322,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchUserException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/ExistSuchAccountException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1165,71 +1340,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/mysql-connector-java-5.1.38/src/com/mysql/jdbc/ConnectionImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/DontCreateNewUserException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="1520" column="0" selection-start-line="1520" selection-start-column="0" selection-end-line="1520" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+          <folding>
+            <element signature="e#263#264#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/CreateNewRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="91" column="78" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="188" column="55" selection-start-line="188" selection-start-column="55" selection-end-line="188" selection-end-column="55" />
+        <state relative-caret-position="190">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#actionPerformed#0;class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2746#2747#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
-            <element signature="e#4167#4175#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="167" column="33" selection-start-line="167" selection-start-column="33" selection-end-line="167" selection-end-column="33" />
+        <state relative-caret-position="403">
+          <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#506#515#0" expanded="true" />
             <element signature="e#5730#5731#0" expanded="true" />
             <element signature="e#5779#5780#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-892">
-          <caret line="91" column="78" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
+        <state relative-caret-position="281">
+          <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1565#1566#0" expanded="true" />
-            <element signature="e#1611#1612#0" expanded="true" />
-            <element signature="e#4803#4804#0" expanded="true" />
-            <element signature="e#4855#4856#0" expanded="true" />
+            <element signature="class#LoginButtonActionListener#0;class#LoginAndRegistration#0" expanded="false" />
           </folding>
         </state>
       </provider>

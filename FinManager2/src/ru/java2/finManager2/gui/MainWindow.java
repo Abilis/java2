@@ -162,7 +162,7 @@ public class MainWindow {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            //нужно создать новое модальное окно, где пользователь может ввести/выбрать данные нового аккаунта
+            //нужно создать новое окно, где пользователь может ввести/выбрать данные нового аккаунта
             AddNewAccount addNewAccount = new AddNewAccount(currentUser);
             mainWindowFrame.dispose();
             addNewAccount.init();

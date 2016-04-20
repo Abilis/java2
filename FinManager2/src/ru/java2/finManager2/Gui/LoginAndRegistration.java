@@ -8,10 +8,7 @@ import ru.java2.finManager2.database.DbHelper;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
@@ -85,12 +82,20 @@ public class LoginAndRegistration {
         //обработка нажатия кнопки логина
         loginButton.addActionListener(new LoginButtonActionListener());
 
-        //обработка нажатия кнопки "Энтер" в поле ввода пароля
+        //обработка нажатия клавиши "Энтер" в поле ввода пароля
         passwordPasswordField.addKeyListener(new LoginByPressEnterInPasswordField());
+
+        //обработка нажатия клавиши "Энтер" в поле ввода логина
+        loginTextField.addKeyListener(new LoginByPressEnterInLoginField());
 
         //обработка нажатия кнопки регистрация
         registrationButton.addActionListener(new RegistrationButtonActionListener());
 
+        //обработка нажатия клавиши "Энтер" на кнопке логина
+        loginButton.addKeyListener(new LoginByPressEnterOnLoginButton());
+
+        //обработка нажатия клавиши "Энтер" на кнопке регистрации
+        registrationButton.addKeyListener(new RegistrationByPressEnterOnRegistrationButton());
     }
 
     class LoginButtonActionListener implements ActionListener {
@@ -166,11 +171,7 @@ public class LoginAndRegistration {
         }
     }
 
-    class LoginByPressEnterInPasswordField implements KeyListener {
-        @Override
-        public void keyTyped(KeyEvent e) {
-
-        }
+    class LoginByPressEnterInPasswordField extends KeyAdapter {
 
         @Override
         public void keyPressed(KeyEvent e) {
@@ -179,12 +180,37 @@ public class LoginAndRegistration {
                 ActionEvent ae = new ActionEvent(e, 0, "test");
                 new LoginButtonActionListener().actionPerformed(ae);
             }
-
         }
+    }
+
+    class LoginByPressEnterInLoginField extends KeyAdapter {
 
         @Override
-        public void keyReleased(KeyEvent e) {
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new LoginButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
 
+    class LoginByPressEnterOnLoginButton extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new LoginButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class RegistrationByPressEnterOnRegistrationButton extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new RegistrationButtonActionListener().actionPerformed(ae);
+            }
         }
     }
 
