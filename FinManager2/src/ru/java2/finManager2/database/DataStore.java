@@ -7,6 +7,7 @@ import ru.java2.finManager2.exceptions.ExistSuchUserException;
 import ru.java2.finManager2.exceptions.NoSuchUserException;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -21,7 +22,7 @@ public interface DataStore {
     Set<String> getUserNames();
 
     // If no accounts, return empty collection (not null)
-    Set<Account> getAccounts(User owner);
+    ArrayList<Account> getAccounts(User owner);
 
 
     // If no records, return empty collection (not null)

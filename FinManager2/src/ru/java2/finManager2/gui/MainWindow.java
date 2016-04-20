@@ -1,16 +1,20 @@
 package ru.java2.finManager2.gui;
 
+import ru.java2.finManager2.Account;
 import ru.java2.finManager2.User;
+import ru.java2.finManager2.database.DbHelper;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by Abilis on 20.04.2016.
  */
 public class MainWindow {
 
-    private User currentUser;
+    private User currentUser; //текущий пользователь
+    private ArrayList<Account> accounts = new ArrayList<Account>(); //список аккаунтов текущего пользователя
 
     private JFrame mainWindowFrame = new JFrame("Финансовый менеджер");
     private Dimension dimensionMainWindowFrame = new Dimension(800, 600);
@@ -22,6 +26,8 @@ public class MainWindow {
     public MainWindow(User currentUser) {
         this.currentUser = currentUser;
         usernameLabel.setText(currentUser.getLogin());
+        DbHelper dbHelper = DbHelper.getDbHerper();
+        accounts = dbHelper.getAccounts(currentUser);
     }
 
     //инициализация формы

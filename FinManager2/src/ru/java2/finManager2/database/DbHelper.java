@@ -8,6 +8,7 @@ import ru.java2.finManager2.exceptions.ExistSuchUserException;
 import ru.java2.finManager2.exceptions.NoSuchUserException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Set;
 
@@ -89,7 +90,15 @@ public class DbHelper implements DataStore {
     }
 
     @Override
-    public Set<Account> getAccounts(User owner) {
+    public ArrayList<Account> getAccounts(User owner) {
+
+        //формируем запрос
+        String query = "SELECT `id_acc`, `ostatok`, `description` FROM `accounts`, `users`" +
+                "WHERE `accounts`.`id_user`=`users`.`id_user` AND `users`.`login`=\"" + owner.getLogin() + "\";";
+
+        //Выполняем запрос
+        
+
         return null;
     }
 

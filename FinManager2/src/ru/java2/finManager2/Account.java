@@ -11,4 +11,15 @@ public class Account {
     private int ostatok;
     private ArrayList<Record> records;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public int getOstatok() {
+        return ostatok;
+    }
+
+    public ArrayList<Record> getRecords() {
+        return records;
+    }
 }
