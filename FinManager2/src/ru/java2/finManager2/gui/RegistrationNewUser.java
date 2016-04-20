@@ -8,10 +8,7 @@ import ru.java2.finManager2.utils.Md5;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
@@ -89,12 +86,28 @@ public class RegistrationNewUser {
         registrationNewUserFrame.setVisible(true);
 
 
-        //Обработка нажатия кнопок
+        //Обработки
+
+        //обработка нажатия кнопки "создать нового пользователя"
         createNewUserButton.addActionListener(new CreateNewUserButtonActionListener());
 
+        //обработка нажатия кнопки "отмена
+        cancelButton.addActionListener(new CancelButtonActionListener());
+
+        //обработка нажатия клавиши "Энтер" в поле ввода логина
+        loginTextField.addKeyListener(new CreateNewUserByPressEnterInLoginTextField());
+
+        //обработка нажатия клавиши "Энтер" в поле ввода пароля
+        passwordField.addKeyListener(new CreateNewUserByPressEnterInPasswordTextField());
+
+        //обработка нажатия клавиши "Энтер" в поле ввода подтверждения пароль
         confirnPasswordField.addKeyListener(new CreateNewUserByPressEnterInConfirmPasswordFieald());
 
-        cancelButton.addActionListener(new CancelButtonActionListener());
+        //обработка нажатия клавиши "Энтер" на кнопке "создать нового пользователя"
+        createNewUserButton.addKeyListener(new CreateNewUserByPressEnterOnButtonCreateNewUser());
+
+        //обработка нажатия клавиши "Энтер" на кнопке "Отмена"
+        cancelButton.addKeyListener(new CancelByPressEnterOnButtonCancel());
 
     }
 
@@ -169,24 +182,53 @@ public class RegistrationNewUser {
         }
     }
 
-    class CreateNewUserByPressEnterInConfirmPasswordFieald implements KeyListener {
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-
-        }
+    class CreateNewUserByPressEnterInConfirmPasswordFieald extends KeyAdapter {
 
         @Override
         public void keyPressed(KeyEvent e) {
-
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 ActionEvent ae = new ActionEvent(e, 0, "test");
                 new CreateNewUserButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class CreateNewUserByPressEnterInLoginTextField extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CreateNewUserButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class CreateNewUserByPressEnterInPasswordTextField extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CreateNewUserButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class CreateNewUserByPressEnterOnButtonCreateNewUser extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CreateNewUserButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class CancelByPressEnterOnButtonCancel extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CancelButtonActionListener().actionPerformed(ae);
             }
         }
     }
