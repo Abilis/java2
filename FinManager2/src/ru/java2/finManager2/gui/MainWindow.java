@@ -163,8 +163,8 @@ public class MainWindow {
         public void actionPerformed(ActionEvent e) {
 
             //нужно создать новое модальное окно, где пользователь может ввести/выбрать данные нового аккаунта
-
-            //там должны быть две кнопки - "Создать" и "отмена"
+            AddNewAccount addNewAccount = new AddNewAccount(currentUser);
+            addNewAccount.init();
 
         }
     }
