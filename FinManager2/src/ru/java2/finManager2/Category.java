@@ -22,21 +22,21 @@ public enum Category {
     CLOTHES {
         @Override
         public String toString() {
-            return "FOOD";
+            return "CLOTHES";
         }
     },
 
     TRAVELLING {
         @Override
         public String toString() {
-            return "FOOD";
+            return "TRAVELLING";
         }
     },
 
     OTHER {
         @Override
         public String toString() {
-            return "FOOD";
+            return "OTHER";
         }
     }
 

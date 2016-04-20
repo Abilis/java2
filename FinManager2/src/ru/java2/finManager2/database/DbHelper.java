@@ -269,6 +269,8 @@ public class DbHelper implements DataStore {
     @Override
     public void addRecord(Account account, Record record) {
 
+        
+
     }
 
     @Override

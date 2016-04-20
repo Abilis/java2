@@ -74,6 +74,10 @@ public class CreateNewRecord {
         //установка выбранной радиокнопки по умолчанию
         withdrawRadioButton.setSelected(true);
 
+        //установка параметров скрытой метки
+        messagesLabel.setHorizontalAlignment(0);
+        messagesLabel.setForeground(Color.RED);
+
         //расстановка компонентов
 
         //1 и 2 ряд - группируем радиокнопки
@@ -180,7 +184,7 @@ public class CreateNewRecord {
             DbHelper dbHelper = DbHelper.getDbHerper();
             dbHelper.addRecord(currentAccount, record);
 
-            //если не произошло ничего страшного - выодим сообщение об успешном добавлении транзакции
+            //если не произошло ничего страшного - выводим сообщение об успешном добавлении транзакции
             messagesLabel.setText("Запись успешно добавлена!");
 
         }
