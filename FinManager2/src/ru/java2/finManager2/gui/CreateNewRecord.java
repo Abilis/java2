@@ -18,7 +18,7 @@ public class CreateNewRecord {
 
     //создаем форму
     private JFrame createNewRecordFrame = new JFrame("Финансовый менеджер");
-    private Dimension dimensionCreateNewRecordFrame = new Dimension(600, 400);
+    private Dimension dimensionCreateNewRecordFrame = new Dimension(300, 270);
 
     //cоздаем пару радиокнопок (пополнение/снятие)
     private JRadioButton addingRadioButton = new JRadioButton("Пополнение");
