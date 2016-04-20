@@ -96,6 +96,9 @@ public class AddNewAccount {
         //обработка нажатия на кнопку "отмена"
         closeAddNewAccountFrameButton.addActionListener(new CloseNewAccountFrameActionListener());
 
+        //обработка нажатия на кнопку "создать новый аккаунт"
+        addNewAccountButton.addActionListener(new AddNewAccountActionListener());
+
 
     }
 
@@ -103,6 +106,38 @@ public class AddNewAccount {
         @Override
         public void actionPerformed(ActionEvent e) {
             addNewAccountFrame.dispose();
+        }
+    }
+
+    class AddNewAccountActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            String descriptionNewAccount = descriptionNewAccTextField.getText();
+            String ostatokNewAccount = ostatokNewAccTextField.getText();
+
+
+
+            //Тримим полученные строки
+            descriptionNewAccount = descriptionNewAccount.trim();
+            ostatokNewAccount = ostatokNewAccount.trim();
+
+            //если хотя бы в одном поле ничего нет - выводим сообщение об ошибке и заканчиваем обработку
+            if (descriptionNewAccount.length() == 0 || ostatokNewAccount.length() == 0) {
+                messagesLabel.setText("Некорректные данные!");
+                return;
+            }
+
+            //преобразуем остаток в целое число
+
+            try {
+                int ostatok = Integer.parseInt(ostatokNewAccount);
+            } catch (NumberFormatException e2) {
+                messagesLabel.setText("Некорректные данные!");
+                return;
+            }
+
+
         }
     }
 
