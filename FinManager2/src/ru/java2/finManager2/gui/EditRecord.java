@@ -270,7 +270,13 @@ public class EditRecord {
 
             try {
                 DbHelper dbHelper = DbHelper.getDbHerper();
-                dbHelper.updateRecord(currentAccount, changedRecord);
+                dbHelper.updateRecord(changedRecord);
+
+                //если все нормально - закрываем это окно и переходим в главное окно приложения
+                editRecordFrame.dispose();
+                MainWindow mainWindow = new MainWindow(currentUser);
+                mainWindow.init();
+
             } catch (SQLException e1) {
                 messagesLabel.setText(e1.getMessage());
             }

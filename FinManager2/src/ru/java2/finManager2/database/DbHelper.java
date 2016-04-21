@@ -8,6 +8,7 @@ import ru.java2.finManager2.exceptions.*;
 import ru.java2.finManager2.utils.DateFormatForMySql;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Set;
@@ -357,12 +358,24 @@ public class DbHelper implements DataStore {
     }
 
     @Override
-    public void updateRecord(Account account, Record record) throws SQLException {
+    public void updateRecord(Record record) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
+            //подготовка данных
+            int labelNum = 0;
+
+            if (record.isLabel()) {
+                labelNum = 1;
+            }
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String dateStr = simpleDateFormat.format(record.getDateOfRecord());
+
             //формируем запрос
-            String query = "";
+            String query = "UPDATE `records` SET `label`=\"" + labelNum + "\", `dt`=\"" + dateStr +
+                    "\", `sum`=\"" + record.getSum() + "\", `description`=\"" + record.getDescription() +
+                    "\", `category`=\"" + record.getCategoryAsString() +"\" WHERE `id_rec`=\"" + record.getIdRecord() + "\";";
 
             //выполняем запрос
             Statement statement = connection.createStatement();
