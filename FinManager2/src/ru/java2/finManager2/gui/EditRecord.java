@@ -13,6 +13,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Abilis on 21.04.2016.
@@ -39,10 +42,10 @@ public class EditRecord {
 
     //Создаем поля ввода, где можно отредактировать транзакцию
     private JComboBox labelComboBox = new JComboBox(Record.getArrLabelLalues());
-    private JTextField descriptionTextField = new JTextField();
+    private JTextField descriptionTextField = new JTextField(10);
     private JComboBox categoryComboBox = new JComboBox(Category.values());
-    private JTextField sumTextField = new JTextField();
-    private JTextField dataTextField = new JTextField();
+    private JTextField sumTextField = new JTextField(10);
+    private JTextField dataTextField = new JTextField(10);
 
     //создаем метку, где будут выводиться сообщения об ошибках
     private JLabel messagesLabel = new JLabel();
@@ -99,6 +102,10 @@ public class EditRecord {
 
         //устанавливаем настройки панели для кнопок
         buttonsPanel.setLayout(new GridBagLayout());
+
+        //устанавливаем настройки метки для сообщений об ошибках
+        messagesLabel.setHorizontalAlignment(0);
+        messagesLabel.setForeground(Color.RED);
 
 
         //расставляем компоненты
@@ -215,7 +222,59 @@ public class EditRecord {
     class EditButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Редактирование транзакции");
+
+            //установка полей транзакции
+            int idRecord = currentRecord.getIdRecord();
+            boolean label = false;
+
+            if (labelComboBox.getSelectedIndex() == 0) {
+                label = true;
+            }
+            String description = descriptionTextField.getText();
+            description = description.trim();
+
+            if (description.isEmpty()) {
+                messagesLabel.setText("Описание не может быть пустым!");
+                return;
+            }
+
+
+            String sumStr = sumTextField.getText();
+            int sum = 0;
+
+            try {
+                sum = Integer.parseInt(sumStr);
+                if (sum <= 0) {
+                    throw new NumberFormatException();
+                }
+            } catch (NumberFormatException e1) {
+                messagesLabel.setText("Некорректная сумма");
+                return;
+            }
+
+            String dateStr = dataTextField.getText();
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = null;
+            try {
+                date = simpleDateFormat.parse(dateStr);
+            } catch (ParseException e1) {
+                messagesLabel.setText("Неверный формат даты");
+                return;
+            }
+
+            Category category = (Category) categoryComboBox.getSelectedItem();
+
+            //создание транзакции
+            Record changedRecord = new Record(idRecord, label, date, sum, description, category);
+
+            try {
+                DbHelper dbHelper = DbHelper.getDbHerper();
+                dbHelper.updateRecord(currentAccount, changedRecord);
+            } catch (SQLException e1) {
+                messagesLabel.setText(e1.getMessage());
+            }
+
         }
     }
 

@@ -349,7 +349,28 @@ public class DbHelper implements DataStore {
             int n = statement.executeUpdate(query);
 
             if (n == 0) {
-                throw new SQLException("Не получилось удалить транзакцию с id " + record.getIdRecord());
+                throw new SQLException("Не удалось удалить транзакцию с id " + record.getIdRecord());
+            }
+
+        }
+
+    }
+
+    @Override
+    public void updateRecord(Account account, Record record) throws SQLException {
+
+        try (Connection connection = getConnection()) {
+
+            //формируем запрос
+            String query = "";
+
+            //выполняем запрос
+            Statement statement = connection.createStatement();
+
+            int n = statement.executeUpdate(query);
+
+            if (n == 0) {
+                throw new SQLException("Не удалось обновить транзакцию " + record);
             }
 
         }

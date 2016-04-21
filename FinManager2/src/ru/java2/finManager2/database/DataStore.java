@@ -42,4 +42,6 @@ public interface DataStore {
     // return null if no such record
     void removeRecord(Account from, Record record) throws SQLException;
 
+    void updateRecord(Account account, Record record) throws SQLException;
+
 }
