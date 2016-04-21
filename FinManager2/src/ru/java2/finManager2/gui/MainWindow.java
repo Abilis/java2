@@ -116,6 +116,8 @@ public class MainWindow {
         //установка размера панели прокрутки
         scrollPaneForRecordsTable.setSize(dimensionOfScroolPane);
 
+        //Преобразуем список транзакций текущего аккаунта в список массива строк
+
 
         //расставляем компоненты
 

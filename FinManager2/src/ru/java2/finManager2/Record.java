@@ -69,4 +69,5 @@ public class Record {
                 ", category=" + category +
                 '}';
     }
+
 }
