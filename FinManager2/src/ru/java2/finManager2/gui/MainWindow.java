@@ -8,10 +8,7 @@ import ru.java2.finManager2.utils.RecordsAsArrStrings;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -64,6 +61,9 @@ public class MainWindow {
 
     //создаем кнопку "добавить транзакцию"
     private JButton addRecordButton = new JButton("Добавить транзакцию");
+
+    //создаем кнопку "редактировать транзакцию"
+    private JButton editRecordButton = new JButton("Редактировать транзакцию");
 
     //создаем кнопку "закрыть"
     private JButton closeAppButton = new JButton("Закрыть");
@@ -166,7 +166,12 @@ public class MainWindow {
         //7 ряд. Кнопки "добавить транзакцию" и "закрыть"
         mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+
+        mainWindowFrame.add(editRecordButton, new GridBagConstraints(1, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+        //8 ряд. Кнопка "редактировать транзакцию"
+        mainWindowFrame.add(closeAppButton, new GridBagConstraints(0, 8, 2, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
@@ -204,6 +209,13 @@ public class MainWindow {
 
         //обработка выбора текущего аккаунта
         listOfAccounts.addActionListener(new SelectedAccountActionListener());
+
+        //обработка нажатия кнопки "редактировать"
+        editRecordButton.addActionListener(new EditRecordActionListener());
+
+        //обработка нажатия клавиши "Энтер" на кнопке "редактировать транзакцию"
+        editRecordButton.addKeyListener(new EditRecordByPressEnterOnEditRecordButton());
+
 
     }
 
@@ -311,6 +323,27 @@ public class MainWindow {
             recordsTableModel.fireTableDataChanged();
             recordsTableModel.addDataAll(recordsAsStrArr);
 
+        }
+    }
+
+    class EditRecordActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            mainWindowFrame.dispose();
+            EditRecord deleteRecord = new EditRecord();
+            deleteRecord.init();
+
+        }
+    }
+
+    class EditRecordByPressEnterOnEditRecordButton extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new EditRecordActionListener ().actionPerformed(ae);
+            }
         }
     }
 
