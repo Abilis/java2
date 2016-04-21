@@ -42,12 +42,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="337" column="13" selection-start-line="337" selection-start-column="13" selection-end-line="337" selection-end-column="13" />
+            <state relative-caret-position="465">
+              <caret line="340" column="98" selection-start-line="340" selection-start-column="98" selection-end-line="340" selection-end-column="98" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecordsTableModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/tableModels/RecordsTableModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#316#326#0" expanded="true" />
+                <element signature="e#567#568#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,8 +79,8 @@
       <file leaf-file-name="Category.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Category.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+            <state relative-caret-position="363">
+              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
               <folding>
                 <element signature="e#620#621#0" expanded="true" />
                 <element signature="e#658#659#0" expanded="true" />
@@ -75,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditRecord.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EditRecord.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/EditRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+            <state relative-caret-position="306">
+              <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,18 +141,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Account.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
-              <folding>
-                <element signature="e#615#616#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -172,7 +174,6 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/AddNewAccount.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Category.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/DontAddRecordException.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/exceptions/NoEnoughtMoneyException.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/utils/DateFormatForMySql.java" />
@@ -185,8 +186,9 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/DeleteRecord.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/tableModels/RecordsTableModel.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/FinManager.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/EditRecord.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Category.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/EditRecord.java" />
       </list>
     </option>
   </component>
@@ -1059,26 +1061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/tableModels/RecordsTableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#316#326#0" expanded="true" />
-            <element signature="e#391#392#0" expanded="true" />
-            <element signature="e#438#439#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#790#791#0" expanded="true" />
-            <element signature="e#1632#1633#0" expanded="true" />
-            <element signature="e#1669#1670#0" expanded="true" />
-            <element signature="e#2152#2153#0" expanded="true" />
-            <element signature="e#2180#2181#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/FinManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1118,10 +1100,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/tableModels/RecordsTableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#316#326#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="340" column="98" selection-start-line="340" selection-start-column="98" selection-end-line="340" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+        <state relative-caret-position="363">
+          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
           <folding>
             <element signature="e#620#621#0" expanded="true" />
             <element signature="e#658#659#0" expanded="true" />
@@ -1131,19 +1133,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/EditRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+        <state relative-caret-position="306">
+          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="337" column="13" selection-start-line="337" selection-start-column="13" selection-end-line="337" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>

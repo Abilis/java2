@@ -48,9 +48,27 @@ public class EditRecord {
     private JButton cancelButton = new JButton("Отмена");
 
 
+    public EditRecord(Record selectedRecord, Account currentAccount, User currentUser) {
+        currentRecord = selectedRecord;
+        this.currentAccount = currentAccount;
+        this.currentUser = currentUser;
 
+        //инициализация полей транзакции
 
-    public EditRecord() {}
+        //инициализация метки
+
+        //инициализация описания
+        descriptionTextField.setText(currentRecord.getDescription());
+
+        //инициализация категории
+        categoryComboBox.setSelectedIndex(Category.getIndex(currentRecord.getCategory()));
+
+        //инициализация суммы
+        sumTextField.setText(String.valueOf(currentRecord.getSum()));
+
+        //инициализация даты
+        dataTextField.setText(currentRecord.getDateOfRecordAsString());
+    }
 
     public void init() {
 

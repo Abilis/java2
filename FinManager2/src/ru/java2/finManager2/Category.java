@@ -38,6 +38,27 @@ public enum Category {
         public String toString() {
             return "OTHER";
         }
+
+    };
+
+    public static int getIndex(Category category) {
+
+        switch (category) {
+            case HEALTH:
+                return 0;
+            case FOOD:
+                return 1;
+            case CLOTHES:
+                return 2;
+            case TRAVELLING:
+                return 3;
+            case OTHER:
+                return 4;
+        }
+        return 4;
     }
 
+
 }
+
+

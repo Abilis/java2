@@ -331,9 +331,14 @@ public class MainWindow {
 
             if (!e.getValueIsAdjusting()) {
                 int[] rec = recordsTable.getSelectedRows();
-                System.out.println(Arrays.toString(rec));
 
-                EditRecord editRecord = new EditRecord();
+                //индекс в rec[0] есть индекс транзакции в списке транзакций текущего аккаунта
+
+                Record selectedRecord = currentAccount.getRecords().get(rec[0]);
+
+                mainWindowFrame.dispose();
+
+                EditRecord editRecord = new EditRecord(selectedRecord, currentAccount, currentUser);
                 editRecord.init();
             }
 
