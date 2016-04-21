@@ -19,7 +19,7 @@ public class EditRecord {
 
     //создаем форму
     private JFrame editRecordFrame = new JFrame("Финансовый менеджер");
-    private Dimension dimensionDeleteRecordFrame = new Dimension(500, 300);
+    private Dimension dimensionDeleteRecordFrame = new Dimension(700, 300);
 
     //создаем метку с описанием того, что здесь можно сделать
     private JLabel commonDescriprionLabel = new JLabel("Отредактировать/удалить транзакцию");
@@ -37,6 +37,12 @@ public class EditRecord {
     private JComboBox categoryComboBox = new JComboBox(Category.values());
     private JTextField sumTextField = new JTextField();
     private JTextField dataTextField = new JTextField();
+
+    //создаем метку, где будут выводиться сообщения об ошибках
+    private JLabel messagesLabel = new JLabel();
+
+    //создаем панель, где будут располагаться кнопки
+    private JPanel buttonsPanel = new JPanel();
 
     //создаем кнопку "отредактировать"
     private JButton editButton = new JButton("Отредактировать");
@@ -81,7 +87,12 @@ public class EditRecord {
 
         editRecordFrame.setLayout(new GridBagLayout());
 
-        //устанавливаем настройки метки транзакции
+        //устанавливаем настройки метки с описанием того, что тут можно сделать
+        commonDescriprionLabel.setHorizontalAlignment(0);
+        commonDescriprionLabel.setFont(new Font("Arial", Font.PLAIN , 20));
+
+        //устанавливаем настройки панели для кнопок
+        buttonsPanel.setLayout(new GridBagLayout());
 
 
         //расставляем компоненты
@@ -129,16 +140,25 @@ public class EditRecord {
         editRecordFrame.add(dataTextField, new GridBagConstraints(4, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-
-        //4 ряд. Кнопки
-        editRecordFrame.add(editButton, new GridBagConstraints(0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+        //4 ряд. Метка с сообщениями об ошибках
+        editRecordFrame.add(messagesLabel, new GridBagConstraints(0, 3, 5, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        editRecordFrame.add(deleteButton, new GridBagConstraints(1, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+        //5 ряд. Кнопки на панели
+        buttonsPanel.add(editButton, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        editRecordFrame.add(cancelButton, new GridBagConstraints(2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+        buttonsPanel.add(deleteButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+        buttonsPanel.add(cancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+        //Теперь ставим саму папель
+        editRecordFrame.add(buttonsPanel, new GridBagConstraints(0, 4, 5, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+
 
 
         //делаем форму видимой
