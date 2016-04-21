@@ -25,7 +25,7 @@ public class MainWindow {
     private Account currentAccount; //текущий аккаунт пользователя
 
     private JFrame mainWindowFrame = new JFrame("Финансовый менеджер");
-    private Dimension dimensionMainWindowFrame = new Dimension(800, 600);
+    private Dimension dimensionMainWindowFrame = new Dimension(800, 700);
 
     //создаем метку, где находится имя пользователя
     private JLabel usernameLabel = new JLabel();
@@ -53,7 +53,7 @@ public class MainWindow {
     private JScrollPane scrollPaneForRecordsTable = new JScrollPane(recordsTable);
 
     //задаем размеры панели прокрутки
-    private Dimension dimensionOfScroolPane = new Dimension(500, 500);
+    private Dimension dimensionOfScroolPane = new Dimension(100, 100);
 
 
     //создаем кнопку "создать новый аккаунт"
@@ -99,7 +99,7 @@ public class MainWindow {
 
         //установка настроек формы
         mainWindowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainWindowFrame.setResizable(false);
+        mainWindowFrame.setResizable(true);
         mainWindowFrame.setSize(dimensionMainWindowFrame);
         mainWindowFrame.setLocationRelativeTo(null);
 
