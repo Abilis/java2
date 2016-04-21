@@ -70,4 +70,25 @@ public class Record {
                 '}';
     }
 
+    public String getLabelAsString() {
+        if (label) {
+            return "Пополнение";
+        }
+        else {
+            return "Снятие";
+        }
+    }
+
+    public String getCategoryAsString() {
+        return category.toString();
+    }
+
+    public String getSumAsString() {
+        return String.valueOf(sum);
+    }
+
+    public String getDateOfRecordAsString() {
+        return dateOfRecord.toString();
+    }
+
 }

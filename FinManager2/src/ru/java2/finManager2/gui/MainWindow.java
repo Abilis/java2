@@ -4,6 +4,7 @@ import ru.java2.finManager2.Account;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
 import ru.java2.finManager2.tableModels.RecordsTableModel;
+import ru.java2.finManager2.utils.ReconrdsAsArrStrings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,7 +53,7 @@ public class MainWindow {
     private JScrollPane scrollPaneForRecordsTable = new JScrollPane(recordsTable);
 
     //задаем размеры панели прокрутки
-    private Dimension dimensionOfScroolPane = new Dimension();
+    private Dimension dimensionOfScroolPane = new Dimension(500, 500);
 
 
     //создаем кнопку "создать новый аккаунт"
@@ -117,6 +118,10 @@ public class MainWindow {
         scrollPaneForRecordsTable.setSize(dimensionOfScroolPane);
 
         //Преобразуем список транзакций текущего аккаунта в список массива строк
+        String[][] recordsAsStrArr = ReconrdsAsArrStrings.getRecordsAsArrOfStrings(currentAccount.getRecords());
+
+        //заполняем таблицу
+        recordsTableModel.addDataAll(recordsAsStrArr);
 
 
         //расставляем компоненты
@@ -140,17 +145,17 @@ public class MainWindow {
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //5 ряд. Пролистываемый список записей в виде таблицы
-        mainWindowFrame.add(scrollPaneForRecordsTable, new GridBagConstraints(0, 4, 2, 1, 1.0, 1.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(scrollPaneForRecordsTable, new GridBagConstraints(0, 4, 2, 2, 1.0, 1.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //6 ряд. Кнопка "создать новый аккаунт"
-        mainWindowFrame.add(addNewAccountButton, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(addNewAccountButton, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //7 ряд. Кнопки "добавить транзакцию" и "закрыть"
-        mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 6, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 6, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 

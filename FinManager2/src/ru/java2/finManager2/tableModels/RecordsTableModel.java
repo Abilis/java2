@@ -36,10 +36,19 @@ public class RecordsTableModel extends AbstractTableModel {
         return dataArrayList.get(rowIndex)[columnIndex];
     }
 
-    public void addData(String[] row) {
+    //метод добавляет 1 строку в список данных таблицы
+    private void addData(String[] row) {
         String[] rowTable = new String[getColumnCount()];
         rowTable = row;
         dataArrayList.add(rowTable);
+    }
+
+    //метод добавляет все переданные строки в список данных таблицы
+    public void addDataAll(String[][] rows) {
+        for (int i = 0; i < rows.length; i++) {
+            addData(rows[i]);
+        }
+
     }
 
     @Override
