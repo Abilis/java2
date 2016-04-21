@@ -43,7 +43,7 @@ public class RecordsTableModel extends AbstractTableModel {
         }
 
         //массив строк, соответствующий строке в таблице
-        String[] arr = getStringArrInDataArrayList(columnIndex);
+        String[] arr = getStringArrInDataArrayList(rowIndex);
 
         //заменяем элемент массива переданной строкой
         arr[columnIndex] = value;
@@ -85,5 +85,10 @@ public class RecordsTableModel extends AbstractTableModel {
         }
 
         return "";
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return true;
     }
 }
