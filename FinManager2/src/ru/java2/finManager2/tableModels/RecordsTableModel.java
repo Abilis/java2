@@ -15,7 +15,7 @@ public class RecordsTableModel extends AbstractTableModel {
         //создаем новый список с массивом строк. Каждый элемент массива - отдельная транзакция
         dataArrayList = new ArrayList<String[]>();
 
-        //создаем в списке необходимое количество массива строк с необходимым размером массива
+        //инициализируем список с данными таблицы
         for (int i = 0; i < dataArrayList.size(); i++) {
             dataArrayList.add(new String[getColumnCount()]);
         }
@@ -58,7 +58,7 @@ public class RecordsTableModel extends AbstractTableModel {
             case 4:
                 return "Дата";
         }
-        
+
         return "";
     }
 }
