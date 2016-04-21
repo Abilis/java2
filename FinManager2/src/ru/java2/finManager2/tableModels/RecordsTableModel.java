@@ -11,6 +11,10 @@ public class RecordsTableModel extends AbstractTableModel {
     private int columnCount = 5;
     private ArrayList<String[]> dataArrayList = new ArrayList<String[]>();
 
+    private String[] getStringArrInDataArrayList(int index) {
+        return dataArrayList.get(index);
+    }
+
     public RecordsTableModel() {
     }
 
@@ -27,6 +31,23 @@ public class RecordsTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         return dataArrayList.get(rowIndex)[columnIndex];
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+
+        String value = "";
+
+        if (aValue instanceof String) {
+            value = (String) aValue;
+        }
+
+        //массив строк, соответствующий строке в таблице
+        String[] arr = getStringArrInDataArrayList(columnIndex);
+
+        //заменяем элемент массива переданной строкой
+        arr[columnIndex] = value;
+
     }
 
     //метод добавляет 1 строку в список данных таблицы
