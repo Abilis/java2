@@ -40,6 +40,8 @@ public class MainWindow {
     //создаем выпадающий список
     private JComboBox listOfAccounts;
 
+    //создаем таблицу, где будут отображаться транзакции
+    JTable recordsTable = new JTable();
 
     //создаем кнопку "создать новый аккаунт"
     private JButton addNewAccountButton = new JButton("Создать новый аккаунт");
@@ -119,17 +121,18 @@ public class MainWindow {
         mainWindowFrame.add(listOfAccounts, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        //5 ряд. Пролистываемый список записей
-
+        //5 ряд. Пролистываемый список записей в виде таблицы
+        mainWindowFrame.add(recordsTable, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //6 ряд. Кнопка "создать новый аккаунт"
-        mainWindowFrame.add(addNewAccountButton, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(addNewAccountButton, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //7 ряд. Кнопки "добавить транзакцию" и "закрыть"
-        mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
