@@ -40,6 +40,6 @@ public interface DataStore {
     Account removeAccount(User owner, Account account);
 
     // return null if no such record
-    Record removeRecord(Account from, Record record) throws SQLException;
+    void removeRecord(Account from, Record record) throws SQLException;
 
 }

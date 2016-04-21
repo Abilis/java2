@@ -335,21 +335,24 @@ public class DbHelper implements DataStore {
     }
 
     @Override
-    public Record removeRecord(Account from, Record record) throws SQLException {
+    public void removeRecord(Account from, Record record) throws SQLException {
 
         try (Connection connection = getConnection())
         {
-
-
             //формируем запрос
             String query = "DELETE FROM `records` WHERE `id_rec`=\"" + record.getIdRecord() + "\" AND `id_acc`=\"" +
                     from.getIdAcc() + "\";";
 
-            System.out.println(query);
+            //выполняем запрос
+            Statement statement = connection.createStatement();
 
+            int n = statement.executeUpdate(query);
+
+            if (n == 0) {
+                throw new SQLException("Не получилось удалить транзакцию с id " + record.getIdRecord());
+            }
 
         }
 
-        return null;
     }
 }

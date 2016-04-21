@@ -4,6 +4,7 @@ import ru.java2.finManager2.Account;
 import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
+import ru.java2.finManager2.database.DbHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
 /**
  * Created by Abilis on 21.04.2016.
@@ -230,7 +232,21 @@ public class EditRecord {
     class DeleteButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("удаление транзакции");
+            DbHelper dbHelper = DbHelper.getDbHerper();
+            try {
+                dbHelper.removeRecord(currentAccount, currentRecord);
+
+                //если все нормально - закрываем это окно и отрываем главное
+                editRecordFrame.dispose();
+                MainWindow mainWindow = new MainWindow(currentUser);
+                mainWindow.init();
+
+            } catch (SQLException e1) {
+                messagesLabel.setText(e1.getMessage());
+            }
+
+
+
         }
     }
 
