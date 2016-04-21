@@ -32,7 +32,7 @@ public class EditRecord {
     private JLabel dateLabel = new JLabel("Дата");
 
     //Создаем поля ввода, где можно отредактировать транзакцию
-    private JComboBox labelComboBox = new JComboBox();
+    private JComboBox labelComboBox = new JComboBox(Record.getArrLabelLalues());
     private JTextField descriptionTextField = new JTextField();
     private JComboBox categoryComboBox = new JComboBox(Category.values());
     private JTextField sumTextField = new JTextField();
@@ -56,6 +56,7 @@ public class EditRecord {
         //инициализация полей транзакции
 
         //инициализация метки
+        labelComboBox.setSelectedItem(currentRecord.getLabelAsString());
 
         //инициализация описания
         descriptionTextField.setText(currentRecord.getDescription());

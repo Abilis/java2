@@ -91,4 +91,12 @@ public class Record {
         return dateOfRecord.toString();
     }
 
+    public static String[] getArrLabelLalues() {
+        String[] result = new String[2];
+        result[0] = "Пополнение";
+        result[1] = "Снятие";
+
+        return result;
+    }
+
 }
