@@ -27,7 +27,10 @@ public class CreateNewRecord {
 
     //создаем форму
     private JFrame createNewRecordFrame = new JFrame("Финансовый менеджер");
-    private Dimension dimensionCreateNewRecordFrame = new Dimension(300, 270);
+    private Dimension dimensionCreateNewRecordFrame = new Dimension(300, 300);
+
+    //создаем метку, где будет отображаться остаток средств на текущем аккаунте
+    private JLabel moneyLabel = new JLabel();
 
     //cоздаем пару радиокнопок (пополнение/снятие)
     private JRadioButton addingRadioButton = new JRadioButton("Пополнение");
@@ -81,40 +84,48 @@ public class CreateNewRecord {
         messagesLabel.setHorizontalAlignment(0);
         messagesLabel.setForeground(Color.RED);
 
+        //установка параметров метки с остатком средств
+        moneyLabel.setHorizontalAlignment(0);
+        moneyLabel.setText("На счету: " + currentAccount.getOstatok());
+
         //расстановка компонентов
 
-        //1 и 2 ряд - группируем радиокнопки
+        //1 ряд - выводим метку с остатком средств
+        createNewRecordFrame.add(moneyLabel, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+        //2 и 3 ряд - группируем радиокнопки
         radiobuttonsGroupButton.add(addingRadioButton);
         radiobuttonsGroupButton.add(withdrawRadioButton);
-        createNewRecordFrame.add(addingRadioButton, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        createNewRecordFrame.add(addingRadioButton, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        createNewRecordFrame.add(withdrawRadioButton, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-
-        //3 ряд. Ставим метку суммы и поле ввода суммы
-        createNewRecordFrame.add(sumLabel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        createNewRecordFrame.add(sumTextField, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        createNewRecordFrame.add(withdrawRadioButton, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        //4 ряд. Ставим метку описания и поле ввода описания
-        createNewRecordFrame.add(descriptionLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //4 ряд. Ставим метку суммы и поле ввода суммы
+        createNewRecordFrame.add(sumLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        createNewRecordFrame.add(descriptionTextField, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-
-        //5 ряд. Ставим выпадающий список доступных категорий
-        createNewRecordFrame.add(categories, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        createNewRecordFrame.add(sumTextField, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        //6 ряд. Ставим скрытую метку для сообщений об ощибках
-        createNewRecordFrame.add(messagesLabel, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //5 ряд. Ставим метку описания и поле ввода описания
+        createNewRecordFrame.add(descriptionLabel, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        createNewRecordFrame.add(descriptionTextField, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        //7 ряд. Ставим кнопки "добавить" и "отмена
-        createNewRecordFrame.add(addButton, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //6 ряд. Ставим выпадающий список доступных категорий
+        createNewRecordFrame.add(categories, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-        createNewRecordFrame.add(cancelButton, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+
+        //7 ряд. Ставим скрытую метку для сообщений об ощибках
+        createNewRecordFrame.add(messagesLabel, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+        //8 ряд. Ставим кнопки "добавить" и "отмена
+        createNewRecordFrame.add(addButton, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        createNewRecordFrame.add(cancelButton, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 

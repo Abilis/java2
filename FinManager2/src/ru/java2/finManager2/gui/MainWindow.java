@@ -99,7 +99,7 @@ public class MainWindow {
 
         //установка настроек формы
         mainWindowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainWindowFrame.setResizable(true);
+        mainWindowFrame.setResizable(false);
         mainWindowFrame.setSize(dimensionMainWindowFrame);
         mainWindowFrame.setLocationRelativeTo(null);
 
