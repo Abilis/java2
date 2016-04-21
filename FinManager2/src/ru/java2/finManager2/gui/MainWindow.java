@@ -14,7 +14,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Abilis on 20.04.2016.
@@ -122,10 +121,16 @@ public class MainWindow {
         scrollPaneForRecordsTable.setSize(dimensionOfScroolPane);
 
         //Преобразуем список транзакций текущего аккаунта в список массива строк
-        String[][] recordsAsStrArr = RecordsAsArrStrings.getRecordsAsArrOfStrings(currentAccount.getRecords());
 
-        //заполняем таблицу
-        recordsTableModel.addDataAll(recordsAsStrArr);
+        if (currentAccount != null) {
+            String[][] recordsAsStrArr = RecordsAsArrStrings.getRecordsAsArrOfStrings(currentAccount.getRecords());
+
+            //заполняем таблицу
+            recordsTableModel.addDataAll(recordsAsStrArr);
+        }
+
+
+
 
 
         //расставляем компоненты
