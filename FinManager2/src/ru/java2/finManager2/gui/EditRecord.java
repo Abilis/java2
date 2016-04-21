@@ -7,6 +7,10 @@ import ru.java2.finManager2.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by Abilis on 21.04.2016.
@@ -165,6 +169,78 @@ public class EditRecord {
         editRecordFrame.setVisible(true);
 
 
+        //обработчики
+
+        //обработка нажатия на кнопку "отредактировать"
+        editButton.addActionListener(new EditButtonActionListener());
+
+        //обработка нажатия клавиши "Энтер" на кнопку "отредактировать"
+        editButton.addKeyListener(new EditByPressEnterOnButtonEdit());
+
+        //обработка нажатия на кнопку "удалить"
+        deleteButton.addActionListener(new DeleteButtonActionListener());
+
+        //обработка нажатия клавиши "Энтер" на кнопку "удалить"
+        deleteButton.addKeyListener(new DeleteByPressEnterOnButtonDelete());
+
+        //обработка нажатия на кнопку "отмена"
+        cancelButton.addActionListener(new CancelButtonActionListener());
+
+        //обработка нажатия клавиши "Энтер" на кнопку "отмена"
+        cancelButton.addKeyListener(new CancelByPressEnterOnButtonCancel());
+
     }
 
+    class CancelButtonActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            editRecordFrame.dispose();
+            MainWindow mainWindow = new MainWindow(currentUser);
+            mainWindow.init();
+        }
+    }
+
+    class CancelByPressEnterOnButtonCancel extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new CancelButtonActionListener ().actionPerformed(ae);
+            }
+        }
+    }
+
+    class EditButtonActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Редактирование транзакции");
+        }
+    }
+
+    class EditByPressEnterOnButtonEdit extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new EditButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
+
+    class DeleteButtonActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("удаление транзакции");
+        }
+    }
+
+    class DeleteByPressEnterOnButtonDelete extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new DeleteButtonActionListener().actionPerformed(ae);
+            }
+        }
+    }
 }
