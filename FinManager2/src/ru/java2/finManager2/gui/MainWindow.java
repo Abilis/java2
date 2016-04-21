@@ -1,16 +1,21 @@
 package ru.java2.finManager2.gui;
 
 import ru.java2.finManager2.Account;
+import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
 import ru.java2.finManager2.tableModels.RecordsTableModel;
 import ru.java2.finManager2.utils.RecordsAsArrStrings;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 
 /**
  * Created by Abilis on 20.04.2016.
@@ -61,9 +66,6 @@ public class MainWindow {
 
     //создаем кнопку "добавить транзакцию"
     private JButton addRecordButton = new JButton("Добавить транзакцию");
-
-    //создаем кнопку "редактировать транзакцию"
-    private JButton editRecordButton = new JButton("Редактировать транзакцию");
 
     //создаем кнопку "закрыть"
     private JButton closeAppButton = new JButton("Закрыть");
@@ -167,11 +169,7 @@ public class MainWindow {
         mainWindowFrame.add(addRecordButton, new GridBagConstraints(0, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        mainWindowFrame.add(editRecordButton, new GridBagConstraints(1, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
-
-        //8 ряд. Кнопка "редактировать транзакцию"
-        mainWindowFrame.add(closeAppButton, new GridBagConstraints(0, 8, 2, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(closeAppButton, new GridBagConstraints(1, 7, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
@@ -210,11 +208,12 @@ public class MainWindow {
         //обработка выбора текущего аккаунта
         listOfAccounts.addActionListener(new SelectedAccountActionListener());
 
-        //обработка нажатия кнопки "редактировать"
-        editRecordButton.addActionListener(new EditRecordActionListener());
+        //обработка клика на строку транзакции
+        ListSelectionModel listSelectionModel = recordsTable.getSelectionModel();
 
-        //обработка нажатия клавиши "Энтер" на кнопке "редактировать транзакцию"
-        editRecordButton.addKeyListener(new EditRecordByPressEnterOnEditRecordButton());
+        listSelectionModel.addListSelectionListener(new EditRecordSelectionListener());
+
+
 
 
     }
@@ -326,25 +325,17 @@ public class MainWindow {
         }
     }
 
-    class EditRecordActionListener implements ActionListener {
+    class EditRecordSelectionListener implements ListSelectionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void valueChanged(ListSelectionEvent e) {
 
-            mainWindowFrame.dispose();
-            EditRecord deleteRecord = new EditRecord();
-            deleteRecord.init();
+            int[] rec = recordsTable.getSelectedRows();
+            System.out.println(Arrays.toString(rec));
 
         }
     }
 
-    class EditRecordByPressEnterOnEditRecordButton extends KeyAdapter {
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                ActionEvent ae = new ActionEvent(e, 0, "test");
-                new EditRecordActionListener ().actionPerformed(ae);
-            }
-        }
-    }
+
+
 
 }
