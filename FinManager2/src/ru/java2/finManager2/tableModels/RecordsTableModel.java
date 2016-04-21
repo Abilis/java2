@@ -39,7 +39,6 @@ public class RecordsTableModel extends AbstractTableModel {
         for (int i = 0; i < rows.length; i++) {
             addData(rows[i]);
         }
-
     }
 
     //метод очищает список с транзакциями
