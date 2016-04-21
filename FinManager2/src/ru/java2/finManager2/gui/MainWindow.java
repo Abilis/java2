@@ -53,7 +53,7 @@ public class MainWindow {
 
     //задаем размеры панели прокрутки
     private Dimension dimensionOfScroolPane = new Dimension(700, 300);
-    
+
 
     //создаем кнопку "создать новый аккаунт"
     private JButton addNewAccountButton = new JButton("Создать новый аккаунт");
