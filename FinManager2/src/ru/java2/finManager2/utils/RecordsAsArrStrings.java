@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by Abilis on 21.04.2016.
  */
-public class ReconrdsAsArrStrings {
+public class RecordsAsArrStrings {
 
 
     //метод получает список транзакций и возвращает массив строк в формате

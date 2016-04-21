@@ -51,6 +51,11 @@ public class RecordsTableModel extends AbstractTableModel {
 
     }
 
+    //метод очищает список с транзакциями
+    public void clearDataAll() {
+        dataArrayList.clear();
+    }
+
     @Override
     public String getColumnName(int columnIndex) {
 

@@ -4,7 +4,7 @@ import ru.java2.finManager2.Account;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
 import ru.java2.finManager2.tableModels.RecordsTableModel;
-import ru.java2.finManager2.utils.ReconrdsAsArrStrings;
+import ru.java2.finManager2.utils.RecordsAsArrStrings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +14,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Abilis on 20.04.2016.
@@ -121,7 +122,7 @@ public class MainWindow {
         scrollPaneForRecordsTable.setSize(dimensionOfScroolPane);
 
         //Преобразуем список транзакций текущего аккаунта в список массива строк
-        String[][] recordsAsStrArr = ReconrdsAsArrStrings.getRecordsAsArrOfStrings(currentAccount.getRecords());
+        String[][] recordsAsStrArr = RecordsAsArrStrings.getRecordsAsArrOfStrings(currentAccount.getRecords());
 
         //заполняем таблицу
         recordsTableModel.addDataAll(recordsAsStrArr);
@@ -195,6 +196,9 @@ public class MainWindow {
 
         //обработка нажатия клавиши "Энтер" на кнопке "Сменить пользователя"
         changeUserButton.addKeyListener(new ChangeUserByPressEnterOnButtonChangeUser());
+
+        //обработка выбора текущего аккаунта
+        listOfAccounts.addActionListener(new SelectedAccountActionListener());
 
     }
 
@@ -278,6 +282,30 @@ public class MainWindow {
                 ActionEvent ae = new ActionEvent(e, 0, "test");
                 new ChangeUserButtonActionListener ().actionPerformed(ae);
             }
+        }
+    }
+
+    class SelectedAccountActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            //определяем индекс выбранного аккаунта
+            int currentAccIndex = listOfAccounts.getSelectedIndex();
+
+            //делаем активным его
+            currentAccount = accounts.get(currentAccIndex);
+
+            //меняем метку остатка средств на аккаунте
+            ostatokLabel.setText("Баланс: " + String.valueOf(currentAccount.getOstatok()));
+
+            //Преобразуем список транзакций текущего аккаунта в список массива строк
+            String[][] recordsAsStrArr = RecordsAsArrStrings.getRecordsAsArrOfStrings(currentAccount.getRecords());
+
+            //очищаем таблицу, обновляем форму и заполняем транзакциями заново
+            recordsTableModel.clearDataAll();
+            recordsTableModel.fireTableDataChanged();
+            recordsTableModel.addDataAll(recordsAsStrArr);
+
         }
     }
 
