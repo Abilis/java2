@@ -59,6 +59,9 @@ public class MainWindow {
     //создаем кнопку "создать новый аккаунт"
     private JButton addNewAccountButton = new JButton("Создать новый аккаунт");
 
+    //создаем кнопку "сменить пользователя"
+    private JButton changeUserButton = new JButton("Сменить пользователя");
+
     //создаем кнопку "добавить транзакцию"
     private JButton addRecordButton = new JButton("Добавить транзакцию");
 
@@ -148,8 +151,10 @@ public class MainWindow {
         mainWindowFrame.add(scrollPaneForRecordsTable, new GridBagConstraints(0, 4, 2, 2, 1.0, 1.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        //6 ряд. Кнопка "создать новый аккаунт"
-        mainWindowFrame.add(addNewAccountButton, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //6 ряд. Кнопки "создать новый аккаунт" и "сменить пользователя"
+        mainWindowFrame.add(addNewAccountButton, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        mainWindowFrame.add(changeUserButton, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //7 ряд. Кнопки "добавить транзакцию" и "закрыть"
@@ -176,6 +181,9 @@ public class MainWindow {
         //обработка нажатия кнопки "Добавить транзакцию"
         addRecordButton.addActionListener(new AddNewRecordButtonActionListener());
 
+        //обработка нажатия кнопки "Сменить пользователя"
+        changeUserButton.addActionListener(new ChangeUserButtonActionListener());
+
         //обработка нажатия клавиши "Энтер" на кнопке "Создать новый аккаунт"
         addNewAccountButton.addKeyListener(new AddNewAccountByPressEnterOnButonAddNewAccount());
 
@@ -185,6 +193,8 @@ public class MainWindow {
         //обработка нажатия клавиши "Энтер" на кнопке "Закрыть
         closeAppButton.addKeyListener(new CloseMainFrameByPressEnterOnButtonClose());
 
+        //обработка нажатия клавиши "Энтер" на кнопке "Сменить пользователя"
+        changeUserButton.addKeyListener(new ChangeUserByPressEnterOnButtonChangeUser());
 
     }
 
@@ -245,6 +255,28 @@ public class MainWindow {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 ActionEvent ae = new ActionEvent(e, 0, "test");
                 new AddNewRecordButtonActionListener ().actionPerformed(ae);
+            }
+        }
+    }
+
+    class ChangeUserButtonActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            //закрываем это окно и открываем окно логина и создания нового пользователя
+            mainWindowFrame.dispose();
+            LoginAndRegistration loginAndRegistration = new LoginAndRegistration();
+            loginAndRegistration.init();
+        }
+    }
+
+    class ChangeUserByPressEnterOnButtonChangeUser extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                ActionEvent ae = new ActionEvent(e, 0, "test");
+                new ChangeUserButtonActionListener ().actionPerformed(ae);
             }
         }
     }
