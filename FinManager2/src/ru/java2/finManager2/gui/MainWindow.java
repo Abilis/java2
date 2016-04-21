@@ -1,6 +1,7 @@
 package ru.java2.finManager2.gui;
 
 import ru.java2.finManager2.Account;
+import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
@@ -10,6 +11,8 @@ import ru.java2.finManager2.utils.RecordsAsArrStrings;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
@@ -132,7 +135,10 @@ public class MainWindow {
         }
 
 
-
+        //раскрашиваем строки таблицы с транзакциями в зависимости от категории
+        for (int i = 0; i < recordsTableModel.getColumnCount(); i++) {
+            recordsTable.getColumnModel().getColumn(i).setCellRenderer(new TableRendererByCategories());
+        }
 
 
         //расставляем компоненты
@@ -346,7 +352,38 @@ public class MainWindow {
         }
     }
 
+    class TableRendererByCategories extends DefaultTableCellRenderer {
 
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                                                       boolean hasFocus, int row, int column) {
+
+
+            Component cell =  super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+            if (value.equals(Category.CLOTHES.toString())) {
+                cell.setBackground(Color.GRAY);
+            }
+            else if (value.equals(Category.FOOD.toString())) {
+                cell.setBackground(Color.GREEN);
+            }
+            else if (value.equals(Category.HEALTH.toString())) {
+                cell.setBackground(Color.RED);
+            }
+            else if (value.equals(Category.TRAVELLING.toString())) {
+                cell.setBackground(Color.ORANGE);
+            }
+            else if (value.equals(Category.OTHER.toString())) {
+                cell.setBackground(Color.CYAN);
+            }
+
+
+            return cell;
+
+        }
+
+
+    }
 
 
 }
