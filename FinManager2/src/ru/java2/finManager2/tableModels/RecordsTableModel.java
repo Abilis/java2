@@ -9,16 +9,9 @@ import java.util.ArrayList;
 public class RecordsTableModel extends AbstractTableModel {
 
     private int columnCount = 5;
-    private ArrayList<String[]> dataArrayList;
+    private ArrayList<String[]> dataArrayList = new ArrayList<String[]>();
 
     public RecordsTableModel() {
-        //создаем новый список с массивом строк. Каждый элемент массива - отдельная транзакция
-        dataArrayList = new ArrayList<String[]>();
-
-        //инициализируем список с данными таблицы
-        for (int i = 0; i < dataArrayList.size(); i++) {
-            dataArrayList.add(new String[getColumnCount()]);
-        }
     }
 
     @Override
@@ -38,9 +31,7 @@ public class RecordsTableModel extends AbstractTableModel {
 
     //метод добавляет 1 строку в список данных таблицы
     private void addData(String[] row) {
-        String[] rowTable = new String[getColumnCount()];
-        rowTable = row;
-        dataArrayList.add(rowTable);
+        dataArrayList.add(row);
     }
 
     //метод добавляет все переданные строки в список данных таблицы
