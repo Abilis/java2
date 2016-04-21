@@ -1,6 +1,7 @@
 package ru.java2.finManager2.gui;
 
 import ru.java2.finManager2.Account;
+import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 
@@ -31,9 +32,9 @@ public class EditRecord {
     private JLabel dateLabel = new JLabel("Дата");
 
     //Создаем поля ввода, где можно отредактировать транзакцию
-    private JTextField labelTextField = new JTextField();
+    private JComboBox labelComboBox = new JComboBox();
     private JTextField descriptionTextField = new JTextField();
-    private JTextField categoryTextField = new JTextField();
+    private JComboBox categoryComboBox = new JComboBox(Category.values());
     private JTextField sumTextField = new JTextField();
     private JTextField dataTextField = new JTextField();
 
@@ -47,16 +48,7 @@ public class EditRecord {
     private JButton cancelButton = new JButton("Отмена");
 
 
-    public EditRecord(JTextField dataTextField, JTextField sumTextField, JTextField categoryTextField,
-                      JTextField descriptionTextField, JTextField labelTextField, User currentUser, Account currentAccount) {
-        this.dataTextField = dataTextField;
-        this.sumTextField = sumTextField;
-        this.categoryTextField = categoryTextField;
-        this.descriptionTextField = descriptionTextField;
-        this.labelTextField = labelTextField;
-        this.currentUser = currentUser;
-        this.currentAccount = currentAccount;
-    }
+
 
     public EditRecord() {}
 
@@ -69,6 +61,8 @@ public class EditRecord {
         editRecordFrame.setLocationRelativeTo(null);
 
         editRecordFrame.setLayout(new GridBagLayout());
+
+        //устанавливаем настройки метки транзакции
 
 
         //расставляем компоненты
@@ -94,23 +88,38 @@ public class EditRecord {
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
-        //3 ряд. Текстовые поля ввода с полями транзакции
-        editRecordFrame.add(labelTextField, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //3 ряд. Поля транзакции
+
+        //метка снятие-пополение
+        editRecordFrame.add(labelComboBox, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
+        //описание
         editRecordFrame.add(descriptionTextField, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
-        editRecordFrame.add(categoryTextField, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //категория
+        editRecordFrame.add(categoryComboBox, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
+        //сумма
         editRecordFrame.add(sumTextField, new GridBagConstraints(3, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
+        //дата
         editRecordFrame.add(dataTextField, new GridBagConstraints(4, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
+        //4 ряд. Кнопки
+        editRecordFrame.add(editButton, new GridBagConstraints(0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+        editRecordFrame.add(deleteButton, new GridBagConstraints(1, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+        editRecordFrame.add(cancelButton, new GridBagConstraints(2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
 
         //делаем форму видимой

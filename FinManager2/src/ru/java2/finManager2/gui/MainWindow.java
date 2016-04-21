@@ -329,11 +329,14 @@ public class MainWindow {
         @Override
         public void valueChanged(ListSelectionEvent e) {
 
-            int[] rec = recordsTable.getSelectedRows();
-            System.out.println(Arrays.toString(rec));
+            if (!e.getValueIsAdjusting()) {
+                int[] rec = recordsTable.getSelectedRows();
+                System.out.println(Arrays.toString(rec));
 
-            EditRecord editRecord = new EditRecord();
-            editRecord.init();
+                EditRecord editRecord = new EditRecord();
+                editRecord.init();
+            }
+
 
         }
     }
