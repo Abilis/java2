@@ -3,6 +3,7 @@ package ru.java2.finManager2.gui;
 import ru.java2.finManager2.Account;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
+import ru.java2.finManager2.tableModels.RecordsTableModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,8 +41,19 @@ public class MainWindow {
     //создаем выпадающий список
     private JComboBox listOfAccounts;
 
+
+    //создаем модель таблицы, где будут отображаться транзакции
+    private RecordsTableModel recordsTableModel = new RecordsTableModel();
+
     //создаем таблицу, где будут отображаться транзакции
-    JTable recordsTable = new JTable();
+    private JTable recordsTable = new JTable(recordsTableModel);
+
+    //создаем панель прокрутки, куда поместим таблицу с транзакциями
+    private JScrollPane scrollPaneForRecordsTable = new JScrollPane(recordsTable);
+
+    //задаем размеры панели прокрутки
+    private Dimension dimensionOfScroolPane = new Dimension(700, 300);
+    
 
     //создаем кнопку "создать новый аккаунт"
     private JButton addNewAccountButton = new JButton("Создать новый аккаунт");
@@ -100,10 +112,14 @@ public class MainWindow {
         //инициализируем listOfAccounts массивом строк, описывающих аккаунт
         listOfAccounts = new JComboBox(currentUser.getArrOfAccounts());
 
+        //установка настроек таблицы транзакций
+        //установка размера панели прокрутки
+        scrollPaneForRecordsTable.setSize(dimensionOfScroolPane);
+
 
         //расставляем компоненты
 
-        //1 ряд, самый верх
+        //1 ряд, самый верх. Метки с именем текущего пользователя и остатком на выбранном аккаунте
         mainWindowFrame.add(usernameLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
         mainWindowFrame.add(ostatokLabel, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
@@ -122,7 +138,7 @@ public class MainWindow {
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //5 ряд. Пролистываемый список записей в виде таблицы
-        mainWindowFrame.add(recordsTable, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindowFrame.add(scrollPaneForRecordsTable, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
 
         //6 ряд. Кнопка "создать новый аккаунт"
