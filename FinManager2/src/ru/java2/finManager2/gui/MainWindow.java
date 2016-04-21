@@ -52,7 +52,7 @@ public class MainWindow {
     private JScrollPane scrollPaneForRecordsTable = new JScrollPane(recordsTable);
 
     //задаем размеры панели прокрутки
-    private Dimension dimensionOfScroolPane = new Dimension(700, 300);
+    private Dimension dimensionOfScroolPane = new Dimension();
 
 
     //создаем кнопку "создать новый аккаунт"
