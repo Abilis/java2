@@ -332,6 +332,9 @@ public class MainWindow {
             int[] rec = recordsTable.getSelectedRows();
             System.out.println(Arrays.toString(rec));
 
+            EditRecord editRecord = new EditRecord();
+            editRecord.init();
+
         }
     }
 
