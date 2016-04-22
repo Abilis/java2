@@ -18,9 +18,16 @@ public class DbHelper implements DataStore {
 
     private static DbHelper dbHelper = null;
     private Connection connection = null;
+
+    //Параметры подключения к MySQL
     private final String URL = "jdbc:mysql://localhost:3306/finmanager?autoReconnect=true&userSSL=false";
     private final String USERNAME = "root";
     private final String PASSWORD = "";
+
+    //Параметры подключения к sqlite
+//    private final String URL = "jdbc:sqlite://localhost:3306/finmanager?autoReconnect=true&userSSL=false";
+//    private final String USERNAME = "";
+//    private final String PASSWORD = "";
 
     private DbHelper() {
 

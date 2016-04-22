@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sqlite-driver">
+    <CLASSES>
+      <root url="file://$APPLICATION_HOME_DIR$/sqlite-driver" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$APPLICATION_HOME_DIR$/sqlite-driver" />
+    </SOURCES>
+    <jarDirectory url="file://$APPLICATION_HOME_DIR$/sqlite-driver" recursive="false" />
+    <jarDirectory url="file://$APPLICATION_HOME_DIR$/sqlite-driver" recursive="false" type="SOURCES" />
+  </library>
+</component>

@@ -11,9 +11,15 @@ import java.util.Properties;
  */
 public class InitDb {
 
+    //Параметры подключения к MySQL
     private static final String URL = "jdbc:mysql://localhost:3306";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
+
+    //параметры подключения к Sqlite
+//    private static final String URL = "jdbc:sqlite://localhost:3306";
+//    private static final String USERNAME = "";
+//    private static final String PASSWORD = "";
 
     private static final String queryCreateDb = "CREATE DATABASE IF NOT EXISTS `finmanager` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     private static final String queryUseDb = "USE `finmanager`;";
