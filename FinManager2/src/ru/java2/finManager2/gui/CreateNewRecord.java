@@ -218,7 +218,6 @@ public class CreateNewRecord {
 
             } catch (SQLException e1) {
                 messagesLabel.setText("Ошибка при записи в БД. Попробуйте еще раз");
-                e1.printStackTrace();
             } catch (DontAddRecordException | NoEnoughtMoneyException e1) {
                 messagesLabel.setText(e1.getMessage());
 

@@ -271,7 +271,7 @@ public class DbHelper implements DataStore {
         //если метка снятие - проверяем, достаточно ли на аккаунте остатка средств
         if (!record.isLabel()) {
             if (account.getOstatok() < record.getSum()) {
-                throw new NoEnoughtMoneyException("Недостаточно средст на аккаунте");
+                throw new NoEnoughtMoneyException("Недостаточно средств на аккаунте");
             }
         }
 
@@ -293,6 +293,7 @@ public class DbHelper implements DataStore {
                     "VALUES (\"" + label + "\", \"" + dateRecord + "\", \"" +
                     record.getSum() + "\", \"" + record.getDescription() + "\", \"" + record.getCategory().toString() +
                     "\", \"" + account.getIdAcc() + "\");";
+
 
             //Выполняем запрос
             Statement statement = connection.createStatement();
