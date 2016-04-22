@@ -5,10 +5,10 @@ package ru.java2.finManager2;
  */
 public enum Category {
 
-    HEALTH {
+    OTHER {
         @Override
         public String toString() {
-            return "HEALTH";
+            return "OTHER";
         }
     },
 
@@ -33,32 +33,47 @@ public enum Category {
         }
     },
 
-    OTHER {
+    TEST {
         @Override
         public String toString() {
-            return "OTHER";
+            return "TEST";
+        }
+    },
+
+    HEALTH {
+        @Override
+        public String toString() {
+            return "HEALTH";
         }
 
     };
 
     public static int getIndex(Category category) {
 
-        switch (category) {
-            case HEALTH:
-                return 0;
-            case FOOD:
-                return 1;
-            case CLOTHES:
-                return 2;
-            case TRAVELLING:
-                return 3;
-            case OTHER:
-                return 4;
+        Category[] categories = values();
+
+        for (int i = 0; i < categories.length; i++) {
+            if (category.equals(categories[i])) {
+                return i;
+            }
         }
-        return 4;
+
+        return 0; //если не нашлась - возвращаем 0 (OTHER)
     }
 
 
+    public static String[] getArrStrCategories() {
+
+        Category[] categories = values();
+
+        String[] result = new String[categories.length];
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = categories[i].toString();
+        }
+
+        return result;
+    }
 }
 
 

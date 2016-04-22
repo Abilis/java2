@@ -88,9 +88,6 @@ public class Record {
         return String.valueOf(sum);
     }
 
-    public String getDateOfRecordAsString() {
-        return dateOfRecord.toString();
-    }
 
     public static String[] getArrLabelLalues() {
         String[] result = new String[2];

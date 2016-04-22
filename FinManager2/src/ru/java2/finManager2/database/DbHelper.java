@@ -160,19 +160,14 @@ public class DbHelper implements DataStore {
                 String categoryStr = resultSet.getString("category");
                 Category category = Category.OTHER;
 
-                if (categoryStr.equalsIgnoreCase("HEALTH")) {
-                    category = Category.HEALTH;
-                }
-                else if (categoryStr.equalsIgnoreCase("FOOD")) {
-                    category = Category.FOOD;
-                }
-                else if (categoryStr.equalsIgnoreCase("CLOTHES")) {
-                    category = Category.CLOTHES;
-                }
-                else if (categoryStr.equalsIgnoreCase("TRAVELLING")) {
-                    category = Category.TRAVELLING;
-                }
+                //Определяем категорию транзакции
+                Category[] categories = Category.values();
 
+                for (int i = 0; i < categories.length; i++) {
+                    if (categoryStr.equals(categories[i].toString())) {
+                        category = categories[i];
+                    }
+                }
 
                 //создаем новую запись и добавлем в список
                 result.add(new Record(idRecord, label, date, sum, descriprion, category));
