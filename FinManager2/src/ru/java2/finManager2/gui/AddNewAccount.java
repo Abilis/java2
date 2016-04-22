@@ -37,7 +37,7 @@ public class AddNewAccount {
 
     //создаем пару кнопок: "добавить новый аккаунт" и "закрыть"
     private JButton addNewAccountButton = new JButton("Создать новый аккаунт");
-    private JButton closeAddNewAccountFrameButton = new JButton("Закрыть");
+    private JButton closeAddNewAccountFrameButton = new JButton("Отмена");
 
     //создаем метку для отображения сообщений об ошибках
     private JLabel messagesLabel = new JLabel();

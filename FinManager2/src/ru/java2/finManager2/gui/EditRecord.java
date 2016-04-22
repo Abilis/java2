@@ -5,6 +5,7 @@ import ru.java2.finManager2.Category;
 import ru.java2.finManager2.Record;
 import ru.java2.finManager2.User;
 import ru.java2.finManager2.database.DbHelper;
+import ru.java2.finManager2.utils.DateFormatForMySql;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,7 +84,10 @@ public class EditRecord {
         sumTextField.setText(String.valueOf(currentRecord.getSum()));
 
         //инициализация даты
-        dataTextField.setText(currentRecord.getDateOfRecordAsString());
+        Date date = currentRecord.getDateOfRecord();
+        String dateStr = DateFormatForMySql.getDateFormatForMySql(date);
+
+        dataTextField.setText(dateStr);
     }
 
     public void init() {
@@ -254,10 +258,11 @@ public class EditRecord {
 
             String dateStr = dataTextField.getText();
 
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            //Проверяем, парсится ли введенна в поле "дата" строка в формат дата. Если нет - считаем, что данные некорректны
+
             Date date = null;
             try {
-                date = simpleDateFormat.parse(dateStr);
+                date = DateFormatForMySql.getDateFormatFromStringWithParseException(dateStr);
             } catch (ParseException e1) {
                 messagesLabel.setText("Неверный формат даты");
                 return;

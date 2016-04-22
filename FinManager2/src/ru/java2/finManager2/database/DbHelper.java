@@ -9,11 +9,8 @@ import ru.java2.finManager2.utils.DateFormatForMySql;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Set;
-
-import static ru.java2.finManager2.Category.HEALTH;
+import java.util.*;
+import java.util.Date;
 
 /**
  * Created by Abilis on 19.04.2016.
@@ -140,7 +137,7 @@ public class DbHelper implements DataStore {
         try (Connection connection = getConnection())
         {
             //формируем запрос
-            String query = "SELECT * FROM `records` WHERE `id_acc`=\"" + account.getIdAcc() + "\" ORDER BY `dt` DESC;";
+            String query = "SELECT * FROM `records` WHERE `id_acc`=\"" + account.getIdAcc() + "\" ORDER BY `id_rec` DESC;";
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -148,7 +145,9 @@ public class DbHelper implements DataStore {
             while (resultSet.next()) {
                 int idRecord = resultSet.getInt("id_rec");
                 boolean label = resultSet.getBoolean("label");
-                Date dt = resultSet.getDate("dt");
+                String dt = resultSet.getString("dt");
+                Date date = DateFormatForMySql.getDateFormatFromMySql(dt);
+
                 int sum = resultSet.getInt("sum");
                 String descriprion = resultSet.getString("description");
 
@@ -170,7 +169,7 @@ public class DbHelper implements DataStore {
 
 
                 //создаем новую запись и добавлем в список
-                result.add(new Record(idRecord, label, dt, sum, descriprion, category));
+                result.add(new Record(idRecord, label, date, sum, descriprion, category));
 
             }
 
@@ -369,8 +368,9 @@ public class DbHelper implements DataStore {
                 labelNum = 1;
             }
 
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String dateStr = simpleDateFormat.format(record.getDateOfRecord());
+            Date date = record.getDateOfRecord();
+            String dateStr = DateFormatForMySql.getDateFormatForMySql(date);
+
 
             //формируем запрос
             String query = "UPDATE `records` SET `label`=\"" + labelNum + "\", `dt`=\"" + dateStr +
