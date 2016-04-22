@@ -1,5 +1,7 @@
 package ru.java2.finManager2;
 
+import java.awt.*;
+
 /**
  * Created by Abilis on 19.04.2016.
  */
@@ -10,12 +12,20 @@ public enum Category {
         public String toString() {
             return "OTHER";
         }
+
+        public Color getColor() {
+            return Color.CYAN;
+        }
     },
 
     FOOD {
         @Override
         public String toString() {
             return "FOOD";
+        }
+
+        public Color getColor() {
+            return Color.GREEN;
         }
     },
 
@@ -24,12 +34,20 @@ public enum Category {
         public String toString() {
             return "CLOTHES";
         }
+
+        public Color getColor() {
+            return Color.GRAY;
+        }
     },
 
     TRAVELLING {
         @Override
         public String toString() {
             return "TRAVELLING";
+        }
+
+        public Color getColor() {
+            return Color.ORANGE;
         }
     },
 
@@ -38,12 +56,20 @@ public enum Category {
         public String toString() {
             return "TEST";
         }
+
+        public Color getColor() {
+            return Color.YELLOW;
+        }
     },
 
     HEALTH {
         @Override
         public String toString() {
             return "HEALTH";
+        }
+
+        public Color getColor() {
+            return Color.RED;
         }
 
     };
@@ -73,6 +99,14 @@ public enum Category {
         }
 
         return result;
+    }
+
+    public Color getColor() {
+
+        Category[] categories = values();
+        String[] categoriesStr = getArrStrCategories();
+
+        return null;
     }
 }
 

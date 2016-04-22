@@ -361,21 +361,15 @@ public class MainWindow {
 
             Component cell =  super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-            if (value.equals(Category.CLOTHES.toString())) {
-                cell.setBackground(Color.GRAY);
+            Category[] categories = Category.values();
+
+            for (int i = 0; i < categories.length; i++) {
+                if (value.equals(categories[i].toString())) {
+                    cell.setBackground(categories[i].getColor());
+                }
             }
-            else if (value.equals(Category.FOOD.toString())) {
-                cell.setBackground(Color.GREEN);
-            }
-            else if (value.equals(Category.HEALTH.toString())) {
-                cell.setBackground(Color.RED);
-            }
-            else if (value.equals(Category.TRAVELLING.toString())) {
-                cell.setBackground(Color.ORANGE);
-            }
-            else if (value.equals(Category.OTHER.toString())) {
-                cell.setBackground(Color.CYAN);
-            }
+
+            //теперь разукрашиваем ячейку
 
 
             return cell;

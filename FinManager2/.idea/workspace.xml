@@ -46,30 +46,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
+      <file leaf-file-name="LoginAndRegistration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="380" column="24" selection-start-line="380" selection-start-column="24" selection-end-line="380" selection-end-column="24" />
+            <state relative-caret-position="143">
+              <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Category.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="371" column="41" selection-start-line="371" selection-start-column="41" selection-end-line="371" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Category.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Category.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="60" column="58" selection-start-line="60" selection-start-column="58" selection-end-line="60" selection-end-column="58" />
+            <state relative-caret-position="415">
+              <caret line="106" column="55" selection-start-line="106" selection-start-column="55" selection-end-line="106" selection-end-column="55" />
               <folding>
-                <element signature="e#162#163#0" expanded="true" />
-                <element signature="e#200#201#0" expanded="true" />
-                <element signature="e#502#503#0" expanded="true" />
-                <element signature="e#545#546#0" expanded="true" />
-                <element signature="e#617#618#0" expanded="true" />
-                <element signature="e#654#655#0" expanded="true" />
-                <element signature="e#728#729#0" expanded="true" />
-                <element signature="e#767#768#0" expanded="true" />
+                <element signature="e#182#183#0" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
+                <element signature="e#255#256#0" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+                <element signature="e#368#369#0" expanded="true" />
+                <element signature="e#405#406#0" expanded="true" />
+                <element signature="e#440#441#0" expanded="true" />
+                <element signature="e#482#483#0" expanded="true" />
+                <element signature="e#557#558#0" expanded="true" />
+                <element signature="e#597#598#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
+                <element signature="e#673#674#0" expanded="true" />
+                <element signature="e#751#752#0" expanded="true" />
+                <element signature="e#794#795#0" expanded="true" />
+                <element signature="e#829#830#0" expanded="true" />
+                <element signature="e#872#873#0" expanded="true" />
+                <element signature="e#944#945#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
+                <element signature="e#1016#1017#0" expanded="true" />
+                <element signature="e#1059#1060#0" expanded="true" />
+                <element signature="e#1133#1134#0" expanded="true" />
+                <element signature="e#1172#1173#0" expanded="true" />
+                <element signature="e#1207#1208#0" expanded="true" />
+                <element signature="e#1247#1248#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,18 +132,6 @@
             <state relative-caret-position="4182">
               <caret line="262" column="29" selection-start-line="262" selection-start-column="29" selection-end-line="262" selection-end-column="29" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegistrationNewUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="228" column="12" selection-start-line="228" selection-start-column="12" selection-end-line="231" selection-end-column="13" />
-              <folding>
-                <element signature="class#CreateNewUserButtonActionListener#0;class#RegistrationNewUser#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -185,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/DeleteRecord.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/tableModels/RecordsTableModel.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DataStore.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/utils/RecordsAsArrStrings.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/utils/DateFormatForMySql.java" />
@@ -194,8 +207,9 @@
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/FinManager.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/utils/InitDb.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Record.java" />
-        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Category.java" />
         <option value="$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/Category.java" />
+        <option value="$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java" />
       </list>
     </option>
   </component>
@@ -239,90 +253,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="FinManager2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FinManager2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FinManager2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rt.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FinManager2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rt.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FinManager2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rt.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -732,7 +662,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -746,7 +676,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1116,14 +1046,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/RegistrationNewUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
@@ -1184,14 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="380" column="24" selection-start-line="380" selection-start-column="24" selection-end-line="380" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/database/DbHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1212,20 +1126,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/LoginAndRegistration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="60" column="58" selection-start-line="60" selection-start-column="58" selection-end-line="60" selection-end-column="58" />
+        <state relative-caret-position="415">
+          <caret line="106" column="55" selection-start-line="106" selection-start-column="55" selection-end-line="106" selection-end-column="55" />
           <folding>
-            <element signature="e#162#163#0" expanded="true" />
-            <element signature="e#200#201#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#182#183#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1247#1248#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java2/finManager2/gui/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="371" column="41" selection-start-line="371" selection-start-column="41" selection-end-line="371" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
