@@ -369,14 +369,8 @@ public class MainWindow {
                 }
             }
 
-            //теперь разукрашиваем ячейку
-
-
             return cell;
-
         }
-
-
     }
 
 

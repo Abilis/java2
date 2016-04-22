@@ -102,10 +102,6 @@ public enum Category {
     }
 
     public Color getColor() {
-
-        Category[] categories = values();
-        String[] categoriesStr = getArrStrCategories();
-
         return null;
     }
 }
