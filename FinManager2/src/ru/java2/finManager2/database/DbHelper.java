@@ -8,7 +8,6 @@ import ru.java2.finManager2.exceptions.*;
 import ru.java2.finManager2.utils.DateFormatForMySql;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
