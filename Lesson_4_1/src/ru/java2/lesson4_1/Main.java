@@ -1,7 +1,10 @@
 package ru.java2.lesson4_1;
 
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * Created by Abilis on 25.04.2016.
@@ -10,26 +13,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        Queue<Integer> q2 = new PriorityQueue<>(new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
 
-        List<Integer> res = map(numbers, new
-                SquareOperator());
-    }
 
-    interface Operator<R, T> {
-        R apply(T t);
-    }
+                return 0;
+            }
+        });
 
-    private static class SquareOperator implements Operator {
-
-        @Override
-        public Object apply(Object o) {
-            return null;
+        for (int i = 5; i >= 1; i--) {
+            q2.add(i);
         }
 
-        public void map() {
-            
+        while (!q2.isEmpty()) {
+            System.out.println(q2.poll());
         }
+
     }
 
 }
