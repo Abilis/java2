@@ -27,12 +27,12 @@ public class PerfectNumbers {
 
         for (int i = from; i <= to; i++) {
 
-            if ((i % 1000) == 0) {
-                System.out.println("Еще 1000 шагов миновало. Это был щаг " + i);
-            }
+//            if ((i % 1000) == 0) {
+//                System.out.println("Еще 1000 шагов миновало. Это был щаг " + i);
+//            }
 
             if (isPerfectNumber(i)) {
-                System.out.println("Найдено! " + i + " is perfect number! ");
+//                System.out.println("Найдено! " + i + " is perfect number! ");
                 result.add(i);
             }
         }
