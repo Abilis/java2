@@ -30,7 +30,9 @@ public class Main {
         System.out.println();
 
         System.out.println("Проверка GetProbably");
-        System.out.println(GetProbability.getProbability(10, 1));
+        System.out.println(GetProbability.getProbability(3, 2));
+
+
     }
 
 }

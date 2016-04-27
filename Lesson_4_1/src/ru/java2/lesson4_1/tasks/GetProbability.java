@@ -24,21 +24,26 @@ public class GetProbability {
         //вероятность того, что при У бросках число 4 выпадет ровно сколько угодно раз 1 - (5 / totalCombinations)
         //вероятность выпадения числа 4 на каждом броске: 1 / 6
 
-        double tmp = 0;
-
         //число комбинаций, когда выпадает 4 Х раз при У бросках
+        double fourCombinations = 0.0;
 
-        int fourCombinations = 0;
         while (X <= Y) {
-            fourCombinations += 4 * X;
+            fourCombinations += getFact(Y) / (getFact(X)) * (getFact(Y - X));
             X++;
         }
 
-        tmp = fourCombinations / totalCombinations;
+        return fourCombinations / totalCombinations;
 
+    }
 
+    private static int getFact(int n) {
 
-        return tmp;
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        else {
+            return n * getFact(n - 1);
+        }
     }
 
 }
