@@ -16,8 +16,14 @@ public class WriteOnceMap<K, V> extends HashMap<K, V> {
 
          Please implement this method to conform to the above description of WriteOnceMap.
         */
+        if (containsKey(key)) {
+            throw new IllegalArgumentException();
+        }
+        else {
+            put(key, value);
+        }
 
-        return null;
+        return value;
     }
 
 
@@ -29,6 +35,11 @@ public class WriteOnceMap<K, V> extends HashMap<K, V> {
          (2) throw IllegalArgumentException and leave this map intact
          if the parameter already contains some keys from this map.
         */
+
+        for (Map.Entry<K, V> pair : entrySet()) {
+            put(pair.getKey(), pair.getValue());
+        }
+
     }
 
 }

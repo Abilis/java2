@@ -1,6 +1,7 @@
 package ru.java2.lesson4_1;
 
 
+import ru.java2.lesson4_1.tasks.GetProbability;
 import ru.java2.lesson4_1.tasks.PerfectNumbers;
 import ru.java2.lesson4_1.tasks.RetainPositiveNumbers;
 
@@ -26,7 +27,10 @@ public class Main {
         }
         System.out.println(Arrays.toString(test));
         System.out.println(Arrays.toString(RetainPositiveNumbers.retainPositiveNumbers(test)));
+        System.out.println();
 
+        System.out.println("Проверка GetProbably");
+        System.out.println(GetProbability.getProbability(10, 1));
     }
 
 }

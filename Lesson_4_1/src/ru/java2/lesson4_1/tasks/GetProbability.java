@@ -12,7 +12,33 @@ public class GetProbability {
       by the total number of possible combinations.
      */
 
-        return 0;
+        //общее число комбинаций при бросании Y раз
+        double totalCombinations = Math.pow(6, Y);
+
+        //по крайней мере Х 4s означает, что выпадет по крайней мере Х раз число 4
+        //число комбинаций при 1 броске, когда выпадает 4: 1
+        //число комбинаций при Х бросках, когда выпадает 4: 4 * Х
+
+
+        //вероятность того, что при Y бросках число 4 не выпадет ни разу 5 / totalCombinations
+        //вероятность того, что при У бросках число 4 выпадет ровно сколько угодно раз 1 - (5 / totalCombinations)
+        //вероятность выпадения числа 4 на каждом броске: 1 / 6
+
+        double tmp = 0;
+
+        //число комбинаций, когда выпадает 4 Х раз при У бросках
+
+        int fourCombinations = 0;
+        while (X <= Y) {
+            fourCombinations += 4 * X;
+            X++;
+        }
+
+        tmp = fourCombinations / totalCombinations;
+
+
+
+        return tmp;
     }
 
 }
