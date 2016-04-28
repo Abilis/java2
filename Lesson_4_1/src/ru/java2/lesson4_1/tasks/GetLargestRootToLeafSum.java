@@ -24,7 +24,34 @@ public class GetLargestRootToLeafSum {
       return the largest root-to-leaf sum in the tree.
      */
 
-        return 0;
+        int path = 0;
+
+        while (!root.getChildren().isEmpty()) { //пока у текущего рута есть потомки
+
+            //получаем список всех потомков текущего узла
+            List<Node> childrens = root.getChildren();
+
+
+            int max = 0; //максимальное значение
+            int indexOfMax = 0; //индекс. Будет использоваться для доступа к максимальному значению
+            for (int i = 0; i < childrens.size(); i++) { //пробегаем всех потомков
+                if (childrens.get(i).getValue() > max) { //находим максимального
+                    max = childrens.get(i).getValue();
+                    indexOfMax = i;
+                }
+            }
+
+            //прибавляем к пути максимального потомка
+            path += max;
+
+            //и перебрасываем на него ссылку
+            root = childrens.get(indexOfMax);
+        }
+
+
+
+
+        return path;
     }
 }
 
