@@ -1,6 +1,7 @@
 package ru.java2.lesson4_1;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,6 +9,8 @@ import java.util.List;
  */
 public class MyPriorityQueue extends BinaryHeap implements PriorityQueue {
 
+    private BinaryHeap binaryHeap;
+    private ArrayList<Integer> keys = new ArrayList<Integer>();
 
     public MyPriorityQueue(List<Integer> list) {
         super(list);

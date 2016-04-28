@@ -9,7 +9,7 @@ import java.util.List;
 public class BinaryHeap {
 
     private List<Integer> list;
-    public int heapSize;
+    private int heapSize;
 
     public int getHeapSize() {
         return heapSize;
