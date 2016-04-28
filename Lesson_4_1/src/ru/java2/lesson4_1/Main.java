@@ -41,9 +41,20 @@ public class Main {
         coll.add(3);
         coll.add(5);
 
-        Collection<Integer> changedColl;
+        Collection<Integer> changedColl = MapImplement.map(coll, new MapImplement.Operator() {
+            @Override
+            public Object apply(Object o) {
 
-//        System.out.println(changedColl);
+                if (o instanceof Integer) {
+                    Integer num = (Integer) o;
+                    return num * num;
+                }
+                return null;
+            }
+        });
+
+        System.out.println("Измененная коллекция: " + changedColl);
+        System.out.println("Начальная коллекция: " + coll);
 
     }
 

@@ -28,8 +28,4 @@ public class MapImplement {
         return result;
     }
 
-
-
-
-
 }
