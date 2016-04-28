@@ -5,7 +5,9 @@ import ru.java2.lesson4_1.tasks.GetProbability;
 import ru.java2.lesson4_1.tasks.PerfectNumbers;
 import ru.java2.lesson4_1.tasks.RetainPositiveNumbers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Created by Abilis on 25.04.2016.
@@ -31,7 +33,17 @@ public class Main {
 
         System.out.println("Проверка GetProbably");
         System.out.println(GetProbability.getProbability(8, 1));
+        System.out.println();
+        System.out.println();
 
+        Collection<Integer> coll = new ArrayList<>();
+        coll.add(2);
+        coll.add(3);
+        coll.add(5);
+
+        Collection<Integer> changedColl;
+
+//        System.out.println(changedColl);
 
     }
 
