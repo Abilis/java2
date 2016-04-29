@@ -101,9 +101,7 @@ public enum Category {
         return result;
     }
 
-    public Color getColor() {
-        return null;
-    }
+    public abstract Color getColor();
 }
 
 
