@@ -59,7 +59,10 @@ public class ThreadedServer {
         private boolean isLogin = false; //залогинен ли клиент
 
         //список всех команд сервера
-        private final String[] commands = new String[]{"!login - залогиниться", "!help - показать все доступные команды"};
+        private final String[] commands = new String[]{
+                "!login - залогиниться",
+                "!help - показать все доступные команды"
+        };
 
         public ClientHandler(ThreadedServer server, Socket socket, int counter) throws Exception {
             this.server = server;
@@ -81,7 +84,7 @@ public class ThreadedServer {
             // В отдельном потоке ждем данных от клиента
             try {
                 String line = null;
-                send("Для участия чата введите !login ваше_имя. !help - все возможные команды");
+                send("Для участия чата введите ваше имя");
                 while ((line = in.readLine()) != null) {
 //                    log.info("Handler[" + number + "]<< " + line);
                     System.out.println("Handler[" + number + "]<< " + line);
@@ -89,10 +92,11 @@ public class ThreadedServer {
                     if (!isLogin) {
                         if (logining(line)) {
                             send("Поздравляем, вы успешно залогинились под именем " + username);
+                            broadcast("К нам присоединился " + username + "!");
                             continue;
                         }
                         else {
-                            send("Для участия в чате введите !login ваше_имя. !help - все возможные команды");
+                            send("Для участия в чате введите ваше имя");
                             continue;
                         }
 
@@ -132,14 +136,25 @@ public class ThreadedServer {
             try {
                 String[] commandAsArr = str.split(" ");
                 String nameOfCommand = commandAsArr[0];
-                String mesOfCommand = commandAsArr[1];
+                String mesOfCommand = "";
+                try {
+                    mesOfCommand = commandAsArr[1];
+                } catch (ArrayIndexOutOfBoundsException ignore) {
+                    /*NOP*/
+                }
+
                 nameOfCommand = nameOfCommand.trim();
                 mesOfCommand = mesOfCommand.trim();
 
                 switch (nameOfCommand) {
                     case "!login":
+                        String oldName = username;
                         if (logining(mesOfCommand)) {
                             send("Ваше имя теперь: " + mesOfCommand);
+                            broadcast(oldName + " теперь извествен под именем " + mesOfCommand + "!");
+                        }
+                        else {
+                            send("Команда не распознана!");
                         }
                         return true;
                     case "!help":
