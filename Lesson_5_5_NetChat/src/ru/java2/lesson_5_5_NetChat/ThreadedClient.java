@@ -11,7 +11,7 @@ import java.net.Socket;
 
 public class ThreadedClient {
 
-    protected static Logger log = LoggerFactory.getLogger(ThreadedClient.class);
+//    protected static Logger log = LoggerFactory.getLogger(ThreadedClient.class);
 
     public static final int PORT = 19000;
     public static final String HOST = "localhost";
@@ -65,7 +65,8 @@ public class ThreadedClient {
                 String line;
                 while ((line = console.readLine()) != null) {
                     if (EXIT.equalsIgnoreCase(line)) {
-                        log.info("Closing chat");
+//                        log.info("Closing chat");
+                        System.out.println("Closing chat");
                         break;
                     }
                     out.println(line);

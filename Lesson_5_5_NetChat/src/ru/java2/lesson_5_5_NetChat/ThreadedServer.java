@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ThreadedServer {
 
-    protected static Logger log = LoggerFactory.getLogger("ThreadedServer");
+//    protected static Logger log = LoggerFactory.getLogger("ThreadedServer");
     private static final int PORT = 19000;
     private static int counter = 0;
 
@@ -24,13 +24,15 @@ public class ThreadedServer {
     }
 
     public void startServer() throws Exception {
-        log.info("Starting server...");
+//        log.info("Starting server...");
+        System.out.println("Starting server...");
         ServerSocket serverSocket = new ServerSocket(PORT);
         while (true) {
 
             // блокируемся и ждем клиента
             Socket socket = serverSocket.accept();
-            log.info("Client connected: " + socket.getInetAddress().toString() + ":" + socket.getPort());
+//            log.info("Client connected: " + socket.getInetAddress().toString() + ":" + socket.getPort());
+            System.out.println("Client connected: " + socket.getInetAddress().toString() + ":" + socket.getPort());
 
             // создаем обработчик
             ClientHandler handler = new ClientHandler(this, socket, counter++);
@@ -73,11 +75,13 @@ public class ThreadedServer {
             try {
                 String line = null;
                 while ((line = in.readLine()) != null) {
-                    log.info("Handler[" + number + "]<< " + line);
+//                    log.info("Handler[" + number + "]<< " + line);
+                    System.out.println("Handler[" + number + "]<< " + line);
                     server.broadcast(line);
                 }
             } catch (IOException e) {
-                log.error("Failed to read from socket");
+//                log.error("Failed to read from socket");
+                System.out.println("Failed to read from socket");
             } finally {
                 Util.closeResource(in);
                 Util.closeResource(out);
@@ -87,11 +91,14 @@ public class ThreadedServer {
 
     // рассылаем всем подписчикам
     public void broadcast(String msg) {
-        log.info("Broadcast to all: " + msg);
+//        log.info("Broadcast to all: " + msg);
+        System.out.println("Broadcast to all: " + msg);
         for (ClientHandler handler : handlers) {
             handler.send(msg);
         }
     }
+
+    
 
 
 }

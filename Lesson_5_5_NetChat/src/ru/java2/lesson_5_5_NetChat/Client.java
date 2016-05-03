@@ -10,7 +10,7 @@ import java.net.Socket;
 
 public class Client {
 
-    protected static Logger log = LoggerFactory.getLogger(Client.class);
+//    protected static Logger log = LoggerFactory.getLogger(Client.class);
 
     public static final int PORT = 19000;
     public static final String HOST = "localhost";
@@ -40,7 +40,8 @@ public class Client {
 
         while ((line = console.readLine()) != null) {
             if (EXIT.equalsIgnoreCase(line)) {
-                log.info("Closing chat");
+//                log.info("Closing chat");
+                System.out.println("Closing chat");
                 break;
             }
 
