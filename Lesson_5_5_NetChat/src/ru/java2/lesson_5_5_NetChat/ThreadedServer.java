@@ -74,8 +74,10 @@ public class ThreadedServer {
 
         // Отправка сообщения в сокет, связанный с клиентом
         public void send(String message) {
-            out.println(message);
-            out.flush();
+            synchronized (out) {
+                out.println(message);
+                out.flush();
+            }
         }
 
         @Override
@@ -182,8 +184,10 @@ public class ThreadedServer {
     public void broadcast(String msg) {
 //        log.info("Broadcast to all: " + msg);
         System.out.println("Broadcast to all: " + msg);
-        for (ClientHandler handler : handlers) {
-            handler.send(msg);
+        synchronized (handlers) {
+            for (ClientHandler handler : handlers) {
+                handler.send(msg);
+            }
         }
     }
 
