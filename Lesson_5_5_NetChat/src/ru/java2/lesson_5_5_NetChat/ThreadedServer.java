@@ -278,7 +278,7 @@ public class ThreadedServer {
         //метод оправляет приватное сообщение пользователю с ником userTo, если такой подключен
         private void sendPrivateMessage(String message, String userTo) throws NoSuchUserException {
 
-//            userTo = userTo.trim();
+            userTo = userTo.trim();
 
             for (User user : users) {
                 if (user.getCurrentNick().equalsIgnoreCase(userTo)) {
