@@ -40,9 +40,7 @@ public class ThreadedClient {
             }
 
         } catch (Exception e) {
-            System.out.println("Сервер не отвечает");
-            System.exit(0);
-//            e.printStackTrace();
+            e.printStackTrace();
         } finally {
             Util.closeResource(in);
             Util.closeResource(socket);
@@ -63,11 +61,9 @@ public class ThreadedClient {
 
         @Override
         public void run() {
-
-
             try {
                 String line;
-                while (!isInterrupted() && (line = console.readLine()) != null) {
+                while ((line = console.readLine()) != null) {
                     if (EXIT.equalsIgnoreCase(line)) {
 //                        log.info("Closing chat");
                         System.out.println("Closing chat");
@@ -77,13 +73,10 @@ public class ThreadedClient {
                     out.flush();
                 }
             } catch (Exception e) {
-//                e.printStackTrace();
-            /*NOP*/
+                e.printStackTrace();
             } finally {
                 Util.closeResource(out);
             }
-
-
         }
 
     }
