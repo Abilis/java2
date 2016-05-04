@@ -93,7 +93,6 @@ public class ThreadedClient {
             File file = new File("D:\temp\testfile\file.txt");
             FileInputStream fileInputStream = new FileInputStream(file);
 
-
             //создаем новый сокет для передачи файла
             Socket fileSocket = new Socket(HOST, PORT_FOR_FILE);
 
@@ -103,10 +102,8 @@ public class ThreadedClient {
             int count;
             while ((count = fileInputStream.read(buffer)) > 0) {
                 outFile.write(buffer, 0, count);
+                outFile.flush();
             }
-
-
-
 
 
 
@@ -127,9 +124,9 @@ public class ThreadedClient {
 
             int count;
             while ((count = inFile.read(buffer)) > 0) {
-                fileOutputStream.write(inFile.read(buffer, 0, count));
+                fileOutputStream.write(buffer, 0, count);
+                fileOutputStream.flush();
             }
-
 
 
         }

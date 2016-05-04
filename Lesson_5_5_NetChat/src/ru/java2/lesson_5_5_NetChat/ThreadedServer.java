@@ -190,7 +190,7 @@ public class ThreadedServer {
                     printUsers();
                     return true;
                 case "!file" : //команда отправляет файл другому пользователю. Нужны второй и третий аргументы
-                    reSendFile();
+                    reSendFile(line);
                     return true;
 
             }
@@ -313,9 +313,44 @@ public class ThreadedServer {
         }
 
         //метод принимает файл от пользователя и отправляет его другому пользователю
-        private void reSendFile() {
+        private void reSendFile(String str) {
+
+            try {
+                str = str.trim();
+
+                String[] strAsArr = str.split(" ");
+
+                String userFrom = currentUser.getCurrentNick();
+                String userTo = strAsArr[1];
+                String fileName = strAsArr[2];
+
+                //создаем новый сокет для приема и передачи файла
+                ServerSocket fileServerSocket = new ServerSocket(PORT_FOR_FILE);
+                Socket socket = fileServerSocket.accept();
+
+                //входной поток
+                InputStream inFile = new BufferedInputStream(socket.getInputStream());
+
+                //выходной поток
+                OutputStream outFile = new BufferedOutputStream(socket.getOutputStream());
+
+                byte[] buffer = new byte[64 * 1024];
+
+                int count;
+                while ((count = inFile.read(buffer)) > 0) {
+                    outFile.write(buffer, 0, count);
+                    outFile.flush();
+                }
+
+                
 
 
+
+            } catch (ArrayIndexOutOfBoundsException e1) {
+                send("Неверный формат команды");
+            } catch (IOException e2) {
+                System.out.println("IOExceprion");
+            }
 
         }
 
