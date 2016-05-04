@@ -17,6 +17,7 @@ public class Commands {
         commands.put("!users", " - показать всех подключенных пользователей");
         commands.put("!exit", " - выйти из чата");
         commands.put("!private", " <nick> - отправить приватное сообщение пользователю <nick>");
+        commands.put("!file", " <nick> <file> - отправить файл <file> пользователю <nick>");
 
     }
 

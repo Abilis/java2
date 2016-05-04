@@ -188,6 +188,9 @@ public class ThreadedServer {
                 case "!users": //команда выводит список подключенных пользователей
                     printUsers();
                     return true;
+                case "!file" : //команда отправляет файл другому пользователю. Нужны второй и третий аргументы
+                    reSendFile();
+                    return true;
 
             }
 
@@ -306,6 +309,11 @@ public class ThreadedServer {
 
             interrupt();
 //            handlers.remove(this);
+        }
+
+        //метод принимает файл от пользователя и отправляет его другому пользователю
+        private void reSendFile() {
+
         }
 
     }
