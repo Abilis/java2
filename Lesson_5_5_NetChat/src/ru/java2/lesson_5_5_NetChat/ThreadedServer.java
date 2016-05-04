@@ -155,7 +155,7 @@ public class ThreadedServer {
 
             switch (firstElem) {
                 case "!login": //команда смени ника. Нужен второй аргумент
-
+                    processLogin(line);
                     return true;
                 case "!help": //команда выводит список всех доступных команд
                     printHelp();
@@ -194,7 +194,30 @@ public class ThreadedServer {
             }
         }
 
+        //метод обрабатывает команду !login
+        private void processLogin(String str) {
 
+            try {
+                String[] strAsArr = str.split(" ");
+                String newNick = strAsArr[1];
+                changeNick(newNick);
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                send("Команда не распознана");
+            }
+
+        }
+
+        //метод меняет ник пользователя
+        private void changeNick(String newNick) {
+
+            String oldNick = currentUser.getCurrentNick();
+            currentUser.setOldNick(oldNick);
+            currentUser.setCurrentNick(newNick);
+
+            send("Вы успешно сменили свой ник на " + currentUser.getCurrentNick());
+            broadcast(currentUser.getOldNick() + " теперь известен под именем " + currentUser.getCurrentNick() + "!");
+        }
 
 
     }
