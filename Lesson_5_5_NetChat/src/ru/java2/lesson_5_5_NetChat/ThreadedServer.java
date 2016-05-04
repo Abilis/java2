@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ThreadedServer {
 
@@ -98,9 +99,11 @@ public class ThreadedServer {
                     }
 
                     //если мы оказались здесь, значит пользователь залогинен. Нужно проверить, не является ли введенная строка командой
+                    //если строка - команда, нужно ее обработать. Иначе - это обычное сообщение, нужно разослать всем
+                    if (!isCommand(line)) {
+                        server.broadcast(currentUser.getCurrentNick() + ": " + line);
+                    }
 
-
-                    server.broadcast(currentUser.getCurrentNick() + ": " + line);
                 }
             } catch (IOException e) {
 //                log.error("Failed to read from socket");
@@ -111,7 +114,7 @@ public class ThreadedServer {
             }
         }
 
-        //метод залогинивает пользователя под именем login в первый раз. True - при успехе, False - при неуспехе
+        //метод залогинивает пользователя под именем login в первый раз. true - при успехе, false - при неуспехе
         private boolean firstUserLogging(String nick) {
 
             nick = nick.trim();
@@ -132,7 +135,17 @@ public class ThreadedServer {
             return true;
         }
 
+        //метод проверяет, является ли введенная пользователем строка командой
+        private boolean isCommand(String line) {
 
+            Map<String, String> commands = Commands.getCommands();
+
+            for (Map.Entry<String, String> pair : commands.entrySet()) {
+                System.out.println(pair.getKey() + pair.getValue());
+            }
+
+            return false;
+        }
 
 
 
