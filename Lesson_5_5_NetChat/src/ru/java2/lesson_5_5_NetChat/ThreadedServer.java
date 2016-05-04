@@ -119,7 +119,12 @@ public class ThreadedServer {
                         server.broadcast(currentUser.getCurrentNick() + ": " + line);
                     }
 
+                    if (isInterrupted()) {
+                        break;
+                    }
+
                 }
+
             } catch (IOException e) {
 //                log.error("Failed to read from socket");
                 System.out.println("Failed to read from socket");
@@ -173,7 +178,7 @@ public class ThreadedServer {
                     printHelp();
                     return true;
                 case "!exit": //команда отключает пользователя от чата
-
+                    logout();
                     return true;
                 case "!private": //команда посылает приватное сообщение другому пользователю. Нужен второй аргумент
                     sendPrivate(line);
@@ -278,6 +283,16 @@ public class ThreadedServer {
             //если вышли из цикла, пользователь userTo отсутствует среди подключенных пользователей
             throw new NoSuchUserException("Пользователь с именем " + userTo + " не подключен!" +
                     " !users - вывести всех подключенных пользователей");
+        }
+
+        //метод корректно завершает отключение клиента от сервера
+        private void logout() {
+//            users.remove(currentUser);
+//            Util.closeResource(out); закрываются в finally
+//            Util.closeResource(in);
+//            handlers.remove(this);
+            broadcast("Нас покинул " + currentUser.getCurrentNick() + "!");
+//            interrupt();
         }
 
     }
