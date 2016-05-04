@@ -14,6 +14,7 @@ import java.util.Map;
 public class ThreadedServer {
 
 //    protected static Logger log = LoggerFactory.getLogger("ThreadedServer");
+    private static final int PORT_FOR_FILE = 20000;
     private static final int PORT = 19000;
     private static int counter = 0;
 
@@ -313,6 +314,8 @@ public class ThreadedServer {
 
         //метод принимает файл от пользователя и отправляет его другому пользователю
         private void reSendFile() {
+
+
 
         }
 
