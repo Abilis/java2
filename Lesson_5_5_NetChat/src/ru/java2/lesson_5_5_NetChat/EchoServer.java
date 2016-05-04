@@ -10,7 +10,7 @@ import java.net.Socket;
 
 public class EchoServer {
 
-    protected static Logger log = LoggerFactory.getLogger(EchoServer.class);
+//    protected static Logger log = LoggerFactory.getLogger(EchoServer.class);
 
     public static final int PORT = 19000;
 
@@ -18,13 +18,15 @@ public class EchoServer {
     public static void main(String[] args) throws Exception {
         ServerSocket serverSocket = new ServerSocket(PORT);
 
-        log.info("Waiting for a client...");
+//        log.info("Waiting for a client...");
+        System.out.println("Waiting for a client...");
 
 
         // Здесь исполнение заблокируется, пока не придет запрос на соединение
         Socket socket = serverSocket.accept();
 
-        log.info("Client connected: " + socket.getPort());
+//        log.info("Client connected: " + socket.getPort());
+        System.out.println("Client connected: " + socket.getPort());
 
         // потоки данных (сетевые)
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -35,7 +37,8 @@ public class EchoServer {
 
         // Ждем на readLine() пока не придут данные
         while ((line = in.readLine()) != null) {
-            log.info("Client said: " + line);
+//            log.info("Client said: " + line);
+            System.out.println("Client said: " + line);
             out.println(line);
             out.flush();
         }
