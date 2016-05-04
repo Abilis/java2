@@ -18,6 +18,9 @@ public class ThreadedServer {
 
     private static List<User> users = new ArrayList<>(); //список подключенных пользователей
 
+    private static final String GREATING_MESSAGE = ", добро пожаловать в чат! Сменить ник можно командой !login <new_nick>. " +
+            "Проосмотреть все доступные команды можно написав !help";
+
     // список обработчиков для клиентов
     private List<ClientHandler> handlers = new ArrayList<>();
 
@@ -66,7 +69,7 @@ public class ThreadedServer {
             out = new PrintWriter(socket.getOutputStream());
             number = counter;                           //id пользователя совпадает с номером потока
             currentUser = new User(number, "", "");     //создаем пользователя
-            users.add(currentUser);                     //и добавляем его в список подключенных пользователей
+//            users.add(currentUser);                     //и добавляем его в список подключенных пользователей
         }
 
 
@@ -132,19 +135,63 @@ public class ThreadedServer {
             //оповещаем всех о присоединении нового пользователя
             broadcast("К нам присоединился " + currentUser.getCurrentNick() + "!");
 
+            //выводим приветственное сообщение для подключившегося
+            send(currentUser.getCurrentNick() + GREATING_MESSAGE);
+
             return true;
         }
 
         //метод проверяет, является ли введенная пользователем строка командой
         private boolean isCommand(String line) {
 
-            Map<String, String> commands = Commands.getCommands();
+            line = line.trim();
 
-            for (Map.Entry<String, String> pair : commands.entrySet()) {
-                System.out.println(pair.getKey() + pair.getValue());
+            if (line.length() == 0) { //пустая строка
+                return false;
+            }
+
+            String[] lineAsArr = line.split(" ");
+            String firstElem = lineAsArr[0];
+
+            switch (firstElem) {
+                case "!login": //команда смени ника. Нужен второй аргумент
+
+                    return true;
+                case "!help": //команда выводит список всех доступных команд
+                    printHelp();
+                    return true;
+                case "!exit": //команда отключает пользователя от чата
+
+                    return true;
+                case "!private": //команда посылает приватное сообщение другому пользователю. Нужен второй аргумент
+
+                    return true;
+                case "!users": //команда выводит список подключенных пользователей
+                    printUsers();
+                    return true;
+
             }
 
             return false;
+        }
+
+        //метод обрабатывает команду !help
+        private void printHelp() {
+            Map<String, String> commands = Commands.getCommands();
+
+            send("Доступные команды:");
+            for (Map.Entry<String, String> pair : commands.entrySet()) {
+                send(pair.getKey() + pair.getValue());
+            }
+        }
+
+        //метод обрабатывает команду !users
+        private void printUsers() {
+            send("Подключенные пользователи (" + users.size() + "):");
+
+            for (User user : users) {
+                send(user.getCurrentNick());
+            }
         }
 
 
