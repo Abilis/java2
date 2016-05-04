@@ -75,14 +75,20 @@ public class ThreadedServer {
 
         // Отправка сообщения в сокет, связанный с клиентом
         public void send(String message) {
-            out.println(message);
-            out.flush();
+            synchronized (out) {
+                out.println(message);
+                out.flush();
+            }
+
         }
 
         //отправка сообщения в определенный сокет
         private void send(String message, PrintWriter out) {
-            out.println(message);
-            out.flush();
+            synchronized (out) {
+                out.println(message);
+                out.flush();
+            }
+
         }
 
         @Override
@@ -282,12 +288,15 @@ public class ThreadedServer {
         System.out.println("Broadcast to all: " + msg);
 
         //рассылаем только тем пользователям, которые есть в списке. Это залогиненные пользователи
-        for (User user : users) {
-            handlers.get(user.getId()).send(msg);
+        synchronized (handlers) {
+            for (User user : users) {
+                handlers.get(user.getId()).send(msg);
+            }
+        }
 
 //        for (ClientHandler handler : handlers) {
 //            handler.send(msg);
-        }
+
     }
 
 
