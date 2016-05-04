@@ -62,7 +62,7 @@ public class ThreadedServer {
         private int number;
 
         //текущий пользователь
-        private User currentUser;
+        private volatile User currentUser;
 
         public ClientHandler(ThreadedServer server, Socket socket, int counter) throws Exception {
             this.server = server;
@@ -137,23 +137,25 @@ public class ThreadedServer {
         //метод залогинивает пользователя под именем login в первый раз. true - при успехе, false - при неуспехе
         private boolean firstUserLogging(String nick) {
 
+            synchronized (currentUser) {
+                currentUser.setCurrentNick(nick);   //устанавливаем пользователю ник
+                currentUser.setIsLogin();           //ставим флаг о залогинивании
+
+                //добавляем подключившегося пользователя в список пользователей
+                users.add(currentUser);
+
+                //оповещаем всех о присоединении нового пользователя
+                broadcast("К нам присоединился " + currentUser.getCurrentNick() + "!");
+
+                //выводим приветственное сообщение для подключившегося
+                send(currentUser.getCurrentNick() + GREATING_MESSAGE);
+            }
+
             nick = nick.trim();
 
             if (nick.length() == 0) {
                 return false;
             }
-
-            currentUser.setCurrentNick(nick);   //устанавливаем пользователю ник
-            currentUser.setIsLogin();           //ставим флаг о залогинивании
-
-            //добавляем подключившегося пользователя в список пользователей
-            users.add(currentUser);
-
-            //оповещаем всех о присоединении нового пользователя
-            broadcast("К нам присоединился " + currentUser.getCurrentNick() + "!");
-
-            //выводим приветственное сообщение для подключившегося
-            send(currentUser.getCurrentNick() + GREATING_MESSAGE);
 
             return true;
         }
@@ -228,12 +230,15 @@ public class ThreadedServer {
         //метод меняет ник пользователя
         private void changeNick(String newNick) {
 
-            String oldNick = currentUser.getCurrentNick();
-            currentUser.setOldNick(oldNick);
-            currentUser.setCurrentNick(newNick);
+            synchronized (currentUser) {
+                String oldNick = currentUser.getCurrentNick();
+                currentUser.setOldNick(oldNick);
+                currentUser.setCurrentNick(newNick);
 
-            send("Вы успешно сменили свой ник на " + currentUser.getCurrentNick());
-            broadcast(currentUser.getOldNick() + " теперь известен под именем " + currentUser.getCurrentNick() + "!");
+                send("Вы успешно сменили свой ник на " + currentUser.getCurrentNick());
+                broadcast(currentUser.getOldNick() + " теперь известен под именем " + currentUser.getCurrentNick() + "!");
+            }
+
         }
 
         //метод оправляет приватное сообщение пользователю с ником userTo, если такой подключен
@@ -274,7 +279,11 @@ public class ThreadedServer {
             for (User user : users) {
                 if (user.getCurrentNick().equalsIgnoreCase(userTo)) {
                     PrintWriter out = user.getOut();
-                    message = currentUser.getCurrentNick() + "[priv]: " + message;
+
+                    synchronized (currentUser) {
+                        message = currentUser.getCurrentNick() + "[priv]: " + message;
+                    }
+
                     send(message, out);
                     send("Сообщение отправлено!");
                     return;
@@ -290,8 +299,11 @@ public class ThreadedServer {
 //            Util.closeResource(out); закрываются в finally
 //            Util.closeResource(in);
 //
-            broadcast("Нас покинул " + currentUser.getCurrentNick() + "!");
-            users.remove(currentUser);
+            synchronized (currentUser) {
+                broadcast("Нас покинул " + currentUser.getCurrentNick() + "!");
+                users.remove(currentUser);
+            }
+
             interrupt();
 //            handlers.remove(this);
         }
