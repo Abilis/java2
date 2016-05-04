@@ -272,7 +272,7 @@ public class ThreadedServer {
 //            userTo = userTo.trim();
 
             for (User user : users) {
-                if (user.getCurrentNick().equals(userTo)) {
+                if (user.getCurrentNick().equalsIgnoreCase(userTo)) {
                     PrintWriter out = user.getOut();
                     message = currentUser.getCurrentNick() + "[priv]: " + message;
                     send(message, out);
@@ -287,12 +287,13 @@ public class ThreadedServer {
 
         //метод корректно завершает отключение клиента от сервера
         private void logout() {
-//            users.remove(currentUser);
 //            Util.closeResource(out); закрываются в finally
 //            Util.closeResource(in);
-//            handlers.remove(this);
+//
             broadcast("Нас покинул " + currentUser.getCurrentNick() + "!");
-//            interrupt();
+            users.remove(currentUser);
+            interrupt();
+//            handlers.remove(this);
         }
 
     }

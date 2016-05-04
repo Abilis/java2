@@ -16,6 +16,7 @@ public class ThreadedClient {
     public static final int PORT = 19000;
     public static final String HOST = "localhost";
     private static final String EXIT = "exit";
+    private static final String DISCONNECT = "!exit";
 
     public static void main(String[] args) throws Exception {
 
@@ -39,8 +40,8 @@ public class ThreadedClient {
                 System.out.println(">> " + line);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignore) {
+            /*NOP*/
         } finally {
             Util.closeResource(in);
             Util.closeResource(socket);
@@ -64,7 +65,9 @@ public class ThreadedClient {
             try {
                 String line;
                 while ((line = console.readLine()) != null) {
-                    if (EXIT.equalsIgnoreCase(line)) {
+                    if (EXIT.equalsIgnoreCase(line) || DISCONNECT.equalsIgnoreCase(line)) {
+                        out.println("!exit");
+                        out.flush();
 //                        log.info("Closing chat");
                         System.out.println("Closing chat");
                         break;
@@ -72,8 +75,8 @@ public class ThreadedClient {
                     out.println(line);
                     out.flush();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ignore) {
+                /*NOP*/
             } finally {
                 Util.closeResource(out);
             }
