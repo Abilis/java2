@@ -203,8 +203,13 @@ public class ThreadedServer {
     public void broadcast(String msg) {
 //        log.info("Broadcast to all: " + msg);
         System.out.println("Broadcast to all: " + msg);
-        for (ClientHandler handler : handlers) {
-            handler.send(msg);
+
+        //рассылаем только тем пользователям, которые есть в списке. Это залогиненные пользователи
+        for (User user : users) {
+            handlers.get(user.getId()).send(msg);
+
+//        for (ClientHandler handler : handlers) {
+//            handler.send(msg);
         }
     }
 
