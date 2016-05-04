@@ -2,6 +2,7 @@ package ru.java2.lesson_5_5_NetChat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.java2.lesson_5_5_NetChat.exceptions.NoSuchUserException;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -68,13 +69,18 @@ public class ThreadedServer {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream());
             number = counter;                           //id пользователя совпадает с номером потока
-            currentUser = new User(number, "", "");     //создаем пользователя
-//            users.add(currentUser);                     //и добавляем его в список подключенных пользователей
+            currentUser = new User(number, "", "", in, out);     //создаем пользователя
         }
 
 
         // Отправка сообщения в сокет, связанный с клиентом
         public void send(String message) {
+            out.println(message);
+            out.flush();
+        }
+
+        //отправка сообщения в определенный сокет
+        private void send(String message, PrintWriter out) {
             out.println(message);
             out.flush();
         }
@@ -154,7 +160,7 @@ public class ThreadedServer {
             String firstElem = lineAsArr[0];
 
             switch (firstElem) {
-                case "!login": //команда смени ника. Нужен второй аргумент
+                case "!login": //команда смены ника. Нужен второй аргумент
                     processLogin(line);
                     return true;
                 case "!help": //команда выводит список всех доступных команд
@@ -164,7 +170,7 @@ public class ThreadedServer {
 
                     return true;
                 case "!private": //команда посылает приватное сообщение другому пользователю. Нужен второй аргумент
-
+                    sendPrivate(line);
                     return true;
                 case "!users": //команда выводит список подключенных пользователей
                     printUsers();
@@ -219,6 +225,54 @@ public class ThreadedServer {
             broadcast(currentUser.getOldNick() + " теперь известен под именем " + currentUser.getCurrentNick() + "!");
         }
 
+        //метод оправляет приватное сообщение пользователю с ником userTo, если такой подключен
+        private void sendPrivate(String str) {
+
+            try {
+                String[] strAsArr = str.split(" ");
+                String userTo = strAsArr[1];
+
+                //вытаскиваем сообщение, которое нужно переслать приватно
+                String msg = "";
+                for (int i = 2; i < strAsArr.length; i++) {
+                    msg += strAsArr[i] + " ";
+                }
+
+                msg = msg.substring(0, msg.length() - 1);
+
+                if (msg.equals("")) {
+                    send("Сообщение не может быть пустым!");
+                    return;
+                }
+
+                sendPrivateMessage(msg, userTo);
+
+            } catch (ArrayIndexOutOfBoundsException e1) {
+                send("Команда не распознана");
+            } catch (NoSuchUserException e2) {
+                send(e2.getMessage());
+            }
+
+        }
+
+        //метод оправляет приватное сообщение пользователю с ником userTo, если такой подключен
+        private void sendPrivateMessage(String message, String userTo) throws NoSuchUserException {
+
+//            userTo = userTo.trim();
+
+            for (User user : users) {
+                if (user.getCurrentNick().equals(userTo)) {
+                    PrintWriter out = user.getOut();
+                    message = currentUser.getCurrentNick() + "[priv]: " + message;
+                    send(message, out);
+                    send("Сообщение отправлено!");
+                    return;
+                }
+            }
+            //если вышли из цикла, пользователь userTo отсутствует среди подключенных пользователей
+            throw new NoSuchUserException("Пользователь с именем " + userTo + " не подключен!" +
+                    " !users - вывести всех подключенных пользователей");
+        }
 
     }
 
