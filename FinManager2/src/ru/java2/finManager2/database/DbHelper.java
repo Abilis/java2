@@ -25,9 +25,8 @@ public class DbHelper implements DataStore {
     private final String PASSWORD = "";
 
     //Параметры подключения к sqlite
-//    private final String URL = "jdbc:sqlite://localhost:3306/finmanager?autoReconnect=true&userSSL=false";
-//    private final String USERNAME = "";
-//    private final String PASSWORD = "";
+    private final String URL_SQLITE = "jdbc:sqlite:finmanager.db";
+
 
     private DbHelper() {
 
@@ -40,16 +39,27 @@ public class DbHelper implements DataStore {
         return dbHelper;
     }
 
+    //метод возвращает connection к БД MySQL
+//    public Connection getConnection() throws SQLException {
+//
+//        Properties properties = new Properties();
+//        properties.setProperty("user", USERNAME);
+//        properties.setProperty("password", PASSWORD);
+//        properties.setProperty("useUnicode", "true");
+//        properties.setProperty("characterEncoding", "utf8");
+//
+//        if (connection == null || connection.isClosed()) {
+//            connection = DriverManager.getConnection(URL, properties);
+//        }
+//
+//        return connection;
+//    }
+
+    //метод возвращает connection к БД Sqlite
     public Connection getConnection() throws SQLException {
 
-        Properties properties = new Properties();
-        properties.setProperty("user", USERNAME);
-        properties.setProperty("password", PASSWORD);
-        properties.setProperty("useUnicode", "true");
-        properties.setProperty("characterEncoding", "utf8");
-
         if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(URL, properties);
+            connection = DriverManager.getConnection(URL_SQLITE);
         }
 
         return connection;

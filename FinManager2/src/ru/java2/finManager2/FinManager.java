@@ -14,8 +14,8 @@ public class FinManager {
     public static void main(String[] args) {
 
         //инициализация БД
-//        InitDb.initDb();
-        InitSqliteDB.initSqlitedDb();
+//        InitDb.initDb(); //инициализация БД MySQL
+        InitSqliteDB.initSqlitedDb();   //инициализация БД SQLite
 
 
         //инициализации формы логина и регистрации
