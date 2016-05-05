@@ -13,7 +13,7 @@ import java.net.Socket;
  * Процесс передачи файла демонстрируется в консоли клиентов и сервера.
  * Для большей демонстративности в процесс передачи на стороне отправителя включены задержки
  *
- * Исключения никак не обрабатываются. Передача обычных сообщений между клиентами не реализована
+ * Исключения не обрабатываются. Передача обычных сообщений между клиентами не реализована
  */
 public class Client {
 
@@ -41,17 +41,11 @@ public class Client {
 
     class TransferData extends Thread {
 
-        private OutputStream out;
-        private InputStream in;
-        private FileInputStream fileInputStream;
-        private FileOutputStream fileOutputStream;
         private BufferedReader readerFromConsol = new BufferedReader(new InputStreamReader(System.in));
         private PrintWriter textOut;
 
         public TransferData(Socket socket) throws IOException {
             textOut = new PrintWriter(socket.getOutputStream());
-            out = new BufferedOutputStream(socket.getOutputStream());
-            in = new BufferedInputStream(socket.getInputStream());
         }
 
         @Override
@@ -88,32 +82,36 @@ public class Client {
         }
 
         //метод передает файл в сокет
-        private void sendFile() throws IOException {
+        private void sendFile() {
 
-            System.out.println("Передача данных сейчас начнется");
+            Socket socketFileTransfer = null;
+            FileInputStream fileInputStream = null;
+            File file1 = null;
+            OutputStream out = null;
 
             try {
+                System.out.println("Передача данных сейчас начнется");
+
+
                 Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
-            //Создаем новый сокет для отправки файла
-            Socket socketFileTransfer = new Socket(HOST, PORT_FOR_FILE_TRANSFER);
 
-            //организуем поток данных в сокет
-            out = new BufferedOutputStream(socketFileTransfer.getOutputStream());
+                //Создаем новый сокет для отправки файла
+                socketFileTransfer = new Socket(HOST, PORT_FOR_FILE_TRANSFER);
 
-            //организуем поток данных из файла
-            File file1 = new File(fileName1);
-            fileInputStream = new FileInputStream(file1);
+                //организуем поток данных в сокет
+                out = new BufferedOutputStream(socketFileTransfer.getOutputStream());
 
-            System.out.println("Передача данных стартовала");
+                //организуем поток данных из файла
+                file1 = new File(fileName1);
+                fileInputStream = new FileInputStream(file1);
 
-            byte[] buffer = new byte[32]; //буфер
+                System.out.println("Передача данных стартовала");
 
-            try {
-            int count = 0;
+                byte[] buffer = new byte[32]; //буфер
+
+
+                int count = 0;
                 while ((count = fileInputStream.read(buffer)) != -1) {
                     out.write(buffer, 0, count);
                     out.flush();
@@ -122,49 +120,69 @@ public class Client {
                 }
 
                 Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Передача данных закончена");
 
-            //закрываем потоки
-            fileInputStream.close();
-            out.close();
-            socketFileTransfer.close();
+                System.out.println("Передача данных закончена");
+
+            } catch (IOException | InterruptedException e) {
+                System.out.println("Не удалось отправить файл");
+            }
+            finally {
+                //закрываем потоки
+                Util.closeQuite(fileInputStream);
+                Util.closeQuite(out);
+                Util.closeQuite(socketFileTransfer);
+
+            }
+
         }
 
 
         //метод принимает файл из сокета
-        private void recieveFile() throws IOException {
+        private void recieveFile() {
 
-            //создаем новый сокет для приема файла
-            Socket socketFileReceive = new Socket(HOST, PORT_FOR_FILE_RECEIVE);
+            FileOutputStream fileOutputStream = null;
+            Socket socketFileReceive = null;
+            File file2 = null;
+            InputStream in = null;
 
-            //Организуем поток данных из сокета
-            in = new BufferedInputStream(socketFileReceive.getInputStream());
+            try {
+                //создаем новый сокет для приема файла
+                socketFileReceive = new Socket(HOST, PORT_FOR_FILE_RECEIVE);
 
-            //Организуем поток данных из файла
-            File file2 = new File(fileName2);
-            fileOutputStream = new FileOutputStream(file2);
+                //Организуем поток данных из сокета
+                in = new BufferedInputStream(socketFileReceive.getInputStream());
 
-            System.out.println("Прием данных стартовал");
-            byte[] buffer = new byte[32]; //буфер
+                //Организуем поток данных в файл
+                file2 = new File(fileName2);
+                fileOutputStream = new FileOutputStream(file2);
+
+                System.out.println("Прием данных стартовал");
+                byte[] buffer = new byte[32]; //буфер
 
 
-            int count = 0;
+                int count = 0;
 
-            while ((count = in.read(buffer)) != -1) {
-                fileOutputStream.write(buffer, 0 , count);
-                fileOutputStream.flush();
-                System.out.println("Принято " + count + " байт");
+                while ((count = in.read(buffer)) != -1) {
+                    fileOutputStream.write(buffer, 0 , count);
+                    fileOutputStream.flush();
+                    System.out.println("Принято " + count + " байт");
+                }
+
+                System.out.println("Прием данных завершен");
+            } catch (IOException e) {
+                System.out.println("Не удалось принять файл");
+                file2.delete();
+
+            } finally {
+                //закрываем потоки
+                Util.closeQuite(in);
+                Util.closeQuite(socketFileReceive);
+                Util.closeQuite(fileOutputStream);
             }
 
-            System.out.println("Прием данных завершен");
 
-            //закрываем потоки
-            in.close();
-            socketFileReceive.close();
-            fileOutputStream.close();
+
+
         }
     }
 }

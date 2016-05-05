@@ -80,52 +80,71 @@ public class Server {
             }
         }
 
-        private void reSendData() throws IOException {
+        private void reSendData() {
 
-            //организуем серверные сокеты
+            ServerSocket serverSocketReceiveFile = null;
+            ServerSocket serverSocketTransferFile = null;
 
-            //сокет для приема файла
-            System.out.println("Порт для приема файла: " + PORT_FOR_RECIEVE_FILE + ". Ждем клиента");
-            ServerSocket serverSocketReceiveFile = new ServerSocket(PORT_FOR_RECIEVE_FILE);
-            Socket socketReceiveFile = serverSocketReceiveFile.accept(); //ждем желающего отправить файл
-            System.out.println("Присоединился передающий клиент " + socketReceiveFile.getPort());
+            InputStream inFile = null;
+            OutputStream outFile = null;
 
-            //тут север должен найти клиента-приемника и дать ему команду инициировать запрос на другой порт
+            try {
+
+                //организуем серверные сокеты
+                serverSocketReceiveFile = new ServerSocket(PORT_FOR_RECIEVE_FILE);
+                serverSocketTransferFile = new ServerSocket(PORT_FOR_TRANSFER_FILE);
+
+                //сокет для приема файла
+                System.out.println("Порт для приема файла: " + PORT_FOR_RECIEVE_FILE + ". Ждем клиента");
+
+                Socket socketReceiveFile = serverSocketReceiveFile.accept(); //ждем желающего отправить файл
+                System.out.println("Присоединился передающий клиент");
+
+                //тут сервер должен найти клиента-приемника и дать ему команду инициировать запрос на другой порт
 
 
-            //сокет для передачи файла
-            System.out.println("Порт для передачи файла: " + PORT_FOR_TRANSFER_FILE + ". Ждем клиента");
-            ServerSocket serverSocketTransferFile = new ServerSocket(PORT_FOR_TRANSFER_FILE);
-            Socket socketTransferFile = serverSocketTransferFile.accept(); //ждем пока приконнектится тот, кому преднажначен файл
-            System.out.println("Присоединился принимающий клиент");
+                //сокет для передачи файла
+                System.out.println("Порт для передачи файла: " + PORT_FOR_TRANSFER_FILE + ". Ждем клиента");
+
+                Socket socketTransferFile = serverSocketTransferFile.accept(); //ждем пока приконнектится тот, кому преднажначен файл
+                System.out.println("Присоединился принимающий клиент");
 
 
-            //организуем поток приема данных от передающего
-            InputStream inFile = new BufferedInputStream(socketReceiveFile.getInputStream());
+                //организуем поток приема данных от передающего
+                inFile = new BufferedInputStream(socketReceiveFile.getInputStream());
 
-            //организуем поток данных к принимающему
-            OutputStream outFile = new BufferedOutputStream(socketTransferFile.getOutputStream());
+                //организуем поток данных к принимающему
+                outFile = new BufferedOutputStream(socketTransferFile.getOutputStream());
 
-            System.out.println("Передача данных статовала");
+                System.out.println("Передача данных статовала");
 
-            byte[] buffer = new byte[32]; //буфер
+                byte[] buffer = new byte[32]; //буфер
 
-            int count = 0;
-            while ((count = inFile.read(buffer)) != -1) {
-                System.out.println("Принято " + count + " байт");
-                outFile.write(buffer, 0, count);
-                outFile.flush();
-                System.out.println("Передано " + count + " байт");
-                System.out.println();
+                int count = 0;
+                while ((count = inFile.read(buffer)) != -1) {
+                    System.out.println("Принято " + count + " байт");
+                    outFile.write(buffer, 0, count);
+                    outFile.flush();
+                    System.out.println("Передано " + count + " байт");
+                    System.out.println();
+                }
+                System.out.println("Передача данных закончена");
+            } catch (IOException e) {
+                System.out.println("Не удалось передать данные");
+            } finally {
+                //закрытие ресурсов
+
+                Util.closeQuite(inFile);
+                Util.closeQuite(outFile);
+                Util.closeQuite(serverSocketReceiveFile);
+                Util.closeQuite(serverSocketTransferFile);
             }
-            System.out.println("Передача данных закончена");
 
 
-            //для порядка закрываем потоки передачи для файла, чтобы потом не забыть перенести в нормальную логику
-            inFile.close();
-            outFile.close();
-            serverSocketReceiveFile.close();
-            serverSocketTransferFile.close();
+
+
+
+
 
         }
 
