@@ -69,10 +69,11 @@ public class Server {
                     System.out.println("Принято сообщение " + line);
                     if (line.equalsIgnoreCase("t")) {   //если клиент присылает "t", значит, он хочет передать файл
                         System.out.println("Принят запрос на передачу файла");
-                        reSendData();                   //тут в качестве параметра должен быть клиент-принимающий
+                        reSendData();
+                        continue;                       //тут в качестве параметра должен быть клиент-принимающий
                     }                                   //и неплохо бы иметь еще название файла
 
-                    System.out.println("Что-то произошло в ране. Клиент прислал текст");
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
