@@ -9,9 +9,11 @@ import java.net.Socket;
 public class Client {
 
     private final static int PORT = 19000;
+    private final static int PORT_FOR_FILE_TRANSFER = 20000;
+    private final static int PORT_FOR_FILE_RECEIVE = 21000;
     private final static String HOST = "localhost";
-    private final static String fileName1 = "D:\\Temp\\file1.txt";
-    private final static String fileName2 = "D:\\Temp\\file2.txt";
+    private final static String fileName1 = "D:\\temp\\testfile\\file3.txt";
+    private final static String fileName2 = "D:\\temp\\testfile\\file4.txt";
 
     public static void main(String[] args) throws IOException {
 
@@ -40,8 +42,8 @@ public class Client {
 
         public TransferData(Socket socket) throws IOException {
             textOut = new PrintWriter(socket.getOutputStream());
-            out = new BufferedOutputStream(socket.getOutputStream());
-            in = new BufferedInputStream(socket.getInputStream());
+//            out = new BufferedOutputStream(socket.getOutputStream());
+//            in = new BufferedInputStream(socket.getInputStream());
             readerFromConsol = new BufferedReader(new InputStreamReader(System.in));
         }
 
@@ -79,16 +81,19 @@ public class Client {
                 e.printStackTrace();
             }
 
-            System.out.println("Передача данных стартовала");
+            //Создаем новый сокет для отправки файла
+            Socket socketFileTransfer = new Socket(HOST, PORT_FOR_FILE_TRANSFER);
 
-            byte[] buffer = new byte[32];
+            //организуем поток данных в сокет
+            out = new BufferedOutputStream(socketFileTransfer.getOutputStream());
 
+            //организуем поток данных из файла
             File file1 = new File(fileName1);
             fileInputStream = new FileInputStream(file1);
 
-            byte[] preBuffer = new byte[]{1, 2, 3, 4};
-            out.write(preBuffer);
-            out.flush();
+            System.out.println("Передача данных стартовала");
+
+            byte[] buffer = new byte[32]; //буфер
 
             try {
             int count = 0;
@@ -111,12 +116,19 @@ public class Client {
         //метод принимает файл из сокета
         private void recieveFile() throws IOException {
 
-            System.out.println("Прием данных стартовал");
-            byte[] buffer = new byte[64];
+            //создаем новый сокет для приема файла
+            Socket socketFileReceive = new Socket(HOST, PORT_FOR_FILE_RECEIVE);
 
+            //Организуем поток данных из сокета
+            in = new BufferedInputStream(socketFileReceive.getInputStream());
+
+            //Организуем поток данных из файла
             File file2 = new File(fileName2);
-
             fileOutputStream = new FileOutputStream(file2);
+
+            System.out.println("Прием данных стартовал");
+            byte[] buffer = new byte[32]; //буфер
+
 
             int count = 0;
 

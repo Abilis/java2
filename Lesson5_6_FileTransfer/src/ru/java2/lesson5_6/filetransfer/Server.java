@@ -12,6 +12,8 @@ import java.util.List;
 public class Server {
 
     private final static int PORT = 19000;
+    private final static int PORT_FOR_RECIEVE_FILE = 20000;
+    private final static int PORT_FOR_TRANSFER_FILE = 21000;
     private List<ClientHandler> handlers = new ArrayList<>();
     private static int counter = 0;
 
@@ -67,7 +69,11 @@ public class Server {
             //здесь происходит перенаправление потока двоичных данных от одного клиента другому
             try {
                 while ((line = textReader.readLine()) != null) {
-                    reSendData(handlers.get(0), handlers.get(1));
+
+                    if (line.equalsIgnoreCase("t")) {   //если клиент присылает "t", значит, он хочет передать файл
+                        reSendData();                   //тут в качестве параметра должен быть клиент-принимающий
+                    }                                   //и неплохо бы иметь еще название файла
+
                     System.out.println("Что-то произошло в ране. Клиент прислал текст");
                 }
             } catch (IOException e) {
@@ -75,21 +81,48 @@ public class Server {
             }
         }
 
-        private void reSendData(ClientHandler from, ClientHandler to) throws IOException {
+        private void reSendData() throws IOException {
+
+            //организуем серверные сокеты
+
+            //сокет для приема файла
+            ServerSocket serverSocketReceiveFile = new ServerSocket(PORT_FOR_RECIEVE_FILE);
+            Socket socketReceiveFile = serverSocketReceiveFile.accept(); //ждем желающего отправить файл
+
+            //тут север должен найти клиента-приемника и дать ему команду инициировать запрос на другой порт
+
+
+            //сокет для передачи файла
+            ServerSocket serverSocketTransferFile = new ServerSocket(PORT_FOR_TRANSFER_FILE);
+            Socket socketTransferFile = serverSocketTransferFile.accept(); //ждем пока приконнектится тот, кому преднажначен файл
+
+
+            //организуем поток приема данных от передающего
+            InputStream inFile = new BufferedInputStream(socketReceiveFile.getInputStream());
+
+            //организуем поток данных к принимающему
+            OutputStream outFile = new BufferedOutputStream(socketTransferFile.getOutputStream());
 
             System.out.println("Передача данных статовала");
 
-            byte[] buffer = new byte[64];
+            byte[] buffer = new byte[64]; //буфер
 
             int count = 0;
-            while ((count = from.in.read(buffer)) != -1) {
+            while ((count = inFile.read(buffer)) != -1) {
                 System.out.println("Принято " + count + " байт");
-                to.out.write(buffer, 0, count);
-                to.out.flush();
+                outFile.write(buffer, 0, count);
+                outFile.flush();
                 System.out.println("Передано " + count + " байт");
                 System.out.println();
             }
             System.out.println("Передача данных закончена");
+
+
+            //для порядка закрываем потоки передачи для файла, чтобы потом не забыть перенести в нормальную логику
+            inFile.close();
+            outFile.close();
+            serverSocketReceiveFile.close();
+            serverSocketTransferFile.close();
 
         }
 
