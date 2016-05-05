@@ -16,15 +16,12 @@ public class InitDb {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 
-    //параметры подключения к Sqlite
-//    private static final String URL = "jdbc:sqlite://localhost:3306";
-//    private static final String USERNAME = "";
-//    private static final String PASSWORD = "";
 
-    private static final String queryCreateDb = "CREATE DATABASE IF NOT EXISTS `finmanager` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
-    private static final String queryUseDb = "USE `finmanager`;";
 
-    private static final String queryCreateAccountsTable = "CREATE TABLE IF NOT EXISTS `accounts` (\n" +
+    private static final String QUERY_CREATE_DB = "CREATE DATABASE IF NOT EXISTS `finmanager` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
+    private static final String QUERY_USE_DB = "USE `finmanager`;";
+
+    private static final String QUERY_CREATE_ACCOUNTS_TABLE = "CREATE TABLE IF NOT EXISTS `accounts` (\n" +
             "  `id_acc` int(11) NOT NULL AUTO_INCREMENT,\n" +
             "  `description` varchar(50) NOT NULL,\n" +
             "  `ostatok` int(11) NOT NULL,\n" +
@@ -32,7 +29,7 @@ public class InitDb {
             "  PRIMARY KEY (`id_acc`)\n" +
             ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
 
-    private static final String queryCreateRecordsTable = "CREATE TABLE IF NOT EXISTS `records` (\n" +
+    private static final String QUERY_CREATE_RECORDS_TABLE = "CREATE TABLE IF NOT EXISTS `records` (\n" +
             "  `id_rec` int(11) NOT NULL AUTO_INCREMENT,\n" +
             "  `label` tinyint(1) NOT NULL,\n" +
             "  `dt` varchar(30) NOT NULL,\n" +
@@ -43,7 +40,7 @@ public class InitDb {
             "  PRIMARY KEY (`id_rec`)\n" +
             ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
 
-    private static final String queryCreateUsersTable = "CREATE TABLE IF NOT EXISTS `users` (\n" +
+    private static final String QUERY_CREATE_USERS_TABLE = "CREATE TABLE IF NOT EXISTS `users` (\n" +
             "  `id_user` int(11) NOT NULL AUTO_INCREMENT,\n" +
             "  `login` varchar(25) NOT NULL,\n" +
             "  `password` varchar(32) NOT NULL,\n" +
@@ -58,11 +55,11 @@ public class InitDb {
             Statement statement = connection.createStatement();
 
             //выполняем запросы создания БД и таблиц
-            statement.execute(queryCreateDb);
-            statement.execute(queryUseDb);
-            statement.execute(queryCreateAccountsTable);
-            statement.execute(queryCreateRecordsTable);
-            statement.execute(queryCreateUsersTable);
+            statement.execute(QUERY_CREATE_DB);
+            statement.execute(QUERY_USE_DB);
+            statement.execute(QUERY_CREATE_ACCOUNTS_TABLE);
+            statement.execute(QUERY_CREATE_RECORDS_TABLE);
+            statement.execute(QUERY_CREATE_USERS_TABLE);
 
         } catch (SQLException e) {
             e.printStackTrace();

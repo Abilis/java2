@@ -2,6 +2,7 @@ package ru.java2.finManager2;
 
 import ru.java2.finManager2.gui.LoginAndRegistration;
 import ru.java2.finManager2.utils.InitDb;
+import ru.java2.finManager2.utils.InitSqliteDB;
 
 
 /**
@@ -13,7 +14,9 @@ public class FinManager {
     public static void main(String[] args) {
 
         //инициализация БД
-        InitDb.initDb();
+//        InitDb.initDb();
+        InitSqliteDB.initSqlitedDb();
+
 
         //инициализации формы логина и регистрации
         LoginAndRegistration loginAndRegistration = new LoginAndRegistration();
