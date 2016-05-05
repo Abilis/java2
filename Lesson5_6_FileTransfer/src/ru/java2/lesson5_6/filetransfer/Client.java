@@ -2,6 +2,7 @@ package ru.java2.lesson5_6.filetransfer;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Collections;
 
 /**
  * Created by Abilis on 04.05.2016.
@@ -20,7 +21,6 @@ public class Client {
         Client client = new Client();
         client.startClient();
 
-
     }
 
     private void startClient() throws IOException {
@@ -33,18 +33,17 @@ public class Client {
 
     class TransferData extends Thread {
 
-        private PrintWriter textOut;
         private OutputStream out;
         private InputStream in;
         private FileInputStream fileInputStream;
         private FileOutputStream fileOutputStream;
-        private BufferedReader readerFromConsol;
+        private BufferedReader readerFromConsol = new BufferedReader(new InputStreamReader(System.in));
+        private PrintWriter textOut;
 
         public TransferData(Socket socket) throws IOException {
             textOut = new PrintWriter(socket.getOutputStream());
-//            out = new BufferedOutputStream(socket.getOutputStream());
-//            in = new BufferedInputStream(socket.getInputStream());
-            readerFromConsol = new BufferedReader(new InputStreamReader(System.in));
+            out = new BufferedOutputStream(socket.getOutputStream());
+            in = new BufferedInputStream(socket.getInputStream());
         }
 
         @Override
@@ -55,15 +54,19 @@ public class Client {
                 while ((line = readerFromConsol.readLine()) != null) {
 
                     if (line.equalsIgnoreCase("t")) {   //клиент передает "t", что дает серверу указание начать передачу
+                        textOut.println(line);
+                        textOut.flush();
+                        System.out.println("Отправлено сообщение " + line);
                         sendFile();                     //данных от этого клиента другому
+                        continue;
                     }
 
                     else if (line.equalsIgnoreCase("r")) {  //эта штука не передается серверу, а нужна только для вызова
                         recieveFile();                      //метода у клиента на прием файла
-                        break;
+                        continue;
                     }
 
-                    textOut.write(line);
+                    textOut.println(line);
                     textOut.flush();
                     System.out.println("Отправлено сообщение " + line);
                 }
@@ -104,15 +107,19 @@ public class Client {
                     out.write(buffer, 0, count);
                     out.flush();
                     System.out.println("Отправлено " + count + " байт");
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
                 }
 
-                Thread.sleep(10000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             System.out.println("Передача данных закончена");
 
+            //закрываем потоки
+            fileInputStream.close();
+            out.close();
+            socketFileTransfer.close();
         }
 
 
@@ -142,6 +149,11 @@ public class Client {
             }
 
             System.out.println("Прием данных завершен");
+
+            //закрываем потоки
+            in.close();
+            socketFileReceive.close();
+            fileOutputStream.close();
         }
     }
 }

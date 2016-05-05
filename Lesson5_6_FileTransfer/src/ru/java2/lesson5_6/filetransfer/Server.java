@@ -45,20 +45,16 @@ public class Server {
     class ClientHandler extends Thread {
 
         private Server server;
-//        private InputStream in;
-//        private OutputStream out;
 
-        private BufferedReader textReader;
+        private BufferedReader in;
 
         private int number;
 
 
         public ClientHandler(Server server, Socket socket, int number) throws IOException {
             this.server = server;
-//            this.in = new BufferedInputStream(socket.getInputStream());
-//            this.out = new BufferedOutputStream(socket.getOutputStream());
             this.number = number;
-            this.textReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         }
 
         @Override
@@ -68,7 +64,7 @@ public class Server {
             String line = null;
             //здесь происходит перенаправление потока двоичных данных от одного клиента другому
             try {
-                while ((line = textReader.readLine()) != null) {
+                while ((line = in.readLine()) != null) {
 
                     System.out.println("Принято сообщение " + line);
                     if (line.equalsIgnoreCase("t")) {   //если клиент присылает "t", значит, он хочет передать файл
@@ -91,7 +87,7 @@ public class Server {
             System.out.println("Порт для приема файла: " + PORT_FOR_RECIEVE_FILE + ". Ждем клиента");
             ServerSocket serverSocketReceiveFile = new ServerSocket(PORT_FOR_RECIEVE_FILE);
             Socket socketReceiveFile = serverSocketReceiveFile.accept(); //ждем желающего отправить файл
-            System.out.println("Присоединился клиент " + socketReceiveFile.getPort());
+            System.out.println("Присоединился передающий клиент " + socketReceiveFile.getPort());
 
             //тут север должен найти клиента-приемника и дать ему команду инициировать запрос на другой порт
 
@@ -100,7 +96,7 @@ public class Server {
             System.out.println("Порт для передачи файла: " + PORT_FOR_TRANSFER_FILE + ". Ждем клиента");
             ServerSocket serverSocketTransferFile = new ServerSocket(PORT_FOR_TRANSFER_FILE);
             Socket socketTransferFile = serverSocketTransferFile.accept(); //ждем пока приконнектится тот, кому преднажначен файл
-            System.out.println("Присоединился клиент " + socketTransferFile.getPort());
+            System.out.println("Присоединился принимающий клиент");
 
 
             //организуем поток приема данных от передающего
@@ -111,7 +107,7 @@ public class Server {
 
             System.out.println("Передача данных статовала");
 
-            byte[] buffer = new byte[64]; //буфер
+            byte[] buffer = new byte[32]; //буфер
 
             int count = 0;
             while ((count = inFile.read(buffer)) != -1) {
