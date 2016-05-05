@@ -85,12 +85,14 @@ public class ThreadedClient {
         }
 
         //метод передает файл в сокет
-        private void sendFile() throws IOException {
+        private void sendFile(String fileName1) throws IOException {
 
             byte[] buffer = new byte[64 * 1024];
 
+//            String fileName11 = "D:\temp\testfile\file3.txt";
+
             //создание потока из файла
-            File file = new File("D:\temp\testfile\file.txt");
+            File file = new File(fileName1);
             FileInputStream fileInputStream = new FileInputStream(file);
 
             //создаем новый сокет для передачи файла
@@ -110,12 +112,14 @@ public class ThreadedClient {
         }
 
         //метод принимает файл из сокета
-        private void recieveFile() throws IOException {
+        private void recieveFile(String fileName2) throws IOException {
 
             byte[] buffer = new byte[64 * 1024];
 
+//            String fileName22 = "D:\temp\testfile\file4.txt";
+
             //создание потока для записи в файл
-            File file = new File("D:\temp\testfile\file.txt");
+            File file = new File(fileName2);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
             //создаем новый сокет для приема файла
