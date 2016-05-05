@@ -54,15 +54,18 @@ public class Client {
             try {
                 while ((line = readerFromConsol.readLine()) != null) {
 
-                    if (line.equals("r")) {
-                        recieveFile();
+                    if (line.equalsIgnoreCase("t")) {   //клиент передает "t", что дает серверу указание начать передачу
+                        sendFile();                     //данных от этого клиента другому
+                    }
+
+                    else if (line.equalsIgnoreCase("r")) {  //эта штука не передается серверу, а нужна только для вызова
+                        recieveFile();                      //метода у клиента на прием файла
                         break;
                     }
 
                     textOut.write(line);
                     textOut.flush();
-                    sendFile();
-                    break;
+                    System.out.println("Отправлено сообщение " + line);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -76,7 +79,7 @@ public class Client {
             System.out.println("Передача данных сейчас начнется");
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
