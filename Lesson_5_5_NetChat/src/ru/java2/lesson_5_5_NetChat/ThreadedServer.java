@@ -10,6 +10,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ThreadedServer {
 
@@ -28,6 +30,9 @@ public class ThreadedServer {
 
     // список обработчиков для клиентов
     private List<ClientHandler> handlers = new ArrayList<>();
+
+    //пул потоков
+    ExecutorService service = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) throws Exception {
         ThreadedServer server = new ThreadedServer();
