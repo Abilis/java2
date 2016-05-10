@@ -18,6 +18,9 @@ public class ThreadedServer {
     private static final int PORT = 19000;
     private static int counter = 0;
 
+    private static final String DISCONNECT_FROM_SERVER = "exit_from_server";
+    private boolean canDisconnectFromServer= false;
+
     private static List<User> users = new ArrayList<>(); //список подключенных пользователей
 
     private static final String GREATING_MESSAGE = ", добро пожаловать в чат! Сменить ник можно командой !login <new_nick>. " +
@@ -76,6 +79,12 @@ public class ThreadedServer {
 
         // Отправка сообщения в сокет, связанный с клиентом
         public void send(String message) {
+
+            //если кто-то из клиентов пытается отправить сообщение дисконнекта от сервера
+            if (message.contains(DISCONNECT_FROM_SERVER) && !canDisconnectFromServer) {
+                return;
+            }
+
             synchronized (out) {
                 out.println(message);
                 out.flush();
@@ -85,6 +94,12 @@ public class ThreadedServer {
 
         //отправка сообщения в определенный сокет
         private void send(String message, PrintWriter out) {
+
+            //если кто-то из клиентов пытается отправить сообщение дисконнекта от сервера
+            if (message.contains(DISCONNECT_FROM_SERVER) && !canDisconnectFromServer) {
+                return;
+            }
+
             synchronized (out) {
                 out.println(message);
                 out.flush();

@@ -16,6 +16,7 @@ public class ThreadedClient {
     public static final String HOST = "localhost";
     private static final String EXIT = "exit";
     private static final String DISCONNECT = "!exit";
+    private static final String DISCONNECT_FROM_SERVER = "exit_from_server";
 
     public static void main(String[] args) throws Exception {
 
@@ -36,6 +37,10 @@ public class ThreadedClient {
 
             String line = null;
             while ((line = in.readLine()) != null) {
+                if (line.contains(DISCONNECT_FROM_SERVER)) {
+                    console.interrupt();
+                    break;
+                }
                 System.out.println(">> " + line);
             }
 
@@ -76,6 +81,11 @@ public class ThreadedClient {
 
                     out.println(line);
                     out.flush();
+
+                    if (isInterrupted()) {
+                        System.out.println("Сервер разорвал соединение!");
+                        break;
+                    }
                 }
             } catch (Exception ignore) {
                 /*NOP*/
