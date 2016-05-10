@@ -32,7 +32,7 @@ public class ThreadedServer {
     private List<ClientHandler> handlers = new ArrayList<>();
 
     //пул потоков
-    ExecutorService service = Executors.newFixedThreadPool(10);
+    ExecutorService clientThreads = Executors.newFixedThreadPool(3);
 
     public static void main(String[] args) throws Exception {
         ThreadedServer server = new ThreadedServer();
@@ -52,8 +52,9 @@ public class ThreadedServer {
 
             // создаем обработчик
             ClientHandler handler = new ClientHandler(this, socket, counter++);
+
+            clientThreads.submit(handler);
             handlers.add(handler);
-            handler.start();
         }
     }
 
