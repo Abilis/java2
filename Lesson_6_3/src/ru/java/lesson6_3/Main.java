@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
  */
 public class Main {
 
-    private static final String DIR_NAME = "D:\\temp\\testfile\\testdir";
+    private static final String DIR_NAME = "D:\\Temp\\testdir";
     private static final ConcurrentLinkedQueue<File> LIST_OF_FILES = new ConcurrentLinkedQueue<>();
     private static final String STRING_FOR_SEARCH = "7777";
     private static Integer amountFindedString = 0;
