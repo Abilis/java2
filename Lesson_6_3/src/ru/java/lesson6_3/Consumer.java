@@ -50,8 +50,8 @@ public class Consumer extends Thread {
 
         if (str.contains(stringForSearch)) {
             System.out.println("Найдена искомая подстрока \"" + stringForSearch + "\"!");
-//            System.out.println(str);
-//            System.out.println();
+            System.out.println(str);
+            System.out.println();
             synchronized (amountFindedString) {
                 amountFindedString++;
             }
