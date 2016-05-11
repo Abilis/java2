@@ -1,8 +1,11 @@
 package ru.java.lesson6_3;
 
+
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
 
 /**
  * Created by Abilis on 11.05.2016.
@@ -10,6 +13,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class Main {
 
     private static final String DIR_NAME = "D:\\temp\\testfile\\testdir";
+    private static final ConcurrentLinkedQueue<File> LIST_OF_FILES = new ConcurrentLinkedQueue<>();
+    private static final String STRING_FOR_SEARCH = "123";
 
 
     public static void main(String[] args) {
@@ -18,10 +23,24 @@ public class Main {
 
         File[] files = dir.listFiles();
 
-        ConcurrentLinkedQueue<File> listOfFiles = new ConcurrentLinkedQueue<>();
-        listOfFiles.addAll(Arrays.asList(files));
+
+        LIST_OF_FILES.addAll(Arrays.asList(files));
 
 
+        //производители
+        Producer producer = new Producer(LIST_OF_FILES);
+
+        //потребители
+        Consumer consumer = new Consumer(LIST_OF_FILES, STRING_FOR_SEARCH);
+
+        producer.start();
+        consumer.start();
+
+        while (producer.isAlive() || consumer.isAlive()) {
+
+        }
+
+        System.out.println("Разбор файлов завершен");
 
 
     }
