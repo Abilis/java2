@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
 /**
  * Created by Abilis on 11.05.2016.
  *
- * Производится поиск по всем файзам в указанной директории. Нужно задать строку для поиска и общее количество потоков.
- * Число потребителей и производителей разделяется пополам.
+ * Производится поиск по всем файлам в указанной директории. Нужно задать строку для поиска и общее количество потоков.
+ * Число потребителей по умолчанию равно четверти от количества всех потоков.
  *
  * При начале обработки очередного файла об этом выводится сообщение в консоль.
  * Также при смерти очередного потока об этом сообщается.
@@ -29,8 +29,8 @@ public class Main {
 
     private static final String DIR_NAME = "D:\\Temp\\testdir"; //каталог с текстовыми файлами
     private static final ConcurrentLinkedQueue<File> LIST_OF_FILES = new ConcurrentLinkedQueue<>();
-    private static final String STRING_FOR_SEARCH = "1234";    //строка для поиска
-    private static final int AMOUNT_OF_THREADS = 12;            //общее количество потоков (исключая main)
+    private static final String STRING_FOR_SEARCH = "джава";    //строка для поиска
+    private static final int AMOUNT_OF_THREADS = 10;            //общее количество потоков (исключая main)
 
     private volatile static Integer amountFindedString = 0;     //число найденных строк
 
@@ -68,8 +68,8 @@ public class Main {
         //создаем экзекьютора
         ExecutorService executorService = Executors.newFixedThreadPool(AMOUNT_OF_THREADS);
 
-        int amountProducers = AMOUNT_OF_THREADS / 2;                //количество потоков, читающих построчно файл
-        int amountConsumers = AMOUNT_OF_THREADS - amountProducers;  //количество потоков, ищущих подстроку
+        int amountConsumers = AMOUNT_OF_THREADS / 4;                 //количество потоков, ищущих подстроку
+        int amountProducers = AMOUNT_OF_THREADS - amountConsumers;   //количество потоков, читающих построчно файл
 
         long timeStart = System.currentTimeMillis();
 

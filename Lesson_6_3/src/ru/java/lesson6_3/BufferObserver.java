@@ -18,7 +18,7 @@ public class BufferObserver extends Thread {
             averageSizeQueue = (averageSizeQueue + sizeQueue) / 2;
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 break;
             }
