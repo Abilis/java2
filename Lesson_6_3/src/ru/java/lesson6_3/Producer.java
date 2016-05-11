@@ -10,7 +10,7 @@ public class Producer extends Thread {
 
     private static ConcurrentLinkedQueue<File> listOfFiles;
     private static int countFiles = 0;
-    private static int countString = 1;
+    private static int countString = 0;
 
     public Producer(ConcurrentLinkedQueue<File> listOfFiles) {
         this.listOfFiles = listOfFiles;
@@ -20,12 +20,12 @@ public class Producer extends Thread {
     public void run() {
 
         while (!isInterrupted()) {
-            File currentFile = getFile();   //берем из очереди очередной файл
+            File currentFile = getFile();   //берем из очереди файлов очередной файл
             if (currentFile == null) {      //если из очереди вернулся нулл - файлы кончились
                 break;
             }
 
-            System.out.println("Обработка файла " + ++countFiles);
+            System.out.println("Начата обработка файла " + ++countFiles);
 
             BufferedReader bufferedReader = null;
             try {

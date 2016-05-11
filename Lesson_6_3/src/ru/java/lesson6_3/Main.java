@@ -14,7 +14,7 @@ public class Main {
 
     private static final String DIR_NAME = "D:\\temp\\testfile\\testdir";
     private static final ConcurrentLinkedQueue<File> LIST_OF_FILES = new ConcurrentLinkedQueue<>();
-    private static final String STRING_FOR_SEARCH = "123";
+    private static final String STRING_FOR_SEARCH = "9999";
 
 
     public static void main(String[] args) {
@@ -33,6 +33,8 @@ public class Main {
         //потребители
         Consumer consumer = new Consumer(LIST_OF_FILES, STRING_FOR_SEARCH);
 
+        long timeStart = System.currentTimeMillis();
+
         producer.start();
         consumer.start();
 
@@ -40,7 +42,12 @@ public class Main {
 
         }
 
-        System.out.println("Разбор файлов завершен");
+        long timeFinish = System.currentTimeMillis();
+
+        long delta = timeFinish - timeStart;
+
+        System.out.println();
+        System.out.println("Разбор файлов завершен. Затрачено времени: " + delta + " мс");
 
 
     }

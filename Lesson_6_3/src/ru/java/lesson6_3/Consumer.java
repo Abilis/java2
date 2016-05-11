@@ -1,7 +1,6 @@
 package ru.java.lesson6_3;
 
 import java.io.File;
-import java.text.BreakIterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -21,7 +20,28 @@ public class Consumer extends Thread {
     @Override
     public void run() {
 
+        while (!isInterrupted()) {
 
+            String str = null;
+            try {
+                str = Buffer.getString();   //берем из очереди строк очередную строку
+                if (str == null) {          //если вернулся нулл - в очереди ничего не было по таймауту
+                    System.out.println("Работа потребителя " + Thread.currentThread().getName() + " прервана по таймауту!");
+                    interrupt();
+                    break;
+                }
+
+                processingString(str);
+
+            } catch (InterruptedException e) {
+                System.out.println("Работа потребителя " + Thread.currentThread().getName() + " прервана!");
+            }
+
+
+        }
+
+        System.out.println("Работа потребителя " + Thread.currentThread().getName() + " завершена. Найдено подстрок \"" +
+        stringForSearch + "\": " + amountFindedString);
 
     }
 
@@ -29,7 +49,7 @@ public class Consumer extends Thread {
     private static void processingString(String str) {
 
         if (str.contains(stringForSearch)) {
-//            System.out.println("Найдена искомая подстрока!");
+            System.out.println("Найдена искомая подстрока \"" + stringForSearch + "\"!");
 //            System.out.println(str);
 //            System.out.println();
             synchronized (amountFindedString) {
