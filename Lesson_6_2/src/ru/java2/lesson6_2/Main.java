@@ -5,15 +5,14 @@ package ru.java2.lesson6_2;
  * Created by Abilis on 10.05.2016.
  *
  * В полях этого класса нужно указать файл, в котором будет проводиться поиск и подстроку, которую будем искать.
- * Файл считывается построчно. Если есть хотя бы одно вхождение, считается что подстрока в строке файла найдена 1 раз
- * При желании можно раскомментировать в классе Consumer вывод на консоль строки, в которой найдена искомая подстрока
+ * Файл считывается построчно. Если есть хотя бы одно вхождение, считается что подстрока в строке файла найдена 1 раз *
  *
  * Кодировка файла должна быть UTF-8
  */
 public class Main {
 
-    private static final String FILE_NAME = "D:\\temp\\testfile\\file2.txt";
-    private static final String STRING_FOR_SEARCH = "псих";
+    private static final String FILE_NAME = "D:\\Temp\\testdir\\1.txt";
+    private static final String STRING_FOR_SEARCH = "123";
 
 
     public static void main(String[] args) {

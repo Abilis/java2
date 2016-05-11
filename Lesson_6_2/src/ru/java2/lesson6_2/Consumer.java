@@ -46,8 +46,8 @@ public class Consumer extends Thread {
         if (str.contains(stringForSearch)) {
             System.out.println("Найдено вхождение подстроки \"" + stringForSearch + "\"!");
 //            System.out.println("Найдена строка " + stringForSearch + " в строке:");
-//            System.out.println(str);
-//            System.out.println();
+            System.out.println(str);
+            System.out.println();
             amountFindString++;
         }
 
