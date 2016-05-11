@@ -5,46 +5,53 @@ package ru.java2.lesson6_2;
  */
 public class Consumer extends Thread {
 
-    private static String STRING_FOR_SEARCH;
-    private static int count = 0;
+    private String stringForSearch;
+    private int amountFindString = 0;
+    private int amountString = 0;
 
     public Consumer(String stringForSearch) {
-        STRING_FOR_SEARCH = stringForSearch;
+        this.stringForSearch = stringForSearch;
     }
 
 
     @Override
     public void run() {
 
-        while (!isInterrupted()) {
-            String str = null;
+        String line = null;
 
-            try {
-                str = Buffer.getString();
-                processingString(str);
-            } catch (InterruptedException e) {
-                System.out.println("Потребитель закончил работу из-за пустой очереди");
+        try {
+
+            while (!isInterrupted()) {
+                line = Buffer.getString();
+                if (line == null) {
+                    interrupt();
+                }
+                else {
+                    processingString(line);
+                }
             }
+
+
+        } catch (InterruptedException e) {
+            System.out.println("Работа потребителя прервана");
         }
 
-        System.out.println("Разбор файла потребителем завершен! Найдено подстрок \"" + STRING_FOR_SEARCH + "\": " + count);
+        System.out.println("Работа потребителя закончена. Обработано строк: " + amountString + ". Найдено вхождений: " + amountFindString);
 
     }
 
+
     private void processingString(String str) {
 
-        if (str == null) {
-            interrupt();
-            return;
+        if (str.contains(stringForSearch)) {
+            System.out.println("Найдено вхождение подстроки \"" + stringForSearch + "\"!");
+//            System.out.println("Найдена строка " + stringForSearch + " в строке:");
+//            System.out.println(str);
+//            System.out.println();
+            amountFindString++;
         }
 
-        if (str.contains(STRING_FOR_SEARCH)) {
-            count++;
-            System.out.println("*****************");
-            System.out.println("Найдена подстрока " + STRING_FOR_SEARCH + "! Всего найдено подстрок в файле: " + count);
-            System.out.println("*****************");
-        }
-
+        amountString++;
     }
 
 }
