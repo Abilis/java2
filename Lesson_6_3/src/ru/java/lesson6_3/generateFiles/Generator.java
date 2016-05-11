@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class Generator {
 
-    private static final String FILE_NAME = "D:\\temp\\testfile\\testdir";
+    private static final String DIR_NAME = "D:\\temp\\testfile\\testdir";
     private static final int AMOUNT_FILES = 10; //количество файлов
     private static final int LENGHT_STRING = 150; //длина строки в файле до перехода на новую строку
     private static final int AMOUNT_LINES_IN_FILE = 100_000; //общее количество строк в файлах
@@ -21,7 +21,7 @@ public class Generator {
 
             OutputStreamWriter outputStreamWriter = null;
             try {
-                File file = new File(FILE_NAME + "\\" + i + ".txt");
+                File file = new File(DIR_NAME + "\\" + i + ".txt");
                  outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
                 fillFile(outputStreamWriter);
                 System.out.println("Файл " + i + " заполнен случайными строками. Количество строк: " + AMOUNT_LINES_IN_FILE);
