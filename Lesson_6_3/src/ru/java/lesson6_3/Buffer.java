@@ -27,5 +27,9 @@ public class Buffer {
         return result;
     }
 
+    public static int getSizeQueue() {
+        return blockingQueue.size();
+    }
+
 
 }

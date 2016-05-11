@@ -51,6 +51,7 @@ public class Consumer extends Thread {
     private static void processingString(String str) {
 
         if (str.contains(stringForSearch)) {
+            Main.addStringInResultList(str);
             System.out.println("Найдена искомая подстрока \"" + stringForSearch + "\"!");
             System.out.println(str);
             System.out.println();
