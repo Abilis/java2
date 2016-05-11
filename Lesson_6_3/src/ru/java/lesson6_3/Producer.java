@@ -60,20 +60,15 @@ public class Producer extends Thread {
 
         }
 
-        System.out.println("Работа производителя " + Thread.currentThread().getName() + " завершена!" +
-                " На текущий момент обработано строк: " + countString + ", обработано файлов: " + countFiles);
+//        System.out.println("Работа производителя " + Thread.currentThread().getName() + " завершена!" +
+//                " На текущий момент обработано строк: " + countString + ", обработано файлов: " + countFiles);
 
+            System.out.println("Работа производителя " + Thread.currentThread().getName() + " завершена!");
 
     }
 
+    //возвращает null, если очередь с файлами пуста
     private File getFile() {
-        if (!listOfFiles.isEmpty()) {
-            return listOfFiles.poll();
-
-        }
-        else {
-            interrupted();
-            return null;
-        }
+        return listOfFiles.poll();
     }
 }

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Buffer {
 
-    private static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<String>(10);
+    private static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<String>(100);
 
     private Buffer() {
 

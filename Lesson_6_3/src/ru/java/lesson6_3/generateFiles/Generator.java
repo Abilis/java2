@@ -4,11 +4,12 @@ import java.io.*;
 
 /**
  * Created by Abilis on 11.05.2016.
+ * Генератор файлов со случайными строками в заданной директории
  */
 public class Generator {
 
     private static final String DIR_NAME = "D:\\Temp\\testdir";
-    private static final int AMOUNT_FILES = 1; //количество файлов
+    private static final int AMOUNT_FILES = 20; //количество файлов
     private static final int LENGHT_STRING = 150; //длина строки в файле до перехода на новую строку
     private static final int AMOUNT_LINES_IN_FILE = 100_000; //общее количество строк в файлах
     private static final String VOCABULARY = " абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789";

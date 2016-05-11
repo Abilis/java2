@@ -40,10 +40,11 @@ public class Consumer extends Thread {
 
         }
 
-        System.out.println("Работа потребителя " + Thread.currentThread().getName() + " завершена. На текущий момент" +
-                " найдено подстрок \"" +
-        stringForSearch + "\": " + amountFindedString);
+//        System.out.println("Работа потребителя " + Thread.currentThread().getName() + " завершена. На текущий момент" +
+//                " найдено подстрок \"" +
+//        stringForSearch + "\": " + amountFindedString);
 
+        System.out.println("Работа потребителя " + Thread.currentThread().getName() + " завершена");
     }
 
 

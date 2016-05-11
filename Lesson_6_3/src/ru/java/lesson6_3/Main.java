@@ -17,14 +17,15 @@ public class Main {
     private static final String DIR_NAME = "D:\\Temp\\testdir";
     private static final ConcurrentLinkedQueue<File> LIST_OF_FILES = new ConcurrentLinkedQueue<>();
     private static final String STRING_FOR_SEARCH = "7777";
-    private static Integer amountFindedString = 0;
+
+    private volatile static Integer amountFindedString = 0; //число найденных строк
 
     public synchronized static void amountFindedStringIncrement() {
         amountFindedString++;
     }
 
-    private static int countFiles = 0;
-    private static int countString = 0;
+    private volatile static int countFiles = 0;     //количество обработанных файлов
+    private volatile static int countString = 0;    //количество обработанных строк
 
     public synchronized static void countFilesIncrement() {
         countFiles++;
@@ -44,6 +45,7 @@ public class Main {
         LIST_OF_FILES.addAll(Arrays.asList(files));
 
 
+        
         //создаем производителей
         Producer pr1 = new Producer(LIST_OF_FILES);
         Producer pr2 = new Producer(LIST_OF_FILES);
