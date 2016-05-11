@@ -17,8 +17,8 @@ public class Buffer {
     }
 
 
-    public static void addString(String string) throws InterruptedException {
-        blockingQueue.offer(string, 500, TimeUnit.MILLISECONDS);
+    public static boolean addString(String string) throws InterruptedException {
+        return blockingQueue.offer(string, 500, TimeUnit.MILLISECONDS);
     }
 
 

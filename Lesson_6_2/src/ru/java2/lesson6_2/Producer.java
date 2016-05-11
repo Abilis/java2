@@ -26,8 +26,13 @@ public class Producer extends Thread {
 
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
-                Buffer.addString(line);
-                amountString++;
+                if (Buffer.addString(line)) {
+                    amountString++;
+                }
+                else {
+                    interrupt();
+                }
+
             }
 
         } catch (IOException e1) {
