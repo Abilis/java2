@@ -26,6 +26,7 @@ public class Producer extends Thread {
             }
 
             System.out.println("Начата обработка файла " + ++countFiles);
+            Main.countFilesIncrement();
 
             BufferedReader bufferedReader = null;
             try {
@@ -36,6 +37,7 @@ public class Producer extends Thread {
 
                     if (Buffer.addString(line)) {                    //суем прочитанную строку в очередь-буфер
                         countString++;
+                        Main.countStringIncrement();
                     }
                     else {
                         System.out.println("Работа производителя прервана по таймауту!");
@@ -59,7 +61,7 @@ public class Producer extends Thread {
         }
 
         System.out.println("Работа производителя " + Thread.currentThread().getName() + " завершена!" +
-                " Обработано строк: " + countString + ", обработано файлов: " + countFiles);
+                " На текущий момент обработано строк: " + countString + ", обработано файлов: " + countFiles);
 
 
     }

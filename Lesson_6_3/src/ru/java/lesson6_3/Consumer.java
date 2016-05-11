@@ -40,7 +40,8 @@ public class Consumer extends Thread {
 
         }
 
-        System.out.println("Работа потребителя " + Thread.currentThread().getName() + " завершена. Найдено подстрок \"" +
+        System.out.println("Работа потребителя " + Thread.currentThread().getName() + " завершена. На текущий момент" +
+                " найдено подстрок \"" +
         stringForSearch + "\": " + amountFindedString);
 
     }
@@ -54,6 +55,7 @@ public class Consumer extends Thread {
             System.out.println();
             synchronized (amountFindedString) {
                 amountFindedString++;
+                Main.amountFindedStringIncrement();
             }
         }
 
