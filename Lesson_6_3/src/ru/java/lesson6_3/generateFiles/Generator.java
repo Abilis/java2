@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class Generator {
 
-    private static final String DIR_NAME = "C:\\ssdTestDir";
+    private static final String DIR_NAME = "D:\\Temp\\testdir";
     private static final int AMOUNT_FILES = 200; //количество файлов
     private static final int LENGHT_STRING = 150; //длина строки в файле до перехода на новую строку
     private static final int AMOUNT_LINES_IN_FILE = 150_000; //общее количество строк в файлах

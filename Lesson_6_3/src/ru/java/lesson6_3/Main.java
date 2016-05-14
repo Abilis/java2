@@ -78,7 +78,7 @@ public class Main {
             executorService.submit(new Producer(LIST_OF_FILES));
         }
 
-        //запускаем производителей
+        //запускаем потребителей
         for (int i = 0; i < amountConsumers; i++) {
             executorService.submit(new Consumer(LIST_OF_FILES, STRING_FOR_SEARCH));
         }
