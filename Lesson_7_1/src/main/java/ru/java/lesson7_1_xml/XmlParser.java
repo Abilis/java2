@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 public class XmlParser {
 
-    private static final String FILE_NAME_FOR_PARSING = "D:\\temp\\testfile\\testdir\\files\\test.xml";
+    private static final String FILE_NAME_FOR_PARSING = "test.xml";
 
 
     public void init() throws ParserConfigurationException, IOException, SAXException {
