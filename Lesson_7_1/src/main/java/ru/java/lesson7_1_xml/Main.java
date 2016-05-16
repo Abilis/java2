@@ -20,6 +20,7 @@ public class Main {
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println("Скорее всего, неверно указан файл");
             e.printStackTrace();
         }
     }

@@ -41,27 +41,34 @@ public class XmlParser {
 
     private void process(Node node, int level) {
 
+        if (node.getNodeName().equals("#text")) {   //избавление от шляпной шляпы
+            return;
+        }
+
         for (int i = 0; i < level; i++) {
             System.out.print('\t');
         }
 
         System.out.print("node: " + node.getNodeName() + " ");
+
+
         if (node instanceof Element){
             Element e = (Element) node;
 
             if (!e.getAttribute("id").equals("")) {
                 System.out.print("[id=" + e.getAttribute("id") + "]");
             }
-            if (!e.getAttribute("name").equals("")) {
+            else if (!e.getAttribute("name").equals("")) {
                 System.out.print("[name=\"" + e.getAttribute("name") + "\"]");
             }
-            if (!e.getAttribute("data").equals("")) {
+            else if (!e.getAttribute("data").equals("")) {
                 System.out.print("[data=\"" + e.getAttribute("data") + "\"]");
             }
-
         }
 
         System.out.println();
+
+
 
     }
 }
